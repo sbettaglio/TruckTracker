@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router'
-import { Layout } from './components/Layout'
-import { Home } from './pages/Home'
-import HelloWorld from './pages/_template/HelloWorld'
-import HeyWorld from './pages/_template/HeyWorld'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+
+import UserHome from './pages/UserHome'
+import Register from './pages/Register'
+import LandingPage from './pages/LandingPage'
 import NotFound from './pages/NotFound'
-import './custom.scss'
+import Picks from './pages/Picks'
+import LateTrucks from './pages/LateTrucks'
+import CarrierProfiles from './pages/CarrierProfiles'
+import NewCarrier from './pages/NewCarrier'
+import NewLoad from './pages/NewLoad'
+import Load from './pages/Load'
+
 export default class App extends Component {
   static displayName = App.name
 
@@ -25,7 +31,7 @@ export default class App extends Component {
           </nav>
         </header>
         <Switch>
-          <Route exact path="/" component={HomePage}></Route>
+          <Route exact path="/" component={LandingPage}></Route>
           <Route exact path="/register" component={Register}></Route>
           <Route exact path="/userHome" component={UserHome}></Route>
           <Route exact path="/picks" component={Picks}></Route>

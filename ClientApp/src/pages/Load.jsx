@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Loads = () => {
+const Load = () => {
   return (
     <>
       <div>
@@ -91,4 +91,4 @@ const Loads = () => {
   )
 }
 
-export default Loads
+export default Load

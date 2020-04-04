@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function Home() {
+const LandingPage = () => {
   return (
     <>
       <main className="login">
@@ -16,3 +16,4 @@ export function Home() {
     </>
   )
 }
+export default LandingPage
