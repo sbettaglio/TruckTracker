@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Table } from 'reactstrap'
 
 const UserHome = () => {
   return (
@@ -7,34 +8,48 @@ const UserHome = () => {
       <div>
         <h1>User Home Page</h1>
       </div>
-      <main className="user-home">
-        <ul>
-          <li>
-            <Link to="/picks">Today's Picks</Link>
-          </li>
-          <li>
-            <Link to="/drops">Today's Drops</Link>
-          </li>
-          <li>
-            <Link to="/late">Late Trucks</Link>
-          </li>
-          <li>
-            <Link to="/available">Available Loads</Link>
-          </li>
-          <li>
-            <Link to="/create">Create New Load</Link>
-          </li>
-          <li>
-            <Link to="/carriers">Carrier Profiles</Link>
-          </li>
-          <li className="mobile-bottom">
-            <Link to="/newCarrier">New Carrier</Link>
-          </li>
-        </ul>
-        <form>
-          <button>Sign Out</button>
-        </form>
-      </main>
+      <Table className="user-home" responsive>
+        <tbody>
+          <tr>
+            <td scope="row">
+              <Link to="/picks">Today's Picks</Link>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row">
+              <Link to="/drops">Today's Drops</Link>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row">
+              <Link to="/late">Late Trucks</Link>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row">
+              <Link to="/available">Available Loads</Link>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row">
+              <Link to="/create">Create New Load</Link>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row">
+              <Link to="/carriers">Carrier Profiles</Link>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row">
+              <Link to="/newCarrier">New Carrier</Link>
+            </td>
+          </tr>
+        </tbody>
+      </Table>
+      <form className="log-out">
+        <button>Sign Out</button>
+      </form>
     </>
   )
 }

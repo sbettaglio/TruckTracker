@@ -11,7 +11,7 @@ import CarrierProfiles from './pages/CarrierProfiles'
 import NewCarrier from './pages/NewCarrier'
 import NewLoad from './pages/NewLoad'
 import Load from './pages/Load'
-
+import './custom.scss'
 export default class App extends Component {
   static displayName = App.name
 
