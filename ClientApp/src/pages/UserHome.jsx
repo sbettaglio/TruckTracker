@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap'
+import HomeTable from '../components/HomeTable'
 
 const UserHome = () => {
   return (
@@ -8,45 +9,7 @@ const UserHome = () => {
       <div>
         <h1>User Home Page</h1>
       </div>
-      <Table className="user-home" responsive>
-        <tbody>
-          <tr>
-            <td scope="row">
-              <Link to="/picks">Today's Picks</Link>
-            </td>
-          </tr>
-          <tr>
-            <td scope="row">
-              <Link to="/drops">Today's Drops</Link>
-            </td>
-          </tr>
-          <tr>
-            <td scope="row">
-              <Link to="/late">Late Trucks</Link>
-            </td>
-          </tr>
-          <tr>
-            <td scope="row">
-              <Link to="/available">Available Loads</Link>
-            </td>
-          </tr>
-          <tr>
-            <td scope="row">
-              <Link to="/create">Create New Load</Link>
-            </td>
-          </tr>
-          <tr>
-            <td scope="row">
-              <Link to="/carriers">Carrier Profiles</Link>
-            </td>
-          </tr>
-          <tr>
-            <td scope="row">
-              <Link to="/newCarrier">New Carrier</Link>
-            </td>
-          </tr>
-        </tbody>
-      </Table>
+      <HomeTable />
       <form className="log-out">
         <button>Sign Out</button>
       </form>

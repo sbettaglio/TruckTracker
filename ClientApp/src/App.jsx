@@ -12,6 +12,7 @@ import NewCarrier from './pages/NewCarrier'
 import NewLoad from './pages/NewLoad'
 import Load from './pages/Load'
 import './custom.scss'
+import Drops from './pages/Drops'
 export default class App extends Component {
   static displayName = App.name
 
@@ -35,6 +36,7 @@ export default class App extends Component {
           <Route exact path="/register" component={Register}></Route>
           <Route exact path="/userHome" component={UserHome}></Route>
           <Route exact path="/picks" component={Picks}></Route>
+          <Route exact path="/drops" component={Drops}></Route>
           <Route exact path="/late" component={LateTrucks}></Route>
           <Route exact path="/carriers" component={CarrierProfiles}></Route>
           <Route exact path="/newCarrier" component={NewCarrier}></Route>

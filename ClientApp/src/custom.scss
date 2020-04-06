@@ -80,10 +80,11 @@ h4 {
   text-align: center;
 }
 
-.loads-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.loads-main th {
+  color: #e1d89f;
+}
+.loads-main td {
+  color: #edebd7;
 }
 
 .load-list {

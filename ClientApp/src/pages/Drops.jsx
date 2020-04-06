@@ -1,11 +1,13 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
+import { Table } from 'reactstrap'
 import LoadTable from '../components/LoadTable'
-const Picks = () => {
+
+const Drops = () => {
   return (
     <>
       <div>
-        <h1>Today's Picks</h1>
+        <h1>Today's Drops</h1>
       </div>
       <main className="loads-main">
         <LoadTable />
@@ -14,4 +16,4 @@ const Picks = () => {
   )
 }
 
-export default Picks
+export default Drops
