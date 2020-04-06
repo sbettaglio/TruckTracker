@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 const NewCarrier = () => {
-  const [carrier, setCarrier] = useState({})
+  const [carrier, setCarrier] = useState({
+    carrierName: '',
+    mCNumber: 0,
+    primaryContact: '',
+    phone: '',
+    email: '',
+    homeState: '',
+    validInsurance: false,
+  })
   const trackInput = e => {
     const fieldToUpdate = e.target.name
     console.log(fieldToUpdate)
@@ -13,7 +21,16 @@ const NewCarrier = () => {
       return prevCarrier
     })
   }
-
+  const insuranceIsValid = e => {
+    const fieldToUpdate = e.target.name
+    const value = e.target.value
+    if (value === 'on') {
+      setCarrier(prevCarrier => {
+        prevCarrier[fieldToUpdate] = true
+        return prevCarrier
+      })
+    }
+  }
   return (
     <>
       <div>
@@ -24,7 +41,9 @@ const NewCarrier = () => {
           <Row form>
             <Col md={6}>
               <FormGroup>
-                <Label for="carrierName">Carrier Name</Label>
+                <Label for="carrierName">
+                  Carrier Name{carrier.carrierName}
+                </Label>
                 <Input
                   type="text"
                   name="carrierName"
@@ -148,7 +167,7 @@ const NewCarrier = () => {
               type="checkbox"
               name="validInsurance"
               id="exampleInsurance"
-              onChange={trackInput}
+              onChange={insuranceIsValid}
             />
             <Label for="exampleInsurance" check>
               Valid Insurance
