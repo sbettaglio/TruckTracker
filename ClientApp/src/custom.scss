@@ -45,6 +45,9 @@ h1 {
   text-align: center;
   padding: 1rem;
 }
+h3 {
+  text-align: center;
+}
 
 .login form {
   display: flex;
@@ -86,23 +89,6 @@ h4 {
 .loads-main td {
   color: #edebd7;
 }
-
-.load-list {
-  padding-left: 0;
-}
-
-.load-list li {
-  padding: 0.1rem;
-  border-top: solid 1px #a39594;
-  border-bottom: solid 1px #a39594;
-}
-
-.load-list span {
-  padding: 0.1rem;
-  border-right: solid 1px #a39594;
-  border-left: solid 1px #a39594;
-}
-
-.load-list a {
-  color: #e1d89f;
+.registration {
+  padding: 1rem;
 }

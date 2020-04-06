@@ -19,7 +19,7 @@ const Register = () => {
         <h1>Registration</h1>
         <h3>Please enter info below</h3>
       </div>
-      <main>
+      <main className="registration">
         <Form>
           <Row form>
             <Col md={6}>
@@ -30,6 +30,7 @@ const Register = () => {
                   name="company"
                   id="exampleCompany"
                   placeholder="Company name goes here"
+                  onChange={trackInput}
                 />
               </FormGroup>
             </Col>
@@ -41,6 +42,7 @@ const Register = () => {
                   name="firstName"
                   id="exampleFirstName"
                   placeholder="John"
+                  onChange={trackInput}
                 />
               </FormGroup>
             </Col>
@@ -52,6 +54,7 @@ const Register = () => {
               name="lastName"
               id="exampleLastName"
               placeholder="Doe"
+              onChange={trackInput}
             />
           </FormGroup>
           <FormGroup>
@@ -61,6 +64,7 @@ const Register = () => {
               name="userName"
               id="exampleUserName"
               placeholder="your username goes here"
+              onChange={trackInput}
             />
           </FormGroup>
           <Row form>
@@ -72,19 +76,30 @@ const Register = () => {
                   name="position"
                   id="examplePosition"
                   placeholder="Job title"
+                  onChange={trackInput}
                 />
               </FormGroup>
             </Col>
             <Col md={4}>
               <FormGroup>
                 <Label for="examplePassword">Password</Label>
-                <Input type="password" name="password" id="examplePassword" />
+                <Input
+                  type="password"
+                  name="password"
+                  id="examplePassword"
+                  onChange={trackInput}
+                />
               </FormGroup>
             </Col>
             <Col md={2}>
               <FormGroup>
                 <Label for="exampleEmail">Email</Label>
-                <Input type="email" name="email" id="exampleEmail" />
+                <Input
+                  type="email"
+                  name="email"
+                  id="exampleEmail"
+                  onChange={trackInput}
+                />
               </FormGroup>
             </Col>
           </Row>
