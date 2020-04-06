@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 const NewCarrier = () => {
   return (
@@ -126,7 +127,9 @@ const NewCarrier = () => {
               Valid Insurance
             </Label>
           </FormGroup>
-          <Button>Save Carrier</Button>
+          <Button>
+            <Link>Save Carrier</Link>
+          </Button>
         </Form>
       </main>
     </>

@@ -1,46 +1,51 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
 const NewLoad = () => {
   return (
     <>
       <div>
         <h1>Create New Load</h1>
       </div>
-      <form>
-        <section>
-          <p>P/U City,State</p>
-          <input type="text" name="pickCity"></input>
-        </section>
-        <section>
-          <p>P/U Date</p>
-          <input type="datetime-local" name="pickDate"></input>
-        </section>
-        <section>
-          <p>D/O City,State</p>
-          <input type="text" name="dropCity"></input>
-        </section>
-        <section>
-          <p>D/O Date</p>
-          <input type="datetime-local" name="dropDate"></input>
-        </section>
-        <section>
-          <p>Weight</p>
-          <input type="number" name="weight"></input>
-        </section>
-        <section>
-          <p>Commodity</p>
-          <input type="text" name="commodity"></input>
-        </section>
-        <section>
-          <p>Customer Rate</p>
-          <input type="number" name="customerRate"></input>
-        </section>
-        <section>
-          <p>Carrier Rate</p>
-          <input type="number" name="carrierRate"></input>
-        </section>
-        <button>Save</button>
-      </form>
+      <main className="registration">
+        <Form>
+          <FormGroup>
+            <Label>P/U City,State</Label>
+            <Input type="text" name="pickCity"></Input>
+          </FormGroup>
+          <FormGroup>
+            <Label>P/U Date</Label>
+            <Input type="datetime-local" name="pickDate"></Input>
+          </FormGroup>
+          <FormGroup>
+            <Label>/O City,State</Label>
+            <Input type="text" name="dropCity"></Input>
+          </FormGroup>
+          <FormGroup>
+            <Label>D/O Date</Label>
+            <Input type="datetime-local" name="dropDate"></Input>
+          </FormGroup>
+          <FormGroup>
+            <Label>Weight</Label>
+            <Input type="number" name="weight"></Input>
+          </FormGroup>
+          <FormGroup>
+            <Label>Commodity</Label>
+            <Input type="text" name="commodity"></Input>
+          </FormGroup>
+          <FormGroup>
+            <Label>Customer Rate</Label>
+            <Input type="number" name="customerRate"></Input>
+          </FormGroup>
+          <FormGroup>
+            <Label>Carrier Rate</Label>
+            <Input type="number" name="carrierRate"></Input>
+          </FormGroup>
+          <Button>
+            <Link to="/loadtracker">Save</Link>
+          </Button>
+        </Form>
+      </main>
     </>
   )
 }
