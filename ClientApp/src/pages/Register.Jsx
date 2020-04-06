@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 const Register = () => {
   const [user, setUser] = useState({})
@@ -19,37 +20,77 @@ const Register = () => {
         <h3>Please enter info below</h3>
       </div>
       <main>
-        <form>
-          <section>
-            <p>Company</p>
-            <input type="text" name="company" onChange={trackInput}></input>
-          </section>
-          <section>
-            <p>First Name</p>
-            <input type="text" name="firstName" onChange={trackInput}></input>
-          </section>
-          <section>
-            <p>Last Name</p>
-            <input type="text" name="lastName" onChange={trackInput}></input>
-          </section>
-          <section>
-            <p>Position</p>
-            <input type="text" name="position" onChange={trackInput}></input>
-          </section>
-          <section>
-            <p>Password</p>
-            <input
-              type="password"
-              name="password"
-              onChange={trackInput}
-            ></input>
-          </section>
-          <section>
-            <p>Email</p>
-            <input type="email" name="email" onChange={trackInput}></input>
-          </section>
-          <button>Register</button>
-        </form>
+        <Form>
+          <Row form>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="exampleCompany">Company</Label>
+                <Input
+                  type="text"
+                  name="company"
+                  id="exampleCompany"
+                  placeholder="Company name goes here"
+                />
+              </FormGroup>
+            </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="exampleFirstName">First Name</Label>
+                <Input
+                  type="text"
+                  name="firstName"
+                  id="exampleFirstName"
+                  placeholder="John"
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+          <FormGroup>
+            <Label for="exampleLastName">Last Name</Label>
+            <Input
+              type="text"
+              name="lastName"
+              id="exampleLastName"
+              placeholder="Doe"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleUserName">Username</Label>
+            <Input
+              type="text"
+              name="userName"
+              id="exampleUserName"
+              placeholder="your username goes here"
+            />
+          </FormGroup>
+          <Row form>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="examplePosition">Position</Label>
+                <Input
+                  type="text"
+                  name="position"
+                  id="examplePosition"
+                  placeholder="Job title"
+                />
+              </FormGroup>
+            </Col>
+            <Col md={4}>
+              <FormGroup>
+                <Label for="examplePassword">Password</Label>
+                <Input type="password" name="password" id="examplePassword" />
+              </FormGroup>
+            </Col>
+            <Col md={2}>
+              <FormGroup>
+                <Label for="exampleEmail">Email</Label>
+                <Input type="email" name="email" id="exampleEmail" />
+              </FormGroup>
+            </Col>
+          </Row>
+          <FormGroup check></FormGroup>
+          <Button>Register</Button>
+        </Form>
       </main>
     </>
   )

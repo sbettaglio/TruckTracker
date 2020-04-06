@@ -13,6 +13,7 @@ import NewLoad from './pages/NewLoad'
 import Load from './pages/Load'
 import './custom.scss'
 import Drops from './pages/Drops'
+import AvailableLoads from './pages/AvailableLoads'
 export default class App extends Component {
   static displayName = App.name
 
@@ -36,6 +37,7 @@ export default class App extends Component {
           <Route exact path="/register" component={Register}></Route>
           <Route exact path="/userHome" component={UserHome}></Route>
           <Route exact path="/picks" component={Picks}></Route>
+          <Route exact path="/available" component={AvailableLoads}></Route>
           <Route exact path="/drops" component={Drops}></Route>
           <Route exact path="/late" component={LateTrucks}></Route>
           <Route exact path="/carriers" component={CarrierProfiles}></Route>
