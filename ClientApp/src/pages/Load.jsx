@@ -11,14 +11,12 @@ const Load = () => {
       <main>
         <Container>
           <Row>
-            <Col>
+            <Col sm={1} md={4}>
               <p>
                 <span>P/U City:</span>Tampa,FL{' '}
               </p>
             </Col>
-          </Row>
-          <Row>
-            <Col>
+            <Col sm={1} md={4}>
               <p>
                 <span>P/U Date:</span>05/01/2020 14:00
               </p>
