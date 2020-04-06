@@ -13,6 +13,7 @@ const NewCarrier = () => {
       return prevCarrier
     })
   }
+
   return (
     <>
       <div>
@@ -81,7 +82,12 @@ const NewCarrier = () => {
             <Col md={4}>
               <FormGroup>
                 <Label for="exampleState">Home State</Label>
-                <Input type="select" name="state" id="exampleState ">
+                <Input
+                  type="select"
+                  name="homeState"
+                  id="exampleState "
+                  onChange={trackInput}
+                >
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
                   <option value="AZ">Arizona</option>
@@ -142,14 +148,13 @@ const NewCarrier = () => {
               type="checkbox"
               name="validInsurance"
               id="exampleInsurance"
+              onChange={trackInput}
             />
             <Label for="exampleInsurance" check>
               Valid Insurance
             </Label>
           </FormGroup>
-          <Button>
-            <Link>Save Carrier</Link>
-          </Button>
+          <Button>Save Carrier</Button>
         </Form>
       </main>
     </>
