@@ -2,18 +2,19 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap'
 import LoadTableComponent from './LoadTableComponent'
-const LoadTable = () => {
+import LoadTableHeader from './LoadTableHeader'
+const LoadTable = ({ slot1, slot2, slot3, slot4, slot5 }) => {
   return (
     <>
       <Table responsive>
         <thead>
-          <tr>
-            <th>Id</th>
-            <th>P/U City</th>
-            <th>P/U Date</th>
-            <th>D/O City</th>
-            <th>D/O DAte</th>
-          </tr>
+          <LoadTableHeader
+            slot1={slot1}
+            slot2={slot2}
+            slot3={slot3}
+            slot4={slot4}
+            slot5={slot5}
+          />
         </thead>
         <tbody>
           <LoadTableComponent

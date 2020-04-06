@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import LoadTable from '../components/LoadTable/LoadTable'
 
 const LateTrucks = () => {
   return (
@@ -7,39 +8,14 @@ const LateTrucks = () => {
       <div>
         <h1>Late Trucks</h1>
       </div>
-      <main>
-        <ul>
-          <li>
-            <Link>
-              <span>Load Id </span>
-              <span>App </span>
-              <span>City </span>
-              <span>ETA </span>
-              <span>P/D </span>
-              <span>Carrier </span>
-            </Link>
-          </li>
-          <li>
-            <Link>
-              <span>Load Id </span>
-              <span>App </span>
-              <span>City </span>
-              <span>ETA </span>
-              <span>P/D </span>
-              <span>Carrier </span>
-            </Link>
-          </li>
-          <li>
-            <Link>
-              <span>Load Id </span>
-              <span>App </span>
-              <span>City </span>
-              <span>ETA </span>
-              <span>P/D </span>
-              <span>Carrier </span>
-            </Link>
-          </li>
-        </ul>
+      <main className="loads-main">
+        <LoadTable
+          slot1="Id"
+          slot2="App"
+          slot3="City"
+          slot4="ETA"
+          slot5="Pick/Drop"
+        />
       </main>
     </>
   )

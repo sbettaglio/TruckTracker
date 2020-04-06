@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap'
-import LoadTable from '../components/LoadTable'
+import LoadTable from '../components/LoadTable/LoadTable'
 
 const Drops = () => {
   return (
@@ -10,7 +10,13 @@ const Drops = () => {
         <h1>Today's Drops</h1>
       </div>
       <main className="loads-main">
-        <LoadTable />
+        <LoadTable
+          slot1="Id"
+          slot2="P/U City"
+          slot3="P/U Date"
+          slot4="D/O City"
+          slot5="D/O DAte"
+        />
       </main>
     </>
   )
