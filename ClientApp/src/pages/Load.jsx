@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
-import NewLoadForm from '../components/NewLoadForm'
+import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
+import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'
 const Load = () => {
   return (
     <>
@@ -61,7 +62,8 @@ const Load = () => {
         </Container>
         <section className="registration">
           <h3>Assign Carrier</h3>
-          <NewLoadForm />
+          <AssignCarrierToLoad />
+          <LoadTrackingForm />
         </section>
       </main>
     </>

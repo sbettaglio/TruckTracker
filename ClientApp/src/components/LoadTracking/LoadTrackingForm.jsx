@@ -1,17 +1,9 @@
 import React from 'react'
 import { Container, Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
-const NewLoadForm = () => {
+const LoadTrackingForm = () => {
   return (
     <>
       <Form>
-        <FormGroup>
-          <Label>Carrier MC</Label>
-          <Input type="number" name="carrierMC"></Input>
-        </FormGroup>
-        <FormGroup>
-          <Label>Contact</Label>
-          <Input type="text" name="contact"></Input>
-        </FormGroup>
         <FormGroup check>
           <Input type="checkbox" name="dispatched" id="dispatched" />
           <Label for="dispatched">Dispatched</Label>
@@ -57,4 +49,4 @@ const NewLoadForm = () => {
   )
 }
 
-export default NewLoadForm
+export default LoadTrackingForm
