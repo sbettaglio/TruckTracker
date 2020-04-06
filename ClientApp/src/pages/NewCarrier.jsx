@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 const NewCarrier = () => {
+  const [carrier, setCarrier] = useState({})
+  const trackInput = e => {
+    const fieldToUpdate = e.target.name
+    console.log(fieldToUpdate)
+    const value = e.target.value
+    console.log(value)
+    setCarrier(prevCarrier => {
+      prevCarrier[fieldToUpdate] = value
+      return prevCarrier
+    })
+  }
   return (
     <>
       <div>
@@ -18,6 +29,7 @@ const NewCarrier = () => {
                   name="carrierName"
                   id="carrierName"
                   placeholder="Carrier name goes here"
+                  onChange={trackInput}
                 />
               </FormGroup>
             </Col>
@@ -29,6 +41,7 @@ const NewCarrier = () => {
                   name="mCNumber"
                   id="exampleMC"
                   placeholder="123456"
+                  onChange={trackInput}
                 />
               </FormGroup>
               <FormGroup>
@@ -38,6 +51,7 @@ const NewCarrier = () => {
                   name="primaryContact"
                   id="examplePrimaryContact"
                   placeholder="John Doe"
+                  onChange={trackInput}
                 />
               </FormGroup>
               <FormGroup>
@@ -47,6 +61,7 @@ const NewCarrier = () => {
                   name="phone"
                   id="examplePhone"
                   placeholder="555-867-5309"
+                  onChange={trackInput}
                 />
               </FormGroup>
             </Col>
@@ -55,13 +70,18 @@ const NewCarrier = () => {
             <Col md={6}>
               <FormGroup>
                 <Label for="exampleEmail">Email</Label>
-                <Input type="email" name="email" id="exampleEmail" />
+                <Input
+                  type="email"
+                  name="email"
+                  id="exampleEmail"
+                  onChange={trackInput}
+                />
               </FormGroup>
             </Col>
             <Col md={4}>
               <FormGroup>
                 <Label for="exampleState">Home State</Label>
-                <Input type="select" name="state" id="exampleState">
+                <Input type="select" name="state" id="exampleState ">
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
                   <option value="AZ">Arizona</option>
