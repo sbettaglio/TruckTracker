@@ -7,37 +7,37 @@ const HomeTable = () => {
       <Table className="user-home" responsive>
         <tbody>
           <tr>
-            <td scope="row">
+            <td>
               <Link to="/picks">Today's Picks</Link>
             </td>
           </tr>
           <tr>
-            <td scope="row">
+            <td>
               <Link to="/drops">Today's Drops</Link>
             </td>
           </tr>
           <tr>
-            <td scope="row">
+            <td>
               <Link to="/late">Late Trucks</Link>
             </td>
           </tr>
           <tr>
-            <td scope="row">
+            <td>
               <Link to="/available">Available Loads</Link>
             </td>
           </tr>
           <tr>
-            <td scope="row">
+            <td>
               <Link to="/create">Create New Load</Link>
             </td>
           </tr>
           <tr>
-            <td scope="row">
+            <td>
               <Link to="/carriers">Carrier Profiles</Link>
             </td>
           </tr>
           <tr>
-            <td scope="row">
+            <td>
               <Link to="/newCarrier">New Carrier</Link>
             </td>
           </tr>

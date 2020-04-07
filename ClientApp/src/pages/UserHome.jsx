@@ -6,12 +6,14 @@ import HomeTable from '../components/HomeTable'
 const UserHome = () => {
   return (
     <>
-      <div>
+      <div className="title-div">
         <h1>User Home Page</h1>
       </div>
       <HomeTable />
       <form className="log-out">
-        <button>Sign Out</button>
+        <button type="button" class="btn btn-danger">
+          Sign Out
+        </button>
       </form>
     </>
   )

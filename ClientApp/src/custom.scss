@@ -1,5 +1,8 @@
 /* Provide sufficient contrast against white background */
 @import 'bootstrap';
+@import '~bootswatch/dist/darkly/variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootswatch/dist/darkly/bootswatch';
 :root {
   font: 16px / 1 sans-serif;
 }
@@ -11,8 +14,6 @@ html {
 body {
   margin: 0;
   min-height: 100%;
-  background-color: #191d32;
-  color: #edebd7;
 }
 
 li {
@@ -24,9 +25,9 @@ a {
 }
 
 header {
-  background-color: #17255a;
   padding: 1%;
   margin: 0;
+  background-color: $secondary;
 }
 
 header ul {
@@ -38,12 +39,16 @@ header ul {
 
 header li a {
   text-decoration: none;
-  color: #edebd7;
+}
+.title-div {
+  margin-top: 1rem;
+  text-align: center;
 }
 
-h1 {
-  text-align: center;
+.h1 {
+  font-size: 2rem;
   padding: 1rem;
+  padding-top: 0.8rem;
 }
 h3 {
   text-align: center;
@@ -55,26 +60,39 @@ h3 {
   align-items: center;
   justify-content: center;
   height: 50vh;
+  label {
+    padding: 1rem;
+  }
 }
-
-.login form label {
-  padding: 1rem;
-}
-
-button {
+.btn-success {
   margin: 1rem;
-  background-color: #a39594;
-  border-radius: 15%;
-  font-size: smaller;
 }
-.user-home {
+
+.table-responsive {
   margin-top: 2rem;
-  height: 65vh;
+  padding-right: 2rem;
+  padding-left: 2rem;
+
+  .user-home {
+    height: 62vh;
+    text-align: center;
+    margin-bottom: 0;
+    border-top: solid 3px rgb(53, 53, 53);
+    border-left: solid 3px rgb(53, 53, 53);
+    border-right: solid 3px rgb(53, 53, 53);
+    border-bottom: solid 3px rgb(53, 53, 53);
+    box-shadow: 3px 3px rgb(53, 53, 53);
+    td {
+      vertical-align: middle;
+      a {
+        font-size: 1rem;
+      }
+    }
+  }
 }
-.user-home td a {
-  color: #edebd7;
-}
+
 .log-out {
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
 }
@@ -83,12 +101,54 @@ h4 {
   text-align: center;
 }
 
-.loads-main th {
-  color: #e1d89f;
-}
-.loads-main td {
-  color: #edebd7;
-}
 .registration {
   padding: 1rem;
+}
+@media (min-width: 768px) {
+  .table-responsive {
+    margin-top: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    .user-home {
+      height: 65vh;
+      text-align: center;
+      td {
+        vertical-align: middle;
+        a {
+          font-size: 1.45rem;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .title-div {
+    margin-top: 3rem;
+    h1 {
+      font-size: 4rem;
+      padding: 1rem;
+    }
+  }
+  .table-responsive {
+    margin-top: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    .user-home {
+      height: 64vh;
+      text-align: center;
+      td {
+        vertical-align: middle;
+        a {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+  .log-out {
+    padding-top: 2.4rem;
+    button {
+      font-size: 2rem;
+      padding: 1rem;
+    }
+  }
 }

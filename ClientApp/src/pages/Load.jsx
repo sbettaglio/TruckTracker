@@ -11,47 +11,47 @@ const Load = () => {
       <main>
         <Container>
           <Row>
-            <Col sm={1} md={4}>
+            <Col sm={1} md={2}>
               <p>
                 <span>P/U City:</span>Tampa,FL{' '}
               </p>
             </Col>
-            <Col sm={1} md={4}>
+            <Col sm={1} md={2}>
               <p>
                 <span>P/U Date:</span>05/01/2020 14:00
               </p>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col sm={1} md={2}>
               <p>
                 <span>D/O City:</span>Miami, FL
               </p>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col sm={1} md={2}>
               <p>
                 <span>D/O Date:</span>05/02/2020 07:00
               </p>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col sm={1} md={2}>
               <p>
                 <span>Commodity:</span>Food Grade
               </p>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col sm={1} md={2}>
               <p>
                 <span>Customer Rate:</span>$700
               </p>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col sm={1} md={2}>
               <p>
                 <span>Carrier Rate:</span>$600
               </p>

@@ -10,7 +10,9 @@ const LandingPage = () => {
           <input type="text"></input>
           <label>Password</label>
           <input type="password"></input>
-          <button type="submit">Login</button>
+          <button type="button" class="btn btn-success">
+            Log In
+          </button>
         </form>
       </main>
     </>

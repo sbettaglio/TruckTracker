@@ -12,6 +12,7 @@ import NewCarrier from './pages/NewCarrier'
 import NewLoad from './pages/NewLoad'
 import Load from './pages/Load'
 import './custom.scss'
+// import './_bootswatch.scss'
 import Drops from './pages/Drops'
 import AvailableLoads from './pages/AvailableLoads'
 export default class App extends Component {
@@ -20,14 +21,18 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <header>
+        <header className="navbar-dark bg-primary">
           <nav>
             <ul>
               <li>
-                <Link to="/register">Register</Link>
+                <Link className="navbar-brand" to="/register">
+                  Register
+                </Link>
               </li>
               <li>
-                <Link to="/userHome">User Home</Link>
+                <Link className="navbar-brand" to="/userHome">
+                  User Home
+                </Link>
               </li>
             </ul>
           </nav>
