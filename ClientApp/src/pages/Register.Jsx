@@ -15,14 +15,14 @@ const Register = () => {
   }
   return (
     <>
-      <div>
+      <div className="title-div">
         <h1>Registration</h1>
         <h3>Please enter info below</h3>
       </div>
       <main className="registration">
         <Form>
-          <Row form>
-            <Col md={6}>
+          <Row>
+            <Col>
               <FormGroup>
                 <Label for="exampleCompany">Company</Label>
                 <Input
@@ -34,41 +34,7 @@ const Register = () => {
                 />
               </FormGroup>
             </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="exampleFirstName">First Name</Label>
-                <Input
-                  type="text"
-                  name="firstName"
-                  id="exampleFirstName"
-                  placeholder="John"
-                  onChange={trackInput}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-          <FormGroup>
-            <Label for="exampleLastName">Last Name</Label>
-            <Input
-              type="text"
-              name="lastName"
-              id="exampleLastName"
-              placeholder="Doe"
-              onChange={trackInput}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="exampleUserName">Username</Label>
-            <Input
-              type="text"
-              name="userName"
-              id="exampleUserName"
-              placeholder="your username goes here"
-              onChange={trackInput}
-            />
-          </FormGroup>
-          <Row form>
-            <Col md={6}>
+            <Col>
               <FormGroup>
                 <Label for="examplePosition">Position</Label>
                 <Input
@@ -80,7 +46,35 @@ const Register = () => {
                 />
               </FormGroup>
             </Col>
-            <Col md={4}>
+          </Row>
+          <Row>
+            <Col>
+              <FormGroup>
+                <Label for="exampleFullName">Full Name</Label>
+                <Input
+                  type="text"
+                  name="fullName"
+                  id="exampleFullName"
+                  placeholder="John Doe"
+                  onChange={trackInput}
+                />
+              </FormGroup>
+            </Col>
+            <Col>
+              <FormGroup>
+                <Label for="exampleUserName">Username</Label>
+                <Input
+                  type="text"
+                  name="userName"
+                  id="exampleUserName"
+                  placeholder="your username goes here"
+                  onChange={trackInput}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
               <FormGroup>
                 <Label for="examplePassword">Password</Label>
                 <Input
@@ -91,7 +85,7 @@ const Register = () => {
                 />
               </FormGroup>
             </Col>
-            <Col md={2}>
+            <Col>
               <FormGroup>
                 <Label for="exampleEmail">Email</Label>
                 <Input
@@ -103,8 +97,9 @@ const Register = () => {
               </FormGroup>
             </Col>
           </Row>
-          <FormGroup check></FormGroup>
-          <Button>Register</Button>
+          <Row className="registration-button">
+            <Button className="btn btn-success">Register</Button>
+          </Row>
         </Form>
       </main>
     </>

@@ -120,13 +120,33 @@ h4 {
       }
     }
   }
+  .registration {
+    border: 2px solid $secondary;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem;
+    height: 50vh;
+    font-size: 1.45rem;
+    .form-group {
+      padding: 1rem;
+    }
+    .registration-button {
+      display: flex;
+      justify-content: center;
+      .btn-success {
+        font-size: 1.45rem;
+      }
+    }
+  }
 }
 @media (min-width: 1024px) {
   .title-div {
     margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
     h1 {
       font-size: 4rem;
-      padding: 1rem;
+      padding: 3rem;
     }
   }
   .table-responsive {
@@ -139,6 +159,31 @@ h4 {
       td {
         vertical-align: middle;
         a {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+  .registration {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid $secondary;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem;
+    height: 50vh;
+    font-size: 2rem;
+    form {
+      height: 90%;
+      width: 100%;
+      .form-group {
+        padding: 1rem;
+      }
+      .registration-button {
+        display: flex;
+        justify-content: center;
+        .btn-success {
           font-size: 2rem;
         }
       }
