@@ -22,7 +22,7 @@ const Register = () => {
       <main className="registration">
         <Form>
           <Row>
-            <Col>
+            <Col sm={1}>
               <FormGroup>
                 <Label for="exampleCompany">Company</Label>
                 <Input
@@ -34,7 +34,7 @@ const Register = () => {
                 />
               </FormGroup>
             </Col>
-            <Col>
+            <Col sm={1}>
               <FormGroup>
                 <Label for="examplePosition">Position</Label>
                 <Input
@@ -48,7 +48,7 @@ const Register = () => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col sm={1}>
               <FormGroup>
                 <Label for="exampleFullName">Full Name</Label>
                 <Input
@@ -60,7 +60,7 @@ const Register = () => {
                 />
               </FormGroup>
             </Col>
-            <Col>
+            <Col sm={1}>
               <FormGroup>
                 <Label for="exampleUserName">Username</Label>
                 <Input
@@ -74,7 +74,7 @@ const Register = () => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col sm={1}>
               <FormGroup>
                 <Label for="examplePassword">Password</Label>
                 <Input
@@ -85,7 +85,7 @@ const Register = () => {
                 />
               </FormGroup>
             </Col>
-            <Col>
+            <Col sm={1}>
               <FormGroup>
                 <Label for="exampleEmail">Email</Label>
                 <Input
