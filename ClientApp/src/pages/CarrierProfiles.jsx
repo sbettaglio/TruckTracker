@@ -5,55 +5,59 @@ import { Container, Row, Col, Button } from 'reactstrap'
 const CarrierProfiles = () => {
   return (
     <>
-      <div>
+      <div className="title-div">
         <h1>Placeholder Express</h1>
       </div>
-      <main>
+      <main className="carrier-profile">
         <Container>
-          <Col>
-            <Row>
+          <Row>
+            <Col sm={1} md={12} lg={12}>
               <section>
                 <h4>MC Number</h4>
                 <p>123456</p>
               </section>
-            </Row>
-            <Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={2} md={4} lg={12}>
               <section>
                 <h4>Primary Contact</h4>
                 <p>John Doe</p>
               </section>
-            </Row>
-          </Col>
-          <Col>
-            <Row>
+            </Col>
+            <Col sm={2} md={12} lg={12}>
               <section>
                 <h4>Phone Number</h4>
                 <p>555-867-5309</p>
               </section>
-            </Row>
-            <Row>
+            </Col>
+            <Col md={12} lg={12}>
               <section>
                 <h4>Email Address</h4>
                 <p>lorem@ipsum.com</p>
               </section>
-            </Row>
-          </Col>
-          <Col>
-            <Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={1} md={6} lg={12}>
               <section>
                 <h4>Setup Date</h4>
                 <p>01/12/2018</p>
               </section>
-            </Row>
-            <Row>
+            </Col>
+            <Col sm={1} md={6} lg={12}>
               <section>
                 <h4>Home State</h4>
                 <p>Florida</p>
               </section>
-            </Row>
-          </Col>
+            </Col>
+            <Col md={12}>
+              <section className="bottom-button">
+                <Button className="btn-success">Update</Button>
+              </section>
+            </Col>
+          </Row>
         </Container>
-        <Button>Update</Button>
       </main>
     </>
   )
