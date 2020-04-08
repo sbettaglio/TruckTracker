@@ -1,0 +1,53 @@
+@import 'bootstrap';
+@import '~bootswatch/dist/darkly/variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootswatch/dist/darkly/bootswatch';
+.carrier-profile {
+  .container {
+    h4 {
+      text-align: justify;
+    }
+    p {
+      text-align: justify;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .title-div {
+    padding-top: 2rem;
+  }
+  .carrier-profile {
+    padding-top: 2rem;
+    .container {
+      border: 2px solid $secondary;
+      border-radius: 10px;
+      padding: 2rem;
+      margin: 2rem;
+      font-size: 1.7rem;
+      .row {
+        padding: 1rem;
+      }
+      h4 {
+        font-size: 2rem;
+      }
+      p {
+        margin-bottom: 0.5rem;
+      }
+      .col-md-12 {
+        .mc-number {
+          display: flex;
+          justify-content: space-around;
+        }
+      }
+      .bottom-button {
+        .btn-success {
+          font-size: 2rem;
+        }
+      }
+      .col-md-2 {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}

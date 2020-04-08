@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Button } from 'reactstrap'
-
+import './styles/carrier-profiles.scss'
 const CarrierProfiles = () => {
   return (
     <>
@@ -12,7 +12,7 @@ const CarrierProfiles = () => {
         <Container>
           <Row>
             <Col sm={1} md={12} lg={12}>
-              <section>
+              <section className="mc-number">
                 <h4>MC Number</h4>
                 <p>123456</p>
               </section>
@@ -25,13 +25,13 @@ const CarrierProfiles = () => {
                 <p>John Doe</p>
               </section>
             </Col>
-            <Col sm={2} md={12} lg={12}>
+            <Col sm={2} md={4} lg={12}>
               <section>
                 <h4>Phone Number</h4>
                 <p>555-867-5309</p>
               </section>
             </Col>
-            <Col md={12} lg={12}>
+            <Col md={4} lg={12}>
               <section>
                 <h4>Email Address</h4>
                 <p>lorem@ipsum.com</p>
@@ -39,19 +39,19 @@ const CarrierProfiles = () => {
             </Col>
           </Row>
           <Row>
-            <Col sm={1} md={6} lg={12}>
+            <Col sm={1} md={4} lg={12}>
               <section>
                 <h4>Setup Date</h4>
                 <p>01/12/2018</p>
               </section>
             </Col>
-            <Col sm={1} md={6} lg={12}>
+            <Col sm={1} md={4} lg={12}>
               <section>
                 <h4>Home State</h4>
                 <p>Florida</p>
               </section>
             </Col>
-            <Col md={12}>
+            <Col md={4}>
               <section className="bottom-button">
                 <Button className="btn-success">Update</Button>
               </section>
