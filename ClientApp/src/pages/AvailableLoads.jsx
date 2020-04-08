@@ -4,7 +4,7 @@ import LoadTable from '../components/LoadTable/LoadTable'
 const Picks = () => {
   return (
     <>
-      <div>
+      <div className="title-div">
         <h1>Available Loads</h1>
       </div>
       <main className="loads-main">

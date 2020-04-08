@@ -5,7 +5,7 @@ import LoadTable from '../components/LoadTable/LoadTable'
 const LateTrucks = () => {
   return (
     <>
-      <div>
+      <div className="title-div">
         <h1>Late Trucks</h1>
       </div>
       <main className="loads-main">

@@ -6,7 +6,7 @@ import LoadTableHeader from './LoadTableHeader'
 const LoadTable = ({ slot1, slot2, slot3, slot4, slot5 }) => {
   return (
     <>
-      <Table bordered>
+      <Table>
         <thead>
           <LoadTableHeader
             slot1={slot1}

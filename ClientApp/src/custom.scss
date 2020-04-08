@@ -108,6 +108,12 @@ h4 {
     margin-bottom: 0rem;
   }
 }
+.loads-main {
+  border-radius: 6px;
+  border: 1px solid $secondary;
+  margin: 2rem 0.5rem 1rem 0.5rem;
+  overflow: hidden;
+}
 @media (min-width: 768px) {
   .table-responsive {
     margin-top: 2rem;
@@ -140,6 +146,16 @@ h4 {
       .btn-success {
         font-size: 1.45rem;
       }
+    }
+  }
+  .table {
+    font-size: 1.6rem;
+    height: 60vh;
+    tbody th {
+      vertical-align: middle;
+    }
+    tbody td {
+      vertical-align: middle;
     }
   }
 }

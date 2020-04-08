@@ -6,7 +6,7 @@ import LoadTable from '../components/LoadTable/LoadTable'
 const Drops = () => {
   return (
     <>
-      <div>
+      <div className="title-div">
         <h1>Today's Drops</h1>
       </div>
       <main className="loads-main">
