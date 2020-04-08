@@ -2,3 +2,15 @@
 @import '~bootswatch/dist/darkly/variables';
 @import '~bootstrap/scss/bootstrap';
 @import '~bootswatch/dist/darkly/bootswatch';
+@media (min-width: 768px) {
+  .container {
+    border: 2px solid $secondary;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem;
+    font-size: 1.45rem;
+    .btn-success {
+      font-size: 1.45rem;
+    }
+  }
+}

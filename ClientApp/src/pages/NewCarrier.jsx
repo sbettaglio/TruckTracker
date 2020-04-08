@@ -10,6 +10,7 @@ import {
   Label,
   Input,
 } from 'reactstrap'
+import './styles/add-new-carrier.scss'
 const NewCarrier = () => {
   const [carrier, setCarrier] = useState({
     carrierName: '',
@@ -49,7 +50,7 @@ const NewCarrier = () => {
         <Container>
           <Form>
             <Row>
-              <Col sm={1}>
+              <Col sm={1} md={6}>
                 <FormGroup>
                   <Label for="carrierName">
                     Carrier Name{carrier.carrierName}
@@ -77,7 +78,7 @@ const NewCarrier = () => {
               </Col>
             </Row>
             <Row>
-              <Col sm={1}>
+              <Col sm={1} md={6}>
                 <FormGroup>
                   <Label for="examplePrimaryContact">Primary Contact</Label>
                   <Input
@@ -103,7 +104,7 @@ const NewCarrier = () => {
               </Col>
             </Row>
             <Row>
-              <Col sm={1}>
+              <Col sm={1} md={8}>
                 <FormGroup>
                   <Label for="exampleEmail">Email</Label>
                   <Input
@@ -179,7 +180,7 @@ const NewCarrier = () => {
               </Col>
             </Row>
             <Row>
-              <Col>
+              <Col sm={1} md={6}>
                 <FormGroup check>
                   <Input
                     type="checkbox"
