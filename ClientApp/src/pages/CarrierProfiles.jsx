@@ -51,7 +51,7 @@ const CarrierProfiles = () => {
                 <p>Florida</p>
               </section>
             </Col>
-            <Col md={4}>
+            <Col md={4} lg={12}>
               <section className="bottom-button">
                 <Button className="btn-success">Update</Button>
               </section>
