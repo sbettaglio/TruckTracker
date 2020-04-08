@@ -1,6 +1,6 @@
 import React from 'react'
 import UserRegistration from '../components/SignUpForms/UserRegistration'
-
+import './styles/registration.scss'
 const Register = () => {
   return (
     <>

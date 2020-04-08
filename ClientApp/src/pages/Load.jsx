@@ -58,7 +58,7 @@ const Load = () => {
             </Col>
           </Row>
         </Container>
-        <section className="registration">
+        <section>
           <h3>Assign Carrier</h3>
           <AssignCarrierToLoad />
           <LoadTrackingForm />

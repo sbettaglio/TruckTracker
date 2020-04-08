@@ -36,7 +36,7 @@ const NewCarrier = () => {
       <div>
         <h1>Add New Carrier</h1>
       </div>
-      <main className="registration">
+      <main>
         <Form>
           <Row form>
             <Col md={6}>

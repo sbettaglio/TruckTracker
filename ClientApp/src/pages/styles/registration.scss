@@ -1,0 +1,42 @@
+@import 'bootstrap';
+@import '~bootswatch/dist/darkly/variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootswatch/dist/darkly/bootswatch';
+.registration {
+  padding: 1rem;
+  height: 65vh;
+  .form-group {
+    margin-bottom: 0rem;
+  }
+}
+@media (min-width: 768px) {
+  .registration {
+    form {
+      border: 2px solid $secondary;
+      border-radius: 10px;
+      padding: 2rem;
+      margin: 2rem;
+      font-size: 1.45rem;
+      .registration-button {
+        display: flex;
+        justify-content: center;
+        .btn-success {
+          font-size: 1.45rem;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .registration {
+    form {
+      font-size: 3rem;
+      .registration-button {
+        padding-top: 1rem;
+        .btn-success {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}

@@ -17,7 +17,7 @@ const UserRegistration = () => {
     <>
       <Form>
         <Row>
-          <Col sm={1}>
+          <Col sm={1} md={6}>
             <FormGroup>
               <Label for="exampleCompany">Company</Label>
               <Input
@@ -29,7 +29,7 @@ const UserRegistration = () => {
               />
             </FormGroup>
           </Col>
-          <Col sm={1}>
+          <Col sm={1} md={6}>
             <FormGroup>
               <Label for="examplePosition">Position</Label>
               <Input
@@ -43,7 +43,7 @@ const UserRegistration = () => {
           </Col>
         </Row>
         <Row>
-          <Col sm={1}>
+          <Col sm={1} md={6}>
             <FormGroup>
               <Label for="exampleFullName">Full Name</Label>
               <Input
@@ -55,7 +55,7 @@ const UserRegistration = () => {
               />
             </FormGroup>
           </Col>
-          <Col sm={1}>
+          <Col sm={1} md={6}>
             <FormGroup>
               <Label for="exampleUserName">Username</Label>
               <Input
@@ -69,24 +69,24 @@ const UserRegistration = () => {
           </Col>
         </Row>
         <Row>
-          <Col sm={1}>
-            <FormGroup>
-              <Label for="examplePassword">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                id="examplePassword"
-                onChange={trackInput}
-              />
-            </FormGroup>
-          </Col>
-          <Col sm={1}>
+          <Col sm={1} md={6}>
             <FormGroup>
               <Label for="exampleEmail">Email</Label>
               <Input
                 type="email"
                 name="email"
                 id="exampleEmail"
+                onChange={trackInput}
+              />
+            </FormGroup>
+          </Col>
+          <Col sm={1} md={6}>
+            <FormGroup>
+              <Label for="examplePassword">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="examplePassword"
                 onChange={trackInput}
               />
             </FormGroup>
