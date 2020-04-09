@@ -3,7 +3,12 @@ import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
 const UpdateLoad = () => {
   return (
     <>
-      <LoadTrackingForm />
+      <div className="title-div">
+        <h1>Load Id</h1>
+      </div>
+      <main>
+        <LoadTrackingForm />
+      </main>
     </>
   )
 }

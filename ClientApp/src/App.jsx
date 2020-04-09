@@ -15,6 +15,7 @@ import './custom.scss'
 // import './_bootswatch.scss'
 import Drops from './pages/Drops'
 import AvailableLoads from './pages/AvailableLoads'
+import UpdateLoad from './pages/UpdateLoad'
 export default class App extends Component {
   static displayName = App.name
 
@@ -48,7 +49,12 @@ export default class App extends Component {
           <Route exact path="/carriers" component={CarrierProfiles}></Route>
           <Route exact path="/newCarrier" component={NewCarrier}></Route>
           <Route exact path="/create" component={NewLoad}></Route>
-          <Route exact path="/loadtracker" component={Load}></Route>
+
+          <Route
+            exact
+            path="/loadtracker/update/"
+            component={UpdateLoad}
+          ></Route>
           <Route path="*" component={NotFound}></Route>
         </Switch>
       </Router>
