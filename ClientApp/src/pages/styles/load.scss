@@ -1,0 +1,55 @@
+@import 'bootstrap';
+@import '~bootswatch/dist/darkly/variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootswatch/dist/darkly/bootswatch';
+.container {
+  padding: 1rem;
+  section {
+    text-align: center;
+  }
+}
+form {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .container {
+    section {
+      h4 {
+        font-size: 2rem;
+      }
+    }
+    form {
+      .btn-success {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 2rem;
+      h4 {
+        font-size: 3rem;
+      }
+    }
+    form {
+      .button-bottom {
+        text-align: center;
+        height: 100%;
+        vertical-align: middle;
+        .btn-success {
+          text-align: center;
+          font-size: 3rem;
+          margin-bottom: -3rem;
+        }
+      }
+    }
+  }
+  section h3 {
+    font-size: 3rem;
+  }
+}

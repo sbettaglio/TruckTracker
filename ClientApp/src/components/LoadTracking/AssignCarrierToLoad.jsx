@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import {
+  Container,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Row,
+  Col,
+} from 'reactstrap'
 const AssignCarrierToLoad = () => {
   const [carrier, setCarrier] = useState({})
   const trackInput = e => {
@@ -10,17 +19,33 @@ const AssignCarrierToLoad = () => {
   }
   //on Button submit API call to verify carrier is in database with valid insurance
   return (
-    <Form>
-      <FormGroup>
-        <Label>Carrier MC</Label>
-        <Input type="number" name="carrierMC" onChange={trackInput}></Input>
-      </FormGroup>
-      <FormGroup>
-        <Label>Contact</Label>
-        <Input type="text" name="contact" onChange={trackInput}></Input>
-      </FormGroup>
-      <Button>Assign</Button>
-    </Form>
+    <Container>
+      <Form>
+        <Row>
+          <Col sm={12} lg={8}>
+            <FormGroup>
+              <Label>Carrier MC</Label>
+              <Input
+                type="number"
+                name="carrierMC"
+                onChange={trackInput}
+              ></Input>
+            </FormGroup>
+          </Col>
+          <Col sm={12} lg={8}>
+            <FormGroup>
+              <Label>Contact</Label>
+              <Input type="text" name="contact" onChange={trackInput}></Input>
+            </FormGroup>
+          </Col>
+          <Col sm={12} lg={4}>
+            <FormGroup className="button-bottom">
+              <Button className="btn-success">Assign</Button>
+            </FormGroup>
+          </Col>
+        </Row>
+      </Form>
+    </Container>
   )
 }
 
