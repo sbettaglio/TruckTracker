@@ -1,5 +1,6 @@
 import React from 'react'
 import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
+import './styles/update-load.scss'
 const UpdateLoad = () => {
   return (
     <>

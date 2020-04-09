@@ -8,6 +8,7 @@ import {
   Label,
   Input,
   Button,
+  Option,
 } from 'reactstrap'
 const LoadTrackingForm = () => {
   const [load, setLoad] = useState({})
@@ -29,31 +30,36 @@ const LoadTrackingForm = () => {
       <Container>
         <Form>
           <Row>
-            <Col sm={1}>
-              <FormGroup check>
-                <Input
-                  type="checkbox"
-                  name="dispatched"
-                  id="dispatched"
-                  onChange={trackLoad}
-                />
-                <Label for="dispatched">Dispatched</Label>
-              </FormGroup>
-            </Col>
             <Col>
               <FormGroup>
-                <Label>Eta</Label>
-                <Input name="pickEta" type="time" onChange={trackLoad}></Input>
+                <Label for="loadStatus">Load Status</Label>
+                <Input
+                  className="form-control"
+                  type="select"
+                  name="loadStatus"
+                  id="loadStatus"
+                  onChange={trackLoad}
+                >
+                  <option>Select load status</option>
+                  <option value="available">Available</option>
+                  <option value="pickOnWay">Pick on way</option>
+                  <option value="pickLate">Pick late</option>
+                  <option value="atShipper">At shipper</option>
+                  <option value="loading">Loading</option>
+                  <option value="onRoute">On Route</option>
+                  <option value="rollingLate">Rolling Late</option>
+                  <option value="atDrop">At drop</option>
+                  <option value="unloading">Unloading</option>
+                  <option value="empty">Empty</option>
+                </Input>
               </FormGroup>
             </Col>
           </Row>
           <Row>
-            <Col sm={1}>
-              <FormGroup check>
-                <Input type="checkbox" name="atPick" onChange={trackLoad}>
-                  At Pick
-                </Input>
-                <Label>At pick</Label>
+            <Col>
+              <FormGroup>
+                <Label>ETA to Pick</Label>
+                <Input name="pickEta" type="time" onChange={trackLoad}></Input>
               </FormGroup>
             </Col>
             <Col>
@@ -66,9 +72,7 @@ const LoadTrackingForm = () => {
                 ></Input>
               </FormGroup>
             </Col>
-          </Row>
-          <Row>
-            <Col sm={1}>
+            <Col>
               <FormGroup>
                 <Label>Checked-out</Label>
                 <Input
@@ -78,24 +82,16 @@ const LoadTrackingForm = () => {
                 ></Input>
               </FormGroup>
             </Col>
+          </Row>
+
+          <Row>
             <Col>
               <FormGroup>
                 <Label>ETA to Drop</Label>
                 <Input name="dropEta" type="time" onChange={trackLoad}></Input>
               </FormGroup>
             </Col>
-          </Row>
-          <Row>
-            <Col sm={1}>
-              <FormGroup check>
-                <Input
-                  name="atDrop"
-                  type="checkbox"
-                  onChange={trackLoad}
-                ></Input>
-                <Label>At Drop</Label>
-              </FormGroup>
-            </Col>
+
             <Col>
               <FormGroup>
                 <Label>Checked-in</Label>
@@ -106,9 +102,7 @@ const LoadTrackingForm = () => {
                 ></Input>
               </FormGroup>
             </Col>
-          </Row>
-          <Row>
-            <Col sm={1}>
+            <Col>
               <FormGroup>
                 <Label>Checked-out</Label>
                 <Input
@@ -118,8 +112,10 @@ const LoadTrackingForm = () => {
                 ></Input>
               </FormGroup>
             </Col>
+          </Row>
+          <Row>
             <Col>
-              <FormGroup>
+              <FormGroup className="registration-button">
                 <Button className="btn-success">Save</Button>
               </FormGroup>
             </Col>
