@@ -10,37 +10,34 @@ import {
   Label,
   Input,
 } from 'reactstrap'
+import axios from 'axios'
 import './styles/add-new-carrier.scss'
 const NewCarrier = () => {
-  const [carrier, setCarrier] = useState({
-    carrierName: '',
-    mCNumber: 0,
-    primaryContact: '',
-    phone: '',
-    email: '',
-    homeState: '',
-    validInsurance: false,
-  })
+  const [carrier, setCarrier] = useState({})
   const trackInput = e => {
     const fieldToUpdate = e.target.name
     console.log(fieldToUpdate)
     const value = e.target.value
-    console.log(value)
-    setCarrier(prevCarrier => {
-      prevCarrier[fieldToUpdate] = value
-      return prevCarrier
-    })
-  }
-  const insuranceIsValid = e => {
-    const fieldToUpdate = e.target.name
-    const value = e.target.value
     if (value === 'on') {
       setCarrier(prevCarrier => {
         prevCarrier[fieldToUpdate] = true
+        console.log(prevCarrier)
+        return prevCarrier
+      })
+    } else {
+      setCarrier(prevCarrier => {
+        prevCarrier[fieldToUpdate] = value
+        console.log(prevCarrier)
         return prevCarrier
       })
     }
   }
+  const sendCarrierToApi = async () => {
+    console.log('adding', carrier)
+    const resp = await axios.post('api/Carriers', carrier)
+    console.log(resp)
+  }
+
   return (
     <>
       <div className="title-div">
@@ -186,7 +183,7 @@ const NewCarrier = () => {
                     type="checkbox"
                     name="validInsurance"
                     id="exampleInsurance"
-                    onChange={insuranceIsValid}
+                    onChange={trackInput}
                   />
                   <Label for="exampleInsurance" check>
                     Valid Insurance
@@ -195,7 +192,9 @@ const NewCarrier = () => {
               </Col>
               <Col>
                 <FormGroup>
-                  <Button className="btn-success">Save Carrier</Button>
+                  <Button className="btn-success" onClick={sendCarrierToApi}>
+                    Save Carrier
+                  </Button>
                 </FormGroup>
               </Col>
             </Row>
