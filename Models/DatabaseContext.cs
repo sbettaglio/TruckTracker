@@ -7,7 +7,9 @@ namespace TruckTracker.Models
 {
   public partial class DatabaseContext : DbContext
   {
-
+    public DbSet<User> Users { get; set; }
+    public DbSet<Carrier> Carriers { get; set; }
+    public DbSet<Load> Loads { get; set; }
 
 
 
