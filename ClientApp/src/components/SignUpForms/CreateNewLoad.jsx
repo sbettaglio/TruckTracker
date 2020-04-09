@@ -12,6 +12,7 @@ const CreateNewLoad = () => {
       return prevLoad
     })
   }
+  const saveLoad = () => {}
   return (
     <>
       <Form>
@@ -87,7 +88,9 @@ const CreateNewLoad = () => {
             </FormGroup>
           </Col>
           <Col md={2}>
-            <Button className="btn btn-success">Save</Button>
+            <Button className="btn btn-success" onClick={saveLoad}>
+              Save
+            </Button>
           </Col>
         </Row>
       </Form>

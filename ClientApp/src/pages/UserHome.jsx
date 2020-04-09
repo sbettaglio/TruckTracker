@@ -11,7 +11,7 @@ const UserHome = () => {
       </div>
       <HomeTable />
       <form className="log-out">
-        <button type="button" class="btn btn-danger">
+        <button type="button" className="btn btn-danger">
           Sign Out
         </button>
       </form>
