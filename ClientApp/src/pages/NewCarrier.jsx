@@ -24,6 +24,12 @@ const NewCarrier = () => {
         console.log(prevCarrier)
         return prevCarrier
       })
+    } else if (fieldToUpdate === 'mCNumber') {
+      setCarrier(prevCarrier => {
+        prevCarrier[fieldToUpdate] = parseInt(value, 10)
+        console.log(value)
+        return prevCarrier
+      })
     } else {
       setCarrier(prevCarrier => {
         prevCarrier[fieldToUpdate] = value
@@ -92,7 +98,7 @@ const NewCarrier = () => {
                   <Label for="examplePhone">Phone</Label>
                   <Input
                     type="tel"
-                    name="phone"
+                    name="phoneNumber"
                     id="examplePhone"
                     placeholder="555-867-5309"
                     onChange={trackInput}

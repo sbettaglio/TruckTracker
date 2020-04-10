@@ -11,6 +11,8 @@ namespace TruckTracker.Models
     public string Email { get; set; }
     public string HomeState { get; set; }
     public bool ValidInsurance { get; set; }
+
+
     public List<Load> Loads { get; set; } = new List<Load>();
   }
 }
