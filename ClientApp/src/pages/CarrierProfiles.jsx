@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Button } from 'reactstrap'
+import axios from 'axios'
 import './styles/carrier-profiles.scss'
-const CarrierProfiles = () => {
+const CarrierProfiles = props => {
+  console.log(props.match.params.carrierId)
+  const carrierId = props.match.params.carrierId
+  const [carrier, setCarrier] = useState({})
+  const getCarrierData = async () => {
+    const resp = await axios.get(`api/Carriers/${carrierId}`)
+    setCarrier(resp.data)
+  }
+  useEffect(() => {
+    getCarrierData()
+  }, [])
+  console.log(carrier)
   return (
     <>
       <div className="title-div">
-        <h1>Placeholder Express</h1>
+        <h1>{carrier.carrierName}</h1>
       </div>
       <main className="carrier-profile">
         <Container>
@@ -14,7 +26,7 @@ const CarrierProfiles = () => {
             <Col sm={1} md={12} lg={12}>
               <section className="mc-number">
                 <h4>MC Number</h4>
-                <p>123456</p>
+                <p>{carrier.mcNumber}</p>
               </section>
             </Col>
           </Row>
@@ -22,19 +34,19 @@ const CarrierProfiles = () => {
             <Col sm={2} md={4} lg={12}>
               <section>
                 <h4>Primary Contact</h4>
-                <p>John Doe</p>
+                <p>{carrier.primaryContact}</p>
               </section>
             </Col>
             <Col sm={2} md={4} lg={12}>
               <section>
                 <h4>Phone Number</h4>
-                <p>555-867-5309</p>
+                <p>{carrier.phoneNumber}</p>
               </section>
             </Col>
             <Col md={4} lg={12}>
               <section>
                 <h4>Email Address</h4>
-                <p>lorem@ipsum.com</p>
+                <p>{carrier.email}</p>
               </section>
             </Col>
           </Row>
@@ -48,7 +60,7 @@ const CarrierProfiles = () => {
             <Col sm={1} md={4} lg={12}>
               <section>
                 <h4>Home State</h4>
-                <p>Florida</p>
+                <p>{carrier.homeState}</p>
               </section>
             </Col>
             <Col md={4} lg={12}>

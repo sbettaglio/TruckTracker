@@ -46,7 +46,11 @@ export default class App extends Component {
           <Route exact path="/available" component={AvailableLoads}></Route>
           <Route exact path="/drops" component={Drops}></Route>
           <Route exact path="/late" component={LateTrucks}></Route>
-          <Route exact path="/carriers" component={CarrierProfiles}></Route>
+          <Route
+            exact
+            path="/carriers:carrierId"
+            component={CarrierProfiles}
+          ></Route>
           <Route exact path="/newCarrier" component={NewCarrier}></Route>
           <Route exact path="/create" component={NewLoad}></Route>
           <Route exact path="/loadtracker" component={Load}></Route>
