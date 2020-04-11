@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
+import axios from 'axios'
 import './styles/load.scss'
 import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'
-const Load = () => {
+const Load = props => {
+  console.log(props)
+  const loadId = props.match.params.loadId
+  console.log(loadId)
+  const [load, setLoad] = useState({})
+  const getLoadData = async () => {
+    const resp = await axios.get(`api/Loads/${loadId}`)
+    setLoad(resp.data)
+  }
+  console.log(load)
+  useEffect(() => {
+    getLoadData()
+  }, [])
   return (
     <>
       <div className="title-div">
-        <h1>Load Id</h1>
+        <h1>Load #{load.id}</h1>
       </div>
       <main>
         <Container>
@@ -14,13 +27,13 @@ const Load = () => {
             <Col lg={12}>
               <section>
                 <h4>P/U City</h4>
-                <p>P/U CityTampa,FL</p>
+                <p>{load.pickCity}</p>
               </section>
             </Col>
             <Col>
               <section>
                 <h4>P/U Date</h4>
-                <p>05/01/2020 14:00</p>
+                <p>{load.pickApp}</p>
               </section>
             </Col>
           </Row>
@@ -28,13 +41,13 @@ const Load = () => {
             <Col lg={12}>
               <section>
                 <h4>D/O City</h4>
-                <p>Miami,Fl</p>
+                <p>{load.dropCity}</p>
               </section>
             </Col>
             <Col>
               <section>
                 <h4>D/O Date</h4>
-                <p>05/02/2020 07:00</p>
+                <p>{load.dropApp}</p>
               </section>
             </Col>
           </Row>
@@ -42,7 +55,7 @@ const Load = () => {
             <Col lg={12}>
               <section>
                 <h4>Commodity</h4>
-                <p>Food Grade</p>
+                <p>{load.commodity}</p>
               </section>
             </Col>
             <Col>
@@ -56,14 +69,14 @@ const Load = () => {
             <Col lg={12}>
               <section>
                 <h4>Customer Rate:</h4>
-                <p>$700</p>
+                <p>${load.customerRate}.00</p>
               </section>
             </Col>
 
             <Col>
               <section>
                 <h4>Carrier Rate:</h4>
-                <p>$600</p>
+                <p>${load.carrierRate}.00</p>
               </section>
             </Col>
           </Row>

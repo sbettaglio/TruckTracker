@@ -1,7 +1,8 @@
 import React from 'react'
 import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
 import './styles/update-load.scss'
-const UpdateLoad = () => {
+const UpdateLoad = props => {
+  console.log(props)
   return (
     <>
       <div className="title-div">

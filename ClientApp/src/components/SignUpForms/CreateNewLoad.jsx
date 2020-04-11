@@ -75,7 +75,7 @@ const CreateNewLoad = () => {
                 <Label>P/U Date</Label>
                 <Input
                   type="datetime-local"
-                  name="pickDate"
+                  name="pickApp"
                   onChange={trackInput}
                 ></Input>
               </FormGroup>
@@ -97,7 +97,7 @@ const CreateNewLoad = () => {
                 <Label>D/O Date</Label>
                 <Input
                   type="datetime-local"
-                  name="dropDate"
+                  name="dropApp"
                   onChange={trackInput}
                 ></Input>
               </FormGroup>
