@@ -53,7 +53,7 @@ export default class App extends Component {
           ></Route>
           <Route exact path="/newCarrier" component={NewCarrier}></Route>
           <Route exact path="/create" component={NewLoad}></Route>
-          <Route exact path="/loadtracker" component={Load}></Route>
+          <Route exact path="/loadtracker/:loadId" component={Load}></Route>
           <Route
             exact
             path="/loadtracker/update/"
