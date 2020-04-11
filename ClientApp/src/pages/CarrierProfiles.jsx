@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Button } from 'reactstrap'
 import axios from 'axios'
+import Moment from 'react-moment'
 import './styles/carrier-profiles.scss'
 const CarrierProfiles = props => {
   console.log(props.match.params.carrierId)
@@ -54,7 +55,9 @@ const CarrierProfiles = props => {
             <Col sm={1} md={4} lg={12}>
               <section>
                 <h4>Setup Date</h4>
-                <p>{new Date(carrier.setupDate).toDateString()}</p>
+                <p>
+                  <Moment format="MM-DD-YYYY">{carrier.setupDate}</Moment>
+                </p>
               </section>
             </Col>
             <Col sm={1} md={4} lg={12}>
