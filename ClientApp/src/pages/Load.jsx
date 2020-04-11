@@ -83,7 +83,7 @@ const Load = props => {
         </Container>
         <section>
           <h3>Assign Carrier</h3>
-          <AssignCarrierToLoad />
+          <AssignCarrierToLoad id={load.id} />
         </section>
       </main>
     </>

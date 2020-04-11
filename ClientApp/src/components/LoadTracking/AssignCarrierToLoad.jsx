@@ -9,13 +9,25 @@ import {
   Row,
   Col,
 } from 'reactstrap'
-const AssignCarrierToLoad = () => {
+import axios from 'axios'
+const AssignCarrierToLoad = ({ id }) => {
   const [carrier, setCarrier] = useState({})
   const trackInput = e => {
     const fieldToUpdate = e.target.name
     console.log(fieldToUpdate)
     const value = e.target.value
     console.log(value)
+    if (fieldToUpdate === 'mCNumber') {
+      setCarrier(prevCarrier => {
+        prevCarrier[fieldToUpdate] = parseInt(value, 10)
+
+        return prevCarrier
+      })
+    }
+  }
+  const saveCarrierToApi = async () => {
+    const resp = await axios.put(`api/Loads/${id}/${carrier.mCNumber}`)
+    console.log(resp.data)
   }
   //on Button submit API call to verify carrier is in database with valid insurance
   return (
@@ -27,7 +39,7 @@ const AssignCarrierToLoad = () => {
               <Label>Carrier MC</Label>
               <Input
                 type="number"
-                name="carrierMC"
+                name="mCNumber"
                 onChange={trackInput}
               ></Input>
             </FormGroup>
@@ -40,7 +52,9 @@ const AssignCarrierToLoad = () => {
           </Col>
           <Col sm={12} lg={4}>
             <FormGroup className="button-bottom">
-              <Button className="btn-success">Assign</Button>
+              <Button className="btn-success" onClick={saveCarrierToApi}>
+                Assign
+              </Button>
             </FormGroup>
           </Col>
         </Row>
