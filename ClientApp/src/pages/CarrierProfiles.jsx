@@ -54,7 +54,7 @@ const CarrierProfiles = props => {
             <Col sm={1} md={4} lg={12}>
               <section>
                 <h4>Setup Date</h4>
-                <p>{carrier.setupDate}</p>
+                <p>{new Date(carrier.setupDate).toDateString()}</p>
               </section>
             </Col>
             <Col sm={1} md={4} lg={12}>
