@@ -54,7 +54,7 @@ const CarrierProfiles = props => {
             <Col sm={1} md={4} lg={12}>
               <section>
                 <h4>Setup Date</h4>
-                <p>01/12/2018</p>
+                <p>{carrier.setupDate}</p>
               </section>
             </Col>
             <Col sm={1} md={4} lg={12}>
