@@ -51,7 +51,7 @@ namespace TruckTracker.Controllers
       var carrier = _context.Carriers.FirstOrDefault(c => c.MCNumber == mCNumber);
       load.CarrierId = carrier.Id;
       await _context.SaveChangesAsync();
-      return Ok(load.CarrierId);
+      return Ok(load.Id);
     }
 
     // POST: api/Loads

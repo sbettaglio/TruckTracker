@@ -10,7 +10,8 @@ import {
   Button,
   Option,
 } from 'reactstrap'
-const LoadTrackingForm = () => {
+const LoadTrackingForm = ({ id }) => {
+  console.log(id)
   const [load, setLoad] = useState({})
   const trackLoad = e => {
     const fieldToUpdate = e.target.name
@@ -58,8 +59,14 @@ const LoadTrackingForm = () => {
           <Row>
             <Col>
               <FormGroup>
-                <Label>ETA to Pick</Label>
-                <Input name="pickEta" type="time" onChange={trackLoad}></Input>
+                <Label for="exampleDateTime">ETA to Pick</Label>
+                <Input
+                  name="pickEta"
+                  type="datetime-local"
+                  id="exampleDateTime"
+                  onChange={trackLoad}
+                  placeholder="datetime placeholder"
+                ></Input>
               </FormGroup>
             </Col>
             <Col>
@@ -67,7 +74,7 @@ const LoadTrackingForm = () => {
                 <Label>Checked-in</Label>
                 <Input
                   name="pickCheckIn"
-                  type="time"
+                  type="datetime-local"
                   onChange={trackLoad}
                 ></Input>
               </FormGroup>
@@ -77,7 +84,7 @@ const LoadTrackingForm = () => {
                 <Label>Checked-out</Label>
                 <Input
                   name="pickCheckOut"
-                  type="time"
+                  type="datetime-local"
                   onChange={trackLoad}
                 ></Input>
               </FormGroup>
@@ -88,7 +95,11 @@ const LoadTrackingForm = () => {
             <Col>
               <FormGroup>
                 <Label>ETA to Drop</Label>
-                <Input name="dropEta" type="time" onChange={trackLoad}></Input>
+                <Input
+                  name="dropEta"
+                  type="datetime-local"
+                  onChange={trackLoad}
+                ></Input>
               </FormGroup>
             </Col>
 
@@ -97,7 +108,7 @@ const LoadTrackingForm = () => {
                 <Label>Checked-in</Label>
                 <Input
                   name="dropCheckIn"
-                  type="time"
+                  type="datetime-local"
                   onChange={trackLoad}
                 ></Input>
               </FormGroup>
@@ -107,7 +118,7 @@ const LoadTrackingForm = () => {
                 <Label>Checked-out</Label>
                 <Input
                   name="dropCheckOut"
-                  type="time"
+                  type="datetime-local"
                   onChange={trackLoad}
                 ></Input>
               </FormGroup>

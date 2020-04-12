@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
 import axios from 'axios'
 import './styles/load.scss'
 import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'
+import Moment from 'react-moment'
 const Load = props => {
   console.log(props)
   const loadId = props.match.params.loadId
@@ -33,7 +34,9 @@ const Load = props => {
             <Col>
               <section>
                 <h4>P/U Date</h4>
-                <p>{load.pickApp}</p>
+                <p>
+                  <Moment format="MM-DD-YYYY HH:mm">{load.pickApp}</Moment>
+                </p>
               </section>
             </Col>
           </Row>
@@ -47,7 +50,9 @@ const Load = props => {
             <Col>
               <section>
                 <h4>D/O Date</h4>
-                <p>{load.dropApp}</p>
+                <p>
+                  <Moment format="MM-DD-YYYY HH:mm">{load.dropApp}</Moment>
+                </p>
               </section>
             </Col>
           </Row>

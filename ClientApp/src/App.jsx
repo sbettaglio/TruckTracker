@@ -56,7 +56,7 @@ export default class App extends Component {
           <Route exact path="/loadtracker/:loadId" component={Load}></Route>
           <Route
             exact
-            path="/loadtracker/update/"
+            path="/loadtracker/update/:loadId"
             component={UpdateLoad}
           ></Route>
           <Route path="*" component={NotFound}></Route>
