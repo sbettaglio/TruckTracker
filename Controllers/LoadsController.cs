@@ -53,7 +53,18 @@ namespace TruckTracker.Controllers
       await _context.SaveChangesAsync();
       return Ok(load.Id);
     }
-
+    [HttpPut("{id}/update")]
+    public async Task<ActionResult<Load>> UpdateLoadStatus(int id, Load load)
+    {
+      var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
+      loadToUpdate.LoadStatus = load.LoadStatus;
+      loadToUpdate.PickCheckIn = load.PickCheckIn;
+      loadToUpdate.PickCheckOut = load.PickCheckOut;
+      loadToUpdate.DropCheckIn = load.DropCheckIn;
+      loadToUpdate.DropCheckOut = load.DropCheckOut;
+      await _context.SaveChangesAsync();
+      return Ok(load);
+    }
     // POST: api/Loads
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
     // more details see https://aka.ms/RazorPagesCRUD.

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import {
   Container,
   Row,
@@ -12,7 +13,9 @@ import {
 } from 'reactstrap'
 const LoadTrackingForm = ({ id }) => {
   console.log(id)
-  const [load, setLoad] = useState({})
+  const [load, setLoad] = useState({
+    loadStatus: '',
+  })
   const trackLoad = e => {
     const fieldToUpdate = e.target.name
     console.log(fieldToUpdate)
@@ -26,6 +29,21 @@ const LoadTrackingForm = ({ id }) => {
       return prevLoad
     })
   }
+  const getLoadData = async () => {
+    const resp = await axios.get(`api/Loads/${id}`)
+    setLoad(resp.data)
+  }
+  const sendLoadUpdateToApi = async () => {
+    // console.log('updating', load)
+    const resp = await axios.put(`api/Loads/${id}/update`, load)
+    console.log(resp.data)
+    setLoad(resp.data)
+  }
+
+  useEffect(() => {
+    getLoadData()
+  }, [])
+
   return (
     <>
       <Container>
@@ -41,7 +59,7 @@ const LoadTrackingForm = ({ id }) => {
                   id="loadStatus"
                   onChange={trackLoad}
                 >
-                  <option>Select load status</option>
+                  <option>{load.loadStatus}</option>
                   <option value="available">Available</option>
                   <option value="pickOnWay">Pick on way</option>
                   <option value="pickLate">Pick late</option>
@@ -65,7 +83,7 @@ const LoadTrackingForm = ({ id }) => {
                   type="datetime-local"
                   id="exampleDateTime"
                   onChange={trackLoad}
-                  placeholder="datetime placeholder"
+                  placeholder={load.pickCheckIn}
                 ></Input>
               </FormGroup>
             </Col>
@@ -127,7 +145,9 @@ const LoadTrackingForm = ({ id }) => {
           <Row>
             <Col>
               <FormGroup className="registration-button">
-                <Button className="btn-success">Save</Button>
+                <Button className="btn-success" onClick={sendLoadUpdateToApi}>
+                  Save
+                </Button>
               </FormGroup>
             </Col>
           </Row>
