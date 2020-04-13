@@ -11,10 +11,12 @@ import {
   Col,
 } from 'reactstrap'
 import axios from 'axios'
-const AssignCarrierToLoad = ({ id }) => {
+const AssignCarrierToLoad = ({ id, load }) => {
+  console.log(load)
   const [carrier, setCarrier] = useState({})
   const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
     shouldRedirect: false,
+    newLoadInformation: {},
   })
   const trackInput = e => {
     const fieldToUpdate = e.target.name
@@ -31,11 +33,12 @@ const AssignCarrierToLoad = ({ id }) => {
   }
   const saveCarrierToApi = async () => {
     console.log(carrier.mCNumber)
-    const resp = await axios.put(`api/Loads/${id}/${carrier.mCNumber}`)
+    const resp = await axios.put(`api/Loads/${id}/${carrier.mCNumber}`, load)
     console.log(resp.data)
     if (resp.status === 200) {
       setWasSuccessfullyCreated({
         shouldRedirect: true,
+        newLoadInformation: resp.data,
       })
     }
   }
@@ -44,11 +47,11 @@ const AssignCarrierToLoad = ({ id }) => {
       <Redirect
         to={{
           pathname: `/loadtracker/update/${id}`,
+          state: { load: wasSuccessfullyCreated.newLoadInformation },
         }}
       />
     )
   }
-  //on Button submit API call to verify carrier is in database with valid insurance
   return (
     <Container>
       <Form>

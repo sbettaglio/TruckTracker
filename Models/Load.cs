@@ -12,10 +12,12 @@ namespace TruckTracker.Models
     public int Weight { get; set; }
     public string Commodity { get; set; }
     public double CustomerRate { get; set; }
-    public string LoadStatus { get; set; }
+    public string LoadStatus { get; set; } = "available";
     public double CarrierRate { get; set; }
+    public DateTime PickEta { get; set; }
     public DateTime PickCheckIn { get; set; }
     public DateTime PickCheckOut { get; set; }
+    public DateTime DropEta { get; set; }
     public DateTime DropCheckIn { get; set; }
     public DateTime DropCheckOut { get; set; }
     public int? UserId { get; set; }

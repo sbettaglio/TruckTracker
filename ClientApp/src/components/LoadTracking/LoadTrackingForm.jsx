@@ -13,9 +13,8 @@ import {
 } from 'reactstrap'
 const LoadTrackingForm = ({ id }) => {
   console.log(id)
-  const [load, setLoad] = useState({
-    loadStatus: '',
-  })
+
+  const [load, setLoad] = useState({})
   const trackLoad = e => {
     const fieldToUpdate = e.target.name
     console.log(fieldToUpdate)
@@ -36,8 +35,10 @@ const LoadTrackingForm = ({ id }) => {
   const sendLoadUpdateToApi = async () => {
     // console.log('updating', load)
     const resp = await axios.put(`api/Loads/${id}/update`, load)
-    console.log(resp.data)
-    setLoad(resp.data)
+    if (resp.status === 200) {
+      setLoad(resp.data)
+      alert('Load has been updated')
+    }
   }
 
   useEffect(() => {

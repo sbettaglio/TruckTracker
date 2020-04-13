@@ -45,13 +45,13 @@ namespace TruckTracker.Controllers
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
     // more details see https://aka.ms/RazorPagesCRUD.
     [HttpPut("{id}/{mCNumber}")]
-    public async Task<ActionResult<Load>> AddCarrierToLoad(int id, int mCNumber)
+    public async Task<ActionResult<Load>> AddCarrierToLoad(int id, int mCNumber, Load load)
     {
-      var load = _context.Loads.FirstOrDefault(l => l.Id == id);
+      // var load = _context.Loads.FirstOrDefault(l => l.Id == id);
       var carrier = _context.Carriers.FirstOrDefault(c => c.MCNumber == mCNumber);
       load.CarrierId = carrier.Id;
       await _context.SaveChangesAsync();
-      return Ok(load.Id);
+      return Ok(load);
     }
     [HttpPut("{id}/update")]
     public async Task<ActionResult<Load>> UpdateLoadStatus(int id, Load load)
