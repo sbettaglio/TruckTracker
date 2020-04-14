@@ -28,6 +28,8 @@ const LoadSearchContainer = ({
   }
   const searchByCity = async () => {
     console.log('searching for', searchCity)
+    const resp = await axios.get(`/api/search/loads?searchCity=${searchCity}`)
+    console.log(resp.data)
   }
   if (searchSuccessful.shouldRedirect) {
     return (

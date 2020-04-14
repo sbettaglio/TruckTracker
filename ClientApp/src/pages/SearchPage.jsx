@@ -25,8 +25,7 @@ const SearchPage = () => {
               <LoadSearchContainer
                 labelTop="Load Number"
                 nameTop="id"
-                labelBottom="Pick City"
-                nameBottom="pickCity"
+                labelBottom="City"
                 placeholderBottom="St. Pete, FL"
               />
             </Row>
