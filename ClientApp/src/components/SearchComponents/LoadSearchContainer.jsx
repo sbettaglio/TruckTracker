@@ -1,7 +1,6 @@
 import React from 'react'
 import { Input, Button, Col, FormGroup, Label } from 'reactstrap'
-// import './styles/search.scss'
-const CarrierSearchContainer = ({
+const LoadSearchContainer = ({
   labelTop,
   nameTop,
   labelBottom,
@@ -33,4 +32,4 @@ const CarrierSearchContainer = ({
   )
 }
 
-export default CarrierSearchContainer
+export default LoadSearchContainer
