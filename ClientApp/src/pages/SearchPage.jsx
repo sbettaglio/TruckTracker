@@ -10,6 +10,7 @@ import {
   Label,
 } from 'reactstrap'
 import './styles/search.scss'
+import CarrierSearchContainer from '../components/SearchComponents/CarrierSearchContainer'
 const SearchPage = () => {
   return (
     <>
@@ -20,7 +21,14 @@ const SearchPage = () => {
         <Container>
           <Form inline>
             <Row>
-              <Col sm={1} md={12}>
+              <CarrierSearchContainer
+                labelTop="MC Number"
+                nameTop="mCNumber"
+                labelBottom="Carrier Name"
+                nameBottom="carrierName"
+                placeholderBottom="Lorem Ipsum Express"
+              />
+              {/* <Col sm={1} md={12}>
                 <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                   <Label>MC Number</Label>
                   <Input type="search" placeholder="123456" />
@@ -37,7 +45,7 @@ const SearchPage = () => {
                   />
                   <Button className="btn btn-info">Search</Button>
                 </FormGroup>
-              </Col>
+              </Col> */}
             </Row>
             <Row>
               <Col sm={1} md={12}>

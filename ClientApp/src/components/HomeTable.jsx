@@ -33,7 +33,7 @@ const HomeTable = () => {
           </tr>
           <tr>
             <td>
-              <Link to="/carriers">Carrier Profiles</Link>
+              <Link to="/search">Search</Link>
             </td>
           </tr>
           <tr>
