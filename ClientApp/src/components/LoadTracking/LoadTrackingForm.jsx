@@ -11,8 +11,9 @@ import {
   Button,
   Option,
 } from 'reactstrap'
-const LoadTrackingForm = ({ id }) => {
-  console.log(id)
+const LoadTrackingForm = props => {
+  console.log(props)
+  const { id } = props
 
   const [load, setLoad] = useState({})
   const trackLoad = e => {
@@ -84,7 +85,7 @@ const LoadTrackingForm = ({ id }) => {
                   type="datetime-local"
                   id="exampleDateTime"
                   onChange={trackLoad}
-                  placeholder={load.pickCheckIn}
+                  // value={load.pickEta}
                 ></Input>
               </FormGroup>
             </Col>

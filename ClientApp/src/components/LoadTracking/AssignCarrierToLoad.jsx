@@ -16,7 +16,7 @@ const AssignCarrierToLoad = ({ id, load }) => {
   const [carrier, setCarrier] = useState({})
   const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
     shouldRedirect: false,
-    newLoadInformation: {},
+    newLoadInformation: { load },
   })
   const trackInput = e => {
     const fieldToUpdate = e.target.name
