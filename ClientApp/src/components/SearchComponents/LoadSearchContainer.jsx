@@ -11,16 +11,20 @@ const LoadSearchContainer = ({
 }) => {
   const [searchId, setSearchId] = useState()
   const [searchCity, setSearchCity] = useState('')
-  const [searchSuccessful, setSearchSuccessful] = useState({
+  const [loadSearchSuccessful, setLoadSearchSuccessful] = useState({
     shouldRedirect: false,
     searchResult: {},
+  })
+  const [citySearchSuccessful, setCitySearchSuccessful] = useState({
+    shouldRedirect: false,
+    searchResult: [{}],
   })
   const searchById = async () => {
     console.log('searching for', searchId)
     const resp = await axios.get(`api/Loads/${searchId}`)
     console.log(resp, resp.data)
     if (resp.status === 200) {
-      setSearchSuccessful({
+      setLoadSearchSuccessful({
         shouldRedirect: true,
         searchResult: resp.data,
       })
@@ -29,13 +33,28 @@ const LoadSearchContainer = ({
   const searchByCity = async () => {
     console.log('searching for', searchCity)
     const resp = await axios.get(`/api/search/loads?searchCity=${searchCity}`)
-    console.log(resp.data)
+    console.log(resp.data, resp.status)
+    if (resp.status === 200) {
+      setCitySearchSuccessful({
+        shouldRedirect: true,
+        searchResult: resp.data,
+      })
+    }
   }
-  if (searchSuccessful.shouldRedirect) {
+  if (loadSearchSuccessful.shouldRedirect) {
     return (
       <Redirect
         to={{
-          pathname: `/loadtracker/${searchSuccessful.searchResult.id}`,
+          pathname: `/loadtracker/${loadSearchSuccessful.searchResult.id}`,
+        }}
+      />
+    )
+  } else if (citySearchSuccessful.shouldRedirect) {
+    return (
+      <Redirect
+        to={{
+          pathname: `/search`,
+          state: citySearchSuccessful.searchResult,
         }}
       />
     )

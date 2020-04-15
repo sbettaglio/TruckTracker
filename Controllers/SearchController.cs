@@ -17,7 +17,7 @@ namespace TruckTracker.Controllers
     private DatabaseContext _context;
 
 
-    // Dependency Injection
+
     public SearchController(DatabaseContext context)
     {
       _context = context;
