@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Input, Button, Col, FormGroup, Label } from 'reactstrap'
+import { Redirect } from 'react-router-dom'
+import axios from 'axios'
 // import './styles/search.scss'
 const CarrierSearchContainer = ({
   labelTop,
@@ -8,13 +10,48 @@ const CarrierSearchContainer = ({
   nameBottom,
   placeholderBottom,
 }) => {
+  const [search, setSearch] = useState()
+  const [searchSuccessful, setSearchSuccessful] = useState({
+    shouldRedirect: false,
+    searchCarrierInfo: {},
+  })
+  const getCarrierByMC = async () => {
+    console.log('getting', search)
+    const resp = await axios.get(`api/search/carriers?search=${search}`)
+    console.log(resp.status)
+    if (resp.status === 200) {
+      setSearchSuccessful({
+        shouldRedirect: true,
+        searchCarrierInfo: resp.data,
+      })
+    } else {
+      alert('Carrier not found. Please confirm MC Number or search by name.')
+    }
+  }
+  if (searchSuccessful.shouldRedirect) {
+    return (
+      <Redirect
+        to={{
+          pathname: `/carriers/${searchSuccessful.searchCarrierInfo.id}`,
+        }}
+      />
+    )
+  }
+
   return (
     <>
       <Col sm={1} md={12}>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Label>{labelTop}</Label>
-          <Input type="search" placeholder="123456" name={nameTop} />
-          <Button className="btn btn-info">Search</Button>
+          <Input
+            type="search"
+            placeholder="123456"
+            name={nameTop}
+            onChange={e => parseInt(setSearch(e.target.value))}
+          />
+          <Button className="btn btn-info" onClick={getCarrierByMC}>
+            Search
+          </Button>
         </FormGroup>
       </Col>
       <Col sm={1} md={12}>
@@ -25,6 +62,7 @@ const CarrierSearchContainer = ({
             name={nameBottom}
             placeholder={placeholderBottom}
             className="mr-sm-2"
+            onChange={e => setSearch(e.target.value)}
           />
           <Button className="btn btn-info">Search</Button>
         </FormGroup>

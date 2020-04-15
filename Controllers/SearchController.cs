@@ -26,19 +26,26 @@ namespace TruckTracker.Controllers
     [HttpGet("loads")]
     public async Task<ActionResult> SearchTrails(string searchCity)
     {
-
-
       var results = _context.Loads.Where(w =>
         w.PickCity.ToLower().Contains(searchCity.ToLower()) ||
         w.DropCity.ToLower().Contains(searchCity.ToLower())
       );
       return Ok(await results.ToListAsync());
+    }
+
+    [HttpGet("carriers")]
+    public async Task<ActionResult> getCarrierByMc(int search)
+    {
+      var carrierInSystem = await _context.Carriers.FirstOrDefaultAsync(c => c.MCNumber == search);
+      return Ok(carrierInSystem);
 
     }
 
 
 
-
-
   }
 }
+
+
+
+
