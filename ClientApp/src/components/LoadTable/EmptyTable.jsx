@@ -1,7 +1,15 @@
 import React from 'react'
 
 const EmptyTable = () => {
-  return <h2>No loads match search parameters</h2>
+  return (
+    <tr>
+      <th>No </th>
+      <th>loads </th>
+      <th>match</th>
+      <th>this</th>
+      <th>search</th>
+    </tr>
+  )
 }
 
 export default EmptyTable

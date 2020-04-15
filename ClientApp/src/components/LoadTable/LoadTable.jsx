@@ -19,7 +19,7 @@ const LoadTable = ({ slot1, slot2, slot3, slot4, slot5, results }) => {
           />
         </thead>
         <tbody>
-          {results !== undefined ? (
+          {results.length > 0 ? (
             results.map(result => {
               return (
                 <LoadTableComponent
