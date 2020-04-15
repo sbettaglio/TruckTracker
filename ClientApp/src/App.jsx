@@ -17,6 +17,7 @@ import Drops from './pages/Drops'
 import AvailableLoads from './pages/AvailableLoads'
 import UpdateLoad from './pages/UpdateLoad'
 import SearchPage from './pages/SearchPage'
+import CitySearch from './pages/CitySearch'
 export default class App extends Component {
   static displayName = App.name
 
@@ -56,6 +57,7 @@ export default class App extends Component {
           <Route exact path="/create" component={NewLoad}></Route>
           <Route exact path="/loadtracker/:loadId" component={Load}></Route>
           <Route exact path="/search" component={SearchPage}></Route>
+          <Route exact path="/search/city" component={CitySearch}></Route>
           <Route
             exact
             path="/loadtracker/update/:loadId"

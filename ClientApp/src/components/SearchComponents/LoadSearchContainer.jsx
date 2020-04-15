@@ -53,7 +53,7 @@ const LoadSearchContainer = ({
     return (
       <Redirect
         to={{
-          pathname: `/search`,
+          pathname: `/search/city`,
           state: citySearchSuccessful.searchResult,
         }}
       />

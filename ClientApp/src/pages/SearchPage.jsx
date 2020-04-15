@@ -4,11 +4,7 @@ import './styles/search.scss'
 import CarrierSearchContainer from '../components/SearchComponents/CarrierSearchContainer'
 import LoadSearchContainer from '../components/SearchComponents/LoadSearchContainer'
 import LoadTable from '../components/LoadTable/LoadTable'
-const SearchPage = props => {
-  console.log(props)
-  const results = props.location.state
-  console.log(results)
-
+const SearchPage = () => {
   return (
     <>
       <div className="title-div">
@@ -36,20 +32,6 @@ const SearchPage = props => {
             </Row>
           </Form>
         </Container>
-        {results !== undefined ? (
-          <Container>
-            <LoadTable
-              slot1="Id"
-              slot2="P/U City"
-              slot3="P/U Appointment"
-              slot4="D/O City"
-              slot5="D/O Appointment"
-              results={results}
-            />
-          </Container>
-        ) : (
-          <></>
-        )}
       </main>
     </>
   )
