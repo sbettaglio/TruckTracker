@@ -34,13 +34,18 @@ namespace TruckTracker.Controllers
     }
 
     [HttpGet("carriers")]
-    public async Task<ActionResult> getCarrierByMc(int search)
+    public async Task<ActionResult> GetCarrierByMc(int search)
     {
       var carrierInSystem = await _context.Carriers.FirstOrDefaultAsync(c => c.MCNumber == search);
       return Ok(carrierInSystem);
 
     }
-
+    [HttpGet("carriers/name")]
+    public async Task<ActionResult> GetCarrierByName(string search)
+    {
+      var carrierInSystem = await _context.Carriers.FirstOrDefaultAsync(c => c.CarrierName.ToLower().Contains(search.ToLower()));
+      return Ok(carrierInSystem);
+    }
 
 
   }

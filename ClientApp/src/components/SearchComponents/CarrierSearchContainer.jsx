@@ -16,7 +16,6 @@ const CarrierSearchContainer = ({
     searchCarrierInfo: {},
   })
   const getCarrierByMC = async () => {
-    console.log('getting', search)
     const resp = await axios.get(`api/search/carriers?search=${search}`)
     console.log(resp.status)
     if (resp.status === 200) {
@@ -26,6 +25,19 @@ const CarrierSearchContainer = ({
       })
     } else {
       alert('Carrier not found. Please confirm MC Number or search by name.')
+    }
+  }
+  const getCarrierByName = async () => {
+    console.log('getting', search)
+    const resp = await axios.get(`api/search/carriers/name?search=${search}`)
+    console.log(resp)
+    if (resp.status === 200) {
+      setSearchSuccessful({
+        shouldRedirect: true,
+        searchCarrierInfo: resp.data,
+      })
+    } else {
+      alert('Carrier not found. Please confirm Name or search by MC number.')
     }
   }
   if (searchSuccessful.shouldRedirect) {
@@ -64,7 +76,9 @@ const CarrierSearchContainer = ({
             className="mr-sm-2"
             onChange={e => setSearch(e.target.value)}
           />
-          <Button className="btn btn-info">Search</Button>
+          <Button className="btn btn-info" onClick={getCarrierByName}>
+            Search
+          </Button>
         </FormGroup>
       </Col>
     </>
