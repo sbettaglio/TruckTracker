@@ -33,7 +33,7 @@ const LoadSearchContainer = ({
   const searchByCity = async () => {
     console.log('searching for', searchCity)
     const resp = await axios.get(`/api/search/loads?searchCity=${searchCity}`)
-    console.log(resp.data, resp.status)
+    console.log(resp.data, resp)
     if (resp.status === 200) {
       setCitySearchSuccessful({
         shouldRedirect: true,
@@ -53,7 +53,7 @@ const LoadSearchContainer = ({
     return (
       <Redirect
         to={{
-          pathname: `/search/city`,
+          pathname: `/search/${searchCity}`,
           state: citySearchSuccessful.searchResult,
         }}
       />

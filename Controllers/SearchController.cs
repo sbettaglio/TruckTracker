@@ -30,7 +30,7 @@ namespace TruckTracker.Controllers
         w.PickCity.ToLower().Contains(searchCity.ToLower()) ||
         w.DropCity.ToLower().Contains(searchCity.ToLower())
       );
-      return Ok(await results.ToListAsync());
+      return Ok(await (results.ToListAsync()));
     }
 
     [HttpGet("carriers")]

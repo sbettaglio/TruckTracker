@@ -6,11 +6,15 @@ import LoadTable from '../components/LoadTable/LoadTable'
 const Drops = props => {
   console.log(props)
   const results = props.location.state
+  const searchCity = props.match.params.searchCity
+  const cityCapitalized =
+    searchCity.charAt(0).toUpperCase() + searchCity.slice(1)
+
   console.log(results)
   return (
     <>
       <div className="title-div">
-        <h1>City Search Results</h1>
+        <h1>{cityCapitalized} Load History</h1>
       </div>
       <main className="loads-main">
         {results.length > 0 ? (
@@ -27,7 +31,10 @@ const Drops = props => {
         ) : (
           <>
             <Container>
-              <h2>No loads have been scheduled to pick or drop in this city</h2>
+              <h2>
+                No loads have been scheduled to pick or drop in{' '}
+                {cityCapitalized}.
+              </h2>
             </Container>
           </>
         )}

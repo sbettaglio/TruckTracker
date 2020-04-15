@@ -57,7 +57,11 @@ export default class App extends Component {
           <Route exact path="/create" component={NewLoad}></Route>
           <Route exact path="/loadtracker/:loadId" component={Load}></Route>
           <Route exact path="/search" component={SearchPage}></Route>
-          <Route exact path="/search/city" component={CitySearch}></Route>
+          <Route
+            exact
+            path="/search/:searchCity"
+            component={CitySearch}
+          ></Route>
           <Route
             exact
             path="/loadtracker/update/:loadId"
