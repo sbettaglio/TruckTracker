@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
 import axios from 'axios'
 import './styles/load.scss'
 import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'
+import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
 import Moment from 'react-moment'
 const Load = props => {
   console.log(props)
@@ -86,10 +87,17 @@ const Load = props => {
             </Col>
           </Row>
         </Container>
-        <section>
-          <h3>Assign Carrier</h3>
-          <AssignCarrierToLoad id={load.id} load={load} />
-        </section>
+        {load.carrierId === null ? (
+          <section>
+            <h3>Assign Carrier</h3>
+            <AssignCarrierToLoad id={load.id} load={load} />
+          </section>
+        ) : (
+          <section>
+            <h3>Update</h3>
+            <LoadTrackingForm id={load.id} />
+          </section>
+        )}
       </main>
     </>
   )

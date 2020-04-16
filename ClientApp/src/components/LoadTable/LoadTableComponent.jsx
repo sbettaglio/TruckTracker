@@ -6,7 +6,7 @@ const LoadTableComponent = ({ id, pCity, pApp, dCity, dApp }) => {
     <>
       <tr>
         <th scope="row">
-          <Link to="/loadtracker">{id}</Link>
+          <Link to="/loadtracker/{id}">{id}</Link>
         </th>
         <td>{pCity}</td>
         <td>{pApp}</td>
