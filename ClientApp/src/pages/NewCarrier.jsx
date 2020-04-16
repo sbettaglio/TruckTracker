@@ -12,6 +12,7 @@ import {
 } from 'reactstrap'
 import axios from 'axios'
 import './styles/add-new-carrier.scss'
+import CustomNav from '../components/NavMenu/CustomNav'
 const NewCarrier = () => {
   const [carrier, setCarrier] = useState({})
   const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
@@ -65,6 +66,7 @@ const NewCarrier = () => {
   } else {
     return (
       <>
+        <CustomNav />
         <div className="title-div">
           <h1>Add New Carrier</h1>
         </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container } from 'reactstrap'
 import LoadTable from '../components/LoadTable/LoadTable'
+import CustomNav from '../components/NavMenu/CustomNav'
 
 const Drops = props => {
   console.log(props)
@@ -13,6 +14,7 @@ const Drops = props => {
   console.log(results)
   return (
     <>
+      <CustomNav />
       <div className="title-div">
         <h1>{cityCapitalized} Load History</h1>
       </div>

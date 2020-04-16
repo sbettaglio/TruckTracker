@@ -4,6 +4,7 @@ import { Container, Row, Col, Button } from 'reactstrap'
 import axios from 'axios'
 import Moment from 'react-moment'
 import './styles/carrier-profiles.scss'
+import CustomNav from '../components/NavMenu/CustomNav'
 const CarrierProfiles = props => {
   console.log(props.match.params.carrierId)
   const carrierId = props.match.params.carrierId
@@ -18,6 +19,7 @@ const CarrierProfiles = props => {
   console.log(carrier)
   return (
     <>
+      <CustomNav />
       <div className="title-div">
         <h1>{carrier.carrierName}</h1>
       </div>

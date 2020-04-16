@@ -5,6 +5,7 @@ import './styles/load.scss'
 import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'
 import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
 import Moment from 'react-moment'
+import CustomNav from '../components/NavMenu/CustomNav'
 const Load = props => {
   console.log(props)
   const loadId = props.match.params.loadId
@@ -20,6 +21,7 @@ const Load = props => {
   }, [])
   return (
     <>
+      <CustomNav />
       <div className="title-div">
         <h1>Load #{load.id}</h1>
       </div>

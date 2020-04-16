@@ -1,8 +1,10 @@
 import React from 'react'
+import CustomNav from '../components/NavMenu/CustomNav'
 
 const NotFound = () => {
   return (
     <div>
+      <CustomNav />
       <h2>
         {Math.ceil(Math.random() * 100) % 2 === 0 ? (
           <span>🤷🏼‍♂️</span>

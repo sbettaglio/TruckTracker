@@ -4,9 +4,11 @@ import './styles/search.scss'
 import CarrierSearchContainer from '../components/SearchComponents/CarrierSearchContainer'
 import LoadSearchContainer from '../components/SearchComponents/LoadSearchContainer'
 import LoadTable from '../components/LoadTable/LoadTable'
+import CustomNav from '../components/NavMenu/CustomNav'
 const SearchPage = () => {
   return (
     <>
+      <CustomNav />
       <div className="title-div">
         <h1>Search</h1>
       </div>

@@ -3,6 +3,7 @@ import { Container } from 'reactstrap'
 import axios from 'axios'
 
 import LoadTable from '../components/LoadTable/LoadTable'
+import CustomNav from '../components/NavMenu/CustomNav'
 const Picks = () => {
   const [loads, setLoads] = useState({})
   const getTodaysPicks = async () => {
@@ -16,6 +17,7 @@ const Picks = () => {
   }, [])
   return (
     <>
+      <CustomNav />
       <div className="title-div">
         <h1>Today's Picks</h1>
       </div>

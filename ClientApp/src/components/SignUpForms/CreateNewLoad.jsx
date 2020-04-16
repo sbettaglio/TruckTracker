@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Form, FormGroup, Label, Input, Button, Row, Col } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import CustomNav from '../NavMenu/CustomNav'
 const CreateNewLoad = () => {
   const [load, setLoad] = useState({})
   const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
@@ -58,6 +59,7 @@ const CreateNewLoad = () => {
   } else {
     return (
       <>
+        <CustomNav />
         <Form>
           <Row>
             <Col md={8}>

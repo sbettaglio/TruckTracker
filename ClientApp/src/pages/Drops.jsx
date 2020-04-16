@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Container } from 'reactstrap'
 import axios from 'axios'
 import LoadTable from '../components/LoadTable/LoadTable'
+import CustomNav from '../components/NavMenu/CustomNav'
 
 const Drops = () => {
   const [loads, setLoads] = useState({})
@@ -16,6 +17,7 @@ const Drops = () => {
   }, [])
   return (
     <>
+      <CustomNav />
       <div className="title-div">
         <h1>Today's Drops</h1>
       </div>
