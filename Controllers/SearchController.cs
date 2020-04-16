@@ -64,7 +64,7 @@ namespace TruckTracker.Controllers
     public async Task<ActionResult> GetLateTrucks()
     {
 
-      var lateTrucks = _context.Loads.Where(l => l.PickEta > l.PickApp || l.DropEta > l.DropApp);
+      var lateTrucks = _context.Loads.Where(l => l.LoadStatus == "pickLate" || l.LoadStatus == "dropLate");
       return Ok(await lateTrucks.ToListAsync());
     }
 
