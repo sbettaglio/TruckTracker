@@ -24,22 +24,6 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <header className="navbar-dark bg-primary">
-          <nav>
-            <ul>
-              <li>
-                <Link className="navbar-brand" to="/register">
-                  Register
-                </Link>
-              </li>
-              <li>
-                <Link className="navbar-brand" to="/userHome">
-                  User Home
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
         <Switch>
           <Route exact path="/" component={LandingPage}></Route>
           <Route exact path="/register" component={Register}></Route>

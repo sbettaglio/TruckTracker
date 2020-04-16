@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
+
 import './styles/update-load.scss'
 const UpdateLoad = props => {
   console.log(props)
