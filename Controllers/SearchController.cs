@@ -46,7 +46,13 @@ namespace TruckTracker.Controllers
       var carrierInSystem = await _context.Carriers.FirstOrDefaultAsync(c => c.CarrierName.ToLower().Contains(search.ToLower()));
       return Ok(carrierInSystem);
     }
+    [HttpGet("loads/picktoday")]
+    public async Task<ActionResult> GetTodaysPicks()
+    {
 
+      var todaysPicks = _context.Loads.Where(l => l.PickApp.Date == DateTime.Now.Date);
+      return Ok(await todaysPicks.ToListAsync());
+    }
 
   }
 }
