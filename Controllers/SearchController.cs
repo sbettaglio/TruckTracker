@@ -53,6 +53,20 @@ namespace TruckTracker.Controllers
       var todaysPicks = _context.Loads.Where(l => l.PickApp.Date == DateTime.Now.Date);
       return Ok(await todaysPicks.ToListAsync());
     }
+    [HttpGet("loads/droptoday")]
+    public async Task<ActionResult> GetTodaysDrops()
+    {
+
+      var todaysDrops = _context.Loads.Where(l => l.DropApp.Date == DateTime.Now.Date);
+      return Ok(await todaysDrops.ToListAsync());
+    }
+    [HttpGet("loads/late")]
+    public async Task<ActionResult> GetLateTrucks()
+    {
+
+      var lateTrucks = _context.Loads.Where(l => l.PickEta > l.PickApp || l.DropEta > l.DropApp);
+      return Ok(await lateTrucks.ToListAsync());
+    }
 
   }
 }
