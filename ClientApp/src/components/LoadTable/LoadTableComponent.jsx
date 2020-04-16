@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap'
-const LoadTableComponent = ({ id, pCity, pApp, dCity, dApp }) => {
+const LoadTableComponent = ({ loadId, pCity, pApp, dCity, dApp }) => {
   return (
     <>
       <tr>
         <th scope="row">
-          <Link to="/loadtracker/{id}">{id}</Link>
+          <Link to={`/loadtracker/${loadId}`}>{loadId}</Link>
         </th>
         <td>{pCity}</td>
         <td>{pApp}</td>

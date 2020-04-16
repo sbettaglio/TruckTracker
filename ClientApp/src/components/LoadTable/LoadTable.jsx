@@ -24,7 +24,7 @@ const LoadTable = ({ slot1, slot2, slot3, slot4, slot5, results }) => {
               return (
                 <LoadTableComponent
                   key={result.id}
-                  id={result.id}
+                  loadId={result.id}
                   pCity={result.pickCity}
                   pApp={result.pickApp}
                   dCity={result.dropCity}

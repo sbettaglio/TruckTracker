@@ -87,7 +87,7 @@ const Load = props => {
             </Col>
           </Row>
         </Container>
-        {load.carrierId === null ? (
+        {load.carrierId !== null ? (
           <section>
             <h3>Assign Carrier</h3>
             <AssignCarrierToLoad id={load.id} load={load} />

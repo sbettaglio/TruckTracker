@@ -36,21 +36,8 @@ const AssignCarrierToLoad = ({ id, load }) => {
     const resp = await axios.put(`api/Loads/${id}/${carrier.mCNumber}`, load)
     console.log(resp.data)
     if (resp.status === 200) {
-      setWasSuccessfullyCreated({
-        shouldRedirect: true,
-        newLoadInformation: resp.data,
-      })
+      setCarrier(resp.data)
     }
-  }
-  if (wasSuccessfullyCreated.shouldRedirect) {
-    return (
-      <Redirect
-        to={{
-          pathname: `/loadtracker/update/${id}`,
-          state: { load: wasSuccessfullyCreated.newLoadInformation },
-        }}
-      />
-    )
   }
   return (
     <Container>
