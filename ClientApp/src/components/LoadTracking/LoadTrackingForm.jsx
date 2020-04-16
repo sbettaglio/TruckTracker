@@ -62,16 +62,16 @@ const LoadTrackingForm = props => {
                   onChange={trackLoad}
                 >
                   <option>{load.loadStatus}</option>
-                  <option value="available">Available</option>
-                  <option value="pickOnWay">Pick on way</option>
-                  <option value="pickLate">Pick late</option>
-                  <option value="atShipper">At shipper</option>
-                  <option value="loading">Loading</option>
-                  <option value="onRoute">On Route</option>
-                  <option value="rollingLate">Rolling Late</option>
-                  <option value="atDrop">At drop</option>
-                  <option value="unloading">Unloading</option>
-                  <option value="empty">Empty</option>
+                  <option value="Available">Available</option>
+                  <option value="Pick on way">Pick on way</option>
+                  <option value="Pick late">Pick late</option>
+                  <option value="At shipper">At shipper</option>
+                  <option value="Loading">Loading</option>
+                  <option value="On route">On Route</option>
+                  <option value="Rolling Late">Rolling Late</option>
+                  <option value="At Drop">At drop</option>
+                  <option value="Unloading">Unloading</option>
+                  <option value="Empty">Empty</option>
                 </Input>
               </FormGroup>
             </Col>
