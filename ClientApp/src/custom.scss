@@ -107,6 +107,17 @@ h4 {
   border: 1px solid $secondary;
   margin: 2rem 0.5rem 1rem 0.5rem;
   overflow: hidden;
+  .container {
+    padding: 0;
+    font-size: 0.7rem;
+  }
+}
+@media (min-width: 411px) {
+  .loads-main {
+    .container {
+      font-size: 0.8rem;
+    }
+  }
 }
 
 @media (min-width: 768px) {
@@ -115,8 +126,7 @@ h4 {
   }
   .table-responsive {
     margin-top: 2rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
+
     .user-home {
       height: 65vh;
       text-align: center;
@@ -155,8 +165,7 @@ h4 {
   }
   .table-responsive {
     margin-top: 3rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
+
     .user-home {
       height: 64vh;
       text-align: center;
@@ -190,5 +199,10 @@ h4 {
       font-size: 2rem;
       padding: 1rem;
     }
+  }
+}
+@media (min-width: 1200px) {
+  .loads-main {
+    margin: 2rem 2.5rem 1rem 2.5rem !important;
   }
 }

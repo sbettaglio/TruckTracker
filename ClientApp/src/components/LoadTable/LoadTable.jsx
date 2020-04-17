@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap'
 import LoadTableComponent from './LoadTableComponent'
 import LoadTableHeader from './LoadTableHeader'
@@ -8,7 +7,7 @@ const LoadTable = ({ slot1, slot2, slot3, slot4, slot5, results }) => {
   console.log(results)
   return (
     <>
-      <Table>
+      <Table responsive>
         <thead>
           <LoadTableHeader
             slot1={slot1}
