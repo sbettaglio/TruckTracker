@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Table } from 'reactstrap'
+import { Container } from 'reactstrap'
 import CustomNav from '../components/NavMenu/CustomNav'
-
-import HomeTable from '../components/HomeTable'
+import './styles/user-home.scss'
+import HomeTable from '../components/UserHomeComponents/HomeTable'
 
 const UserHome = () => {
   return (
@@ -13,11 +13,6 @@ const UserHome = () => {
         <h1>User Home Page</h1>
       </div>
       <HomeTable />
-      <form className="log-out">
-        <button type="button" className="btn btn-danger">
-          Sign Out
-        </button>
-      </form>
     </>
   )
 }
