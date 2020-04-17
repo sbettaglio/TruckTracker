@@ -6,6 +6,7 @@ import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'
 import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
 import Moment from 'react-moment'
 import CustomNav from '../components/NavMenu/CustomNav'
+import { isNull, isNullOrUndefined } from 'util'
 const Load = props => {
   console.log(props)
   const loadId = props.match.params.loadId

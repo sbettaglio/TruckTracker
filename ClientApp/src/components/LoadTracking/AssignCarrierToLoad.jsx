@@ -33,7 +33,8 @@ const AssignCarrierToLoad = ({ id, load }) => {
   }
   const saveCarrierToApi = async () => {
     console.log(carrier.mCNumber)
-    const resp = await axios.put(`api/Loads/${id}/${carrier.mCNumber}`, load)
+    console.log(load)
+    const resp = await axios.put(`api/Loads/${id}/${carrier.mCNumber}`)
     console.log(resp.data)
     if (resp.status === 200) {
       setCarrier(resp.data)

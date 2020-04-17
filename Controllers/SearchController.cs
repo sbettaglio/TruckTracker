@@ -71,7 +71,7 @@ namespace TruckTracker.Controllers
     public async Task<ActionResult> GetAvailableLoads()
     {
 
-      var availableLoads = _context.Loads.Where(l => l.LoadStatus.ToLower() == "available" || l.LoadStatus == null);
+      var availableLoads = _context.Loads.Where(l => l.LoadStatus == null);
       return Ok(await availableLoads.ToListAsync());
     }
 
