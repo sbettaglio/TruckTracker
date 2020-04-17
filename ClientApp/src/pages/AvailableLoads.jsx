@@ -34,9 +34,7 @@ const Picks = () => {
           </Container>
         ) : (
           <>
-            <Container>
-              <h2>All loads are covered</h2>
-            </Container>
+            <h2>All loads are covered</h2>
           </>
         )}
       </main>

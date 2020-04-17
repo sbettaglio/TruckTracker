@@ -35,9 +35,7 @@ const LateTrucks = () => {
           </Container>
         ) : (
           <>
-            <Container>
-              <h2>All trucks are on schedule</h2>
-            </Container>
+            <h2>All trucks are on schedule</h2>
           </>
         )}
       </main>

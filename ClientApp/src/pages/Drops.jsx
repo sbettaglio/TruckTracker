@@ -35,9 +35,7 @@ const Drops = () => {
           </Container>
         ) : (
           <>
-            <Container>
-              <h2>You have no drops scheduled today</h2>
-            </Container>
+            <h2>You have no drops scheduled today</h2>
           </>
         )}
       </main>

@@ -35,9 +35,7 @@ const Picks = () => {
           </Container>
         ) : (
           <>
-            <Container>
-              <h2>You have no picks scheduled today</h2>
-            </Container>
+            <h2>You have no picks scheduled today</h2>
           </>
         )}
       </main>
