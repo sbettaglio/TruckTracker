@@ -12,3 +12,41 @@
     color: white;
   }
 }
+@media (min-width: 768px) {
+  .container {
+    // background-color: $secondary;
+    .border-primary {
+      box-shadow: 3px 2px #375a7f;
+    }
+    .card-body {
+      padding: 2rem;
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    .border-primary {
+      box-shadow: 6px 4px #375a7f;
+    }
+    .card-body {
+      padding: 4rem;
+      .card-text a {
+        font-size: 2.4rem;
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 71%;
+    .card {
+      margin: 1rem;
+      .card-body {
+        padding: 6rem;
+        .card-text a {
+          font-size: 2.4rem;
+        }
+      }
+    }
+  }
+}
