@@ -1,8 +1,8 @@
-docker build -t TruckTracker-image .
+docker build -t sdg-truck-tracker-image .
 
-docker tag TruckTracker-image registry.heroku.com/TruckTracker/web
+docker tag sdg-truck-tracker-image registry.heroku.com/sdg-truck-tracker/web
 
 
-docker push registry.heroku.com/TruckTracker/web
+docker push registry.heroku.com/sdg-truck-tracker/web
 
-heroku container:release web -a TruckTracker
+heroku container:release web -a sdg-truck-tracker

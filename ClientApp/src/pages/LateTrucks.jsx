@@ -22,7 +22,7 @@ const LateTrucks = () => {
         <h1>Late Trucks</h1>
       </div>
       <main className="loads-main">
-        {loads !== undefined ? (
+        {loads > 0 ? (
           <Container>
             <LoadTable
               slot1="Id"
