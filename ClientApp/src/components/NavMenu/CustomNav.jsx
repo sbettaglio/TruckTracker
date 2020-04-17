@@ -18,12 +18,11 @@ const CustomNav = props => {
   const [isOpen, setIsOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(true)
 
-  const toggleNavbar = () => setCollapsed(!collapsed)
   const toggle = () => setIsOpen(!isOpen)
   return (
     <header className="bg-primary">
-      <Navbar color="primary" dark expand="md" sticky="top">
-        <NavbarBrand href="/">Truck Tracker</NavbarBrand>
+      <Navbar color="primary" dark expand="md" fixed="top">
+        <NavbarBrand href="/userhome">Truck Tracker</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav navbar>
