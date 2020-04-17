@@ -14,7 +14,7 @@
 }
 @media (min-width: 768px) {
   .container {
-    // background-color: $secondary;
+    // box-shadow: 1px 1px;
     .border-primary {
       box-shadow: 3px 2px #375a7f;
     }
@@ -38,7 +38,7 @@
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 71%;
+    max-width: 71% !important;
     .card {
       margin: 1rem;
       .card-body {

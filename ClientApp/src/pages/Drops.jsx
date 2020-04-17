@@ -22,7 +22,7 @@ const Drops = () => {
         <h1>Today's Drops</h1>
       </div>
       <main className="loads-main">
-        {loads !== undefined ? (
+        {loads > 0 ? (
           <Container>
             <LoadTable
               slot1="Id"
@@ -36,7 +36,7 @@ const Drops = () => {
         ) : (
           <>
             <Container>
-              <h2>You have no Drops scheduled today</h2>
+              <h2>You have no drops scheduled today</h2>
             </Container>
           </>
         )}

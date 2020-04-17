@@ -16,8 +16,7 @@ const HomeTable = () => {
           <Col sm={1} md={6} xl={4}>
             <HomeCard text="Late Trucks" link="late" />
           </Col>
-        </Row>
-        <Row>
+
           <Col sm={1} md={6} xl={4}>
             <HomeCard text="Available Loads" link="available" />
           </Col>
@@ -30,7 +29,7 @@ const HomeTable = () => {
           </Col>
         </Row>
         <Row>
-          <Col sm={1} md={12} xl={{ size: 6, offset: 3 }}>
+          <Col sm={1} md={{ size: 6, offset: 3 }}>
             <HomeCard text="Search" link="search" />
           </Col>
         </Row>
