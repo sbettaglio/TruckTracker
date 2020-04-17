@@ -109,6 +109,9 @@ h4 {
 }
 
 @media (min-width: 768px) {
+  .navbar-expand-md .navbar-collapse {
+    justify-content: flex-end;
+  }
   .table-responsive {
     margin-top: 2rem;
     padding-left: 3rem;
