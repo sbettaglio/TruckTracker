@@ -49,10 +49,10 @@ namespace TruckTracker.Controllers
     {
       // var load = _context.Loads.FirstOrDefault(l => l.Id == id);
       var carrier = _context.Carriers.FirstOrDefault(c => c.MCNumber == mCNumber);
-      var load = _context.Loads.FirstOrDefault(l => l.Id == id);
-      load.CarrierId = carrier.Id;
+      var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
+      loadToUpdate.CarrierId = carrier.Id;
       await _context.SaveChangesAsync();
-      return Ok(load.Id);
+      return Ok(loadToUpdate.CarrierId);
     }
     [HttpPut("{id}/update")]
     public async Task<ActionResult<Load>> UpdateLoadStatus(int id, Load load)

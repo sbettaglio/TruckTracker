@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Container } from 'reactstrap'
+
 import CustomNav from '../components/NavMenu/CustomNav'
 import './styles/user-home.scss'
 import HomeTable from '../components/UserHomeComponents/HomeTable'

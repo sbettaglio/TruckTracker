@@ -12,6 +12,7 @@ const UserRegistration = () => {
       prevUser[fieldToUpdate] = value
       return prevUser
     })
+    console.log(user)
   }
   return (
     <>

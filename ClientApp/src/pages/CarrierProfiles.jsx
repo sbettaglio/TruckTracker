@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { Container, Row, Col, Button } from 'reactstrap'
 import axios from 'axios'
 import Moment from 'react-moment'
 import './styles/carrier-profiles.scss'
 import CustomNav from '../components/NavMenu/CustomNav'
 const CarrierProfiles = props => {
-  console.log(props.match.params.carrierId)
   const carrierId = props.match.params.carrierId
-  const [carrier, setCarrier] = useState({})
+  const [carrier, setCarrier] = useState([])
   const getCarrierData = async () => {
     const resp = await axios.get(`api/Carriers/${carrierId}`)
     setCarrier(resp.data)
@@ -16,7 +14,7 @@ const CarrierProfiles = props => {
   useEffect(() => {
     getCarrierData()
   }, [])
-  console.log(carrier)
+
   return (
     <>
       <CustomNav />

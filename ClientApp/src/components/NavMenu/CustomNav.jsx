@@ -11,12 +11,10 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
 } from 'reactstrap'
 
 const CustomNav = props => {
   const [isOpen, setIsOpen] = useState(false)
-  const [collapsed, setCollapsed] = useState(true)
 
   const toggle = () => setIsOpen(!isOpen)
   return (
@@ -35,7 +33,7 @@ const CustomNav = props => {
                   <DropdownToggle nav caret>
                     Loads
                   </DropdownToggle>
-                  <DropdownMenu left>
+                  <DropdownMenu>
                     <DropdownItem>
                       <NavItem>
                         <NavLink href="/picks">Today's Picks</NavLink>

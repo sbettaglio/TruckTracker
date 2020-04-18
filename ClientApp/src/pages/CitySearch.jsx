@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Container } from 'reactstrap'
 import LoadTable from '../components/LoadTable/LoadTable'
 import CustomNav from '../components/NavMenu/CustomNav'

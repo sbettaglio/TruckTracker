@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import axios from 'axios'
 import './styles/load.scss'
 import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'
 import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
 import Moment from 'react-moment'
 import CustomNav from '../components/NavMenu/CustomNav'
-import { isNull, isNullOrUndefined } from 'util'
+
 const Load = props => {
   console.log(props)
   const loadId = props.match.params.loadId
@@ -90,7 +90,7 @@ const Load = props => {
             </Col>
           </Row>
         </Container>
-        {load.carrierId == null ? (
+        {load.carrierId === null ? (
           <section>
             <h3>Assign Carrier</h3>
             <AssignCarrierToLoad id={load.id} load={load} />

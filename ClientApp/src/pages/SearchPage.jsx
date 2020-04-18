@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Container, Form, Row } from 'reactstrap'
 import './styles/search.scss'
 import CarrierSearchContainer from '../components/SearchComponents/CarrierSearchContainer'
 import LoadSearchContainer from '../components/SearchComponents/LoadSearchContainer'
-import LoadTable from '../components/LoadTable/LoadTable'
+
 import CustomNav from '../components/NavMenu/CustomNav'
 const SearchPage = () => {
   return (

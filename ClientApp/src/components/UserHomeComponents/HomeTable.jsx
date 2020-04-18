@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Table, Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import HomeCard from './HomeCard'
 const HomeTable = () => {
   return (

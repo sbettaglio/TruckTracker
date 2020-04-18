@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Table } from 'reactstrap'
 import LoadTableComponent from './LoadTableComponent'
 import LoadTableHeader from './LoadTableHeader'

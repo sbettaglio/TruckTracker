@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Table } from 'reactstrap'
 const LoadTableComponent = ({ loadId, pCity, pApp, dCity, dApp }) => {
   return (
     <>

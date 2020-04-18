@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+
 import { Container } from 'reactstrap'
 import CreateNewLoad from '../components/SignUpForms/CreateNewLoad'
 import CustomNav from '../components/NavMenu/CustomNav'
