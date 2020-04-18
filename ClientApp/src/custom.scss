@@ -1,6 +1,7 @@
 /* Provide sufficient contrast against white background */
 
-@import 'bootstrap';
+@import 'bootstrap-customize.scss';
+
 :root {
   font: 16px / 1 sans-serif;
 }
