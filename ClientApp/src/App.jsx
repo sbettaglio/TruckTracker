@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import 'bootswatch/dist/slate/bootstrap.min.css'
+import 'bootswatch/dist/darkly/bootstrap.min.css'
 import UserHome from './pages/UserHome'
 import Register from './pages/Register'
 import NotFound from './pages/NotFound'
