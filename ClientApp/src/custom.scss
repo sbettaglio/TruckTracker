@@ -1,7 +1,5 @@
 /* Provide sufficient contrast against white background */
-@import '~bootswatch/dist/darkly/variables';
-@import '~bootstrap/scss/bootstrap';
-@import '~bootswatch/dist/darkly/bootswatch';
+
 @import 'bootstrap';
 :root {
   font: 16px / 1 sans-serif;
