@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import React from 'react'
 import {
   Container,
   Form,
@@ -10,7 +9,6 @@ import {
   Row,
   Col,
 } from 'reactstrap'
-import axios from 'axios'
 const AssignCarrierToLoad = ({ track, save }) => {
   return (
     <Container>
