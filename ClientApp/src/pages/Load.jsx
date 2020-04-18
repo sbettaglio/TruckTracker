@@ -10,11 +10,32 @@ import CustomNav from '../components/NavMenu/CustomNav'
 const Load = props => {
   console.log(props)
   const loadId = props.match.params.loadId
-  console.log(loadId)
+
   const [load, setLoad] = useState({})
+  const [carrier, setCarrier] = useState({})
   const getLoadData = async () => {
     const resp = await axios.get(`api/Loads/${loadId}`)
     setLoad(resp.data)
+  }
+  const trackInput = e => {
+    const fieldToUpdate = e.target.name
+    const value = e.target.value
+    if (fieldToUpdate === 'mCNumber') {
+      setCarrier(prevCarrier => {
+        prevCarrier[fieldToUpdate] = parseInt(value, 10)
+
+        return prevCarrier
+      })
+    }
+  }
+  const saveCarrierToApi = async () => {
+    const resp = await axios.put(`api/Loads/${load.id}/${carrier.mCNumber}`)
+    if (resp.status === 200) {
+      setLoad(prevLoad => {
+        console.log(prevLoad)
+        return { ...prevLoad, carrierId: resp.data }
+      })
+    }
   }
   console.log(load)
   useEffect(() => {
@@ -93,7 +114,7 @@ const Load = props => {
         {load.carrierId === null ? (
           <section>
             <h3>Assign Carrier</h3>
-            <AssignCarrierToLoad id={load.id} load={load} />
+            <AssignCarrierToLoad track={trackInput} save={saveCarrierToApi} />
           </section>
         ) : (
           <section>

@@ -11,49 +11,7 @@ import {
   Col,
 } from 'reactstrap'
 import axios from 'axios'
-const AssignCarrierToLoad = ({ id, load }) => {
-  console.log(load)
-  const [carrier, setCarrier] = useState({})
-  const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
-    shouldRedirect: false,
-    newLoadInformation: { load },
-  })
-  const trackInput = e => {
-    const fieldToUpdate = e.target.name
-    console.log(fieldToUpdate)
-    const value = e.target.value
-    console.log(value)
-    if (fieldToUpdate === 'mCNumber') {
-      setCarrier(prevCarrier => {
-        prevCarrier[fieldToUpdate] = parseInt(value, 10)
-
-        return prevCarrier
-      })
-    }
-  }
-  const saveCarrierToApi = async () => {
-    console.log(carrier.mCNumber)
-
-    const resp = await axios.put(`api/Loads/${id}/${carrier.mCNumber}`)
-    console.log(resp.data)
-    if (resp.status === 200) {
-      setWasSuccessfullyCreated({
-        shouldRedirect: true,
-        newLoadInformation: resp.data,
-      })
-      console.log(wasSuccessfullyCreated.newLoadInformation)
-    }
-  }
-  if (wasSuccessfullyCreated.shouldRedirect) {
-    return (
-      <Redirect
-        to={{
-          pathname: `/loadtracker/${wasSuccessfullyCreated.newLoadInformation.id}`,
-          state: { load: wasSuccessfullyCreated.newLoadInformation },
-        }}
-      />
-    )
-  }
+const AssignCarrierToLoad = ({ track, save }) => {
   return (
     <Container>
       <Form>
@@ -61,22 +19,18 @@ const AssignCarrierToLoad = ({ id, load }) => {
           <Col sm={12} lg={8}>
             <FormGroup>
               <Label>Carrier MC</Label>
-              <Input
-                type="number"
-                name="mCNumber"
-                onChange={trackInput}
-              ></Input>
+              <Input type="number" name="mCNumber" onChange={track}></Input>
             </FormGroup>
           </Col>
           <Col sm={12} lg={8}>
             <FormGroup>
               <Label>Contact</Label>
-              <Input type="text" name="contact" onChange={trackInput}></Input>
+              <Input type="text" name="contact"></Input>
             </FormGroup>
           </Col>
           <Col sm={12} lg={4}>
             <FormGroup className="button-bottom">
-              <Button className="btn-success" onClick={saveCarrierToApi}>
+              <Button className="btn-success" onClick={save}>
                 Assign
               </Button>
             </FormGroup>
