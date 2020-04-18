@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import { Row, Col } from 'reactstrap'
 import axios from 'axios'
 import './styles/load.scss'
 import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'
@@ -38,8 +38,7 @@ const Load = props => {
     }
     console.log(value)
     setLoad(prevLoad => {
-      prevLoad[fieldToUpdate] = value
-      return prevLoad
+      return { ...prevLoad, [fieldToUpdate]: value }
     })
   }
   const saveCarrierToApi = async () => {
@@ -71,6 +70,7 @@ const Load = props => {
       </div>
       <main>
         <LoadInfoDisplay load={load} />
+
         {load.carrierId === null ? (
           <section>
             <h3>Assign Carrier</h3>
@@ -78,7 +78,6 @@ const Load = props => {
           </section>
         ) : (
           <section>
-            <h3>Update</h3>
             <LoadTrackingForm
               load={load}
               track={trackLoad}

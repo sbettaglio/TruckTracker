@@ -51,8 +51,8 @@ const LoadTrackingForm = ({ load, track, save }) => {
                   name="loadStatus"
                   id="loadStatus"
                   onChange={track}
+                  value={load.loadStatus}
                 >
-                  <option>{load.loadStatus}</option>
                   <option value="Available">Available</option>
                   <option value="Pick on way">Pick on way</option>
                   <option value="Pick late">Pick late</option>
@@ -98,6 +98,7 @@ const LoadTrackingForm = ({ load, track, save }) => {
                   name="pickCheckOut"
                   type="datetime-local"
                   onChange={track}
+                  value={load.pickCheckOut}
                 ></Input>
               </FormGroup>
             </Col>
@@ -111,6 +112,7 @@ const LoadTrackingForm = ({ load, track, save }) => {
                   name="dropEta"
                   type="datetime-local"
                   onChange={track}
+                  value={load.dropEta}
                 ></Input>
               </FormGroup>
             </Col>
@@ -121,6 +123,7 @@ const LoadTrackingForm = ({ load, track, save }) => {
                 <Input
                   name="dropCheckIn"
                   type="datetime-local"
+                  value={load.dropCheckIn}
                   onChange={track}
                 ></Input>
               </FormGroup>
@@ -131,6 +134,7 @@ const LoadTrackingForm = ({ load, track, save }) => {
                 <Input
                   name="dropCheckOut"
                   type="datetime-local"
+                  value={load.dropCheckOut}
                   onChange={track}
                 ></Input>
               </FormGroup>
