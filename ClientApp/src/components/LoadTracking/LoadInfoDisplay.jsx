@@ -1,69 +1,48 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import Moment from 'react-moment'
+import LoadInfoDataComponent from './LoadInfoDataComponent'
+import LoadInfoTimeComponent from './LoadInfoTimeComponent'
 const LoadInfoDisplay = ({ load }) => {
   return (
     <>
       <Container>
         <Row>
           <Col lg={12}>
-            <section>
-              <h4>P/U City</h4>
-              <p>{load.pickCity}</p>
-            </section>
+            <LoadInfoDataComponent text="P/U City" data={load.pickCity} />
           </Col>
           <Col>
-            <section>
-              <h4>P/U Date</h4>
-              <p>
-                <Moment format="MM-DD-YYYY HH:mm">{load.pickApp}</Moment>
-              </p>
-            </section>
+            <LoadInfoTimeComponent text="P/U Date" date={load.pickApp} />
           </Col>
         </Row>
         <Row>
           <Col lg={12}>
-            <section>
-              <h4>D/O City</h4>
-              <p>{load.dropCity}</p>
-            </section>
+            <LoadInfoDataComponent text="D/O City" data={load.dropCity} />
           </Col>
           <Col>
-            <section>
-              <h4>D/O Date</h4>
-              <p>
-                <Moment format="MM-DD-YYYY HH:mm">{load.dropApp}</Moment>
-              </p>
-            </section>
+            <LoadInfoTimeComponent text="D/O Date" date={load.dropApp} />
           </Col>
         </Row>
         <Row>
           <Col lg={12}>
-            <section>
-              <h4>Commodity</h4>
-              <p>{load.commodity}</p>
-            </section>
+            <LoadInfoDataComponent text="Commodity" data={load.commodity} />
           </Col>
           <Col>
-            <section>
-              <h4>Distance</h4>
-              <p>220 miles</p>
-            </section>
+            <LoadInfoDataComponent text="Distance" data={load.distance} />
           </Col>
         </Row>
         <Row>
           <Col lg={12}>
-            <section>
-              <h4>Customer Rate:</h4>
-              <p>${load.customerRate}.00</p>
-            </section>
+            <LoadInfoDataComponent
+              text="Customer Rate"
+              data={load.customerRate}
+            />
           </Col>
 
           <Col>
-            <section>
-              <h4>Carrier Rate:</h4>
-              <p>${load.carrierRate}.00</p>
-            </section>
+            <LoadInfoDataComponent
+              text="Carrier Rate"
+              data={load.carrierRate}
+            />
           </Col>
         </Row>
       </Container>
