@@ -21,7 +21,7 @@ const Drops = () => {
       <div className="title-div">
         <h1>Today's Drops</h1>
       </div>
-      <main className="loads-main">
+      <main>
         {loads.length > 0 ? (
           <Container>
             <LoadTable

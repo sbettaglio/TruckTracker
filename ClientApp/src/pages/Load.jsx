@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col } from 'reactstrap'
 import axios from 'axios'
 import './styles/load.scss'
 import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'

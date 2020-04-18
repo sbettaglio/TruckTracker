@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 const HomeCard = ({ text, link }) => {
-  const [tooltipOpen, setTooltipOpen] = useState(false)
-
-  const toggle = () => setTooltipOpen(!tooltipOpen)
   return (
     <>
       <div className="card border-primary bg-secondary mb-3">

@@ -17,7 +17,7 @@ const Drops = props => {
       <div className="title-div">
         <h1>{cityCapitalized} Load History</h1>
       </div>
-      <main className="loads-main">
+      <main>
         {results.length > 0 ? (
           <Container>
             <LoadTable

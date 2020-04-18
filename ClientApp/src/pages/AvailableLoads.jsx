@@ -17,7 +17,7 @@ const Picks = () => {
   return (
     <>
       <CustomNav />
-      <div className="title-div">
+      <div>
         <h1>Available Loads</h1>
       </div>
       <main className="loads-main">

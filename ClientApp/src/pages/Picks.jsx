@@ -21,7 +21,7 @@ const Picks = () => {
       <div className="title-div">
         <h1>Today's Picks</h1>
       </div>
-      <main className="loads-main">
+      <main>
         {loads.length > 0 ? (
           <Container>
             <LoadTable
