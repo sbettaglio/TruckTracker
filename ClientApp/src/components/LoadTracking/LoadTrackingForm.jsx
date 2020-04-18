@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 import {
   Container,
   Row,
@@ -10,40 +9,33 @@ import {
   Input,
   Button,
 } from 'reactstrap'
-const LoadTrackingForm = props => {
-  console.log(props)
-  const { id } = props
+const LoadTrackingForm = ({ load, track, save }) => {
+  // const trackLoad = e => {
+  //   const fieldToUpdate = e.target.name
+  //   console.log(fieldToUpdate)
+  //   let value = e.target.value
+  //   if (value === 'on') {
+  //     value = true
+  //   }
+  //   console.log(value)
+  //   setLoad(prevLoad => {
+  //     prevLoad[fieldToUpdate] = value
+  //     return prevLoad
+  //   })
+  // }
 
-  const [load, setLoad] = useState({})
-  const trackLoad = e => {
-    const fieldToUpdate = e.target.name
-    console.log(fieldToUpdate)
-    let value = e.target.value
-    if (value === 'on') {
-      value = true
-    }
-    console.log(value)
-    setLoad(prevLoad => {
-      prevLoad[fieldToUpdate] = value
-      return prevLoad
-    })
-  }
-  const getLoadData = async () => {
-    const resp = await axios.get(`api/Loads/${id}`)
-    setLoad(resp.data)
-  }
-  const sendLoadUpdateToApi = async () => {
-    // console.log('updating', load)
-    const resp = await axios.put(`api/Loads/${id}/update`, load)
-    if (resp.status === 200) {
-      setLoad(resp.data)
-      alert('Load has been updated')
-    }
-  }
+  // const sendLoadUpdateToApi = async () => {
+  //   // console.log('updating', load)
+  //   const resp = await axios.put(`api/Loads/${id}/update`, load)
+  //   if (resp.status === 200) {
+  //     setLoad(resp.data)
+  //     alert('Load has been updated')
+  //   }
+  // }
 
-  useEffect(() => {
-    getLoadData()
-  }, [])
+  // useEffect(() => {
+  //   getLoadData()
+  // }, [])
 
   return (
     <>
@@ -58,7 +50,7 @@ const LoadTrackingForm = props => {
                   type="select"
                   name="loadStatus"
                   id="loadStatus"
-                  onChange={trackLoad}
+                  onChange={track}
                 >
                   <option>{load.loadStatus}</option>
                   <option value="Available">Available</option>
@@ -83,8 +75,8 @@ const LoadTrackingForm = props => {
                   name="pickEta"
                   type="datetime-local"
                   id="exampleDateTime"
-                  onChange={trackLoad}
-                  // value={load.pickEta}
+                  onChange={track}
+                  value={load.pickEta}
                 ></Input>
               </FormGroup>
             </Col>
@@ -94,7 +86,8 @@ const LoadTrackingForm = props => {
                 <Input
                   name="pickCheckIn"
                   type="datetime-local"
-                  onChange={trackLoad}
+                  onChange={track}
+                  value={load.pickCheckIn}
                 ></Input>
               </FormGroup>
             </Col>
@@ -104,7 +97,7 @@ const LoadTrackingForm = props => {
                 <Input
                   name="pickCheckOut"
                   type="datetime-local"
-                  onChange={trackLoad}
+                  onChange={track}
                 ></Input>
               </FormGroup>
             </Col>
@@ -117,7 +110,7 @@ const LoadTrackingForm = props => {
                 <Input
                   name="dropEta"
                   type="datetime-local"
-                  onChange={trackLoad}
+                  onChange={track}
                 ></Input>
               </FormGroup>
             </Col>
@@ -128,7 +121,7 @@ const LoadTrackingForm = props => {
                 <Input
                   name="dropCheckIn"
                   type="datetime-local"
-                  onChange={trackLoad}
+                  onChange={track}
                 ></Input>
               </FormGroup>
             </Col>
@@ -138,7 +131,7 @@ const LoadTrackingForm = props => {
                 <Input
                   name="dropCheckOut"
                   type="datetime-local"
-                  onChange={trackLoad}
+                  onChange={track}
                 ></Input>
               </FormGroup>
             </Col>
@@ -146,7 +139,7 @@ const LoadTrackingForm = props => {
           <Row>
             <Col>
               <FormGroup className="registration-button">
-                <Button className="btn-success" onClick={sendLoadUpdateToApi}>
+                <Button className="btn-success" onClick={save}>
                   Save
                 </Button>
               </FormGroup>

@@ -29,6 +29,19 @@ const Load = props => {
       })
     }
   }
+  const trackLoad = e => {
+    const fieldToUpdate = e.target.name
+    console.log(fieldToUpdate)
+    let value = e.target.value
+    if (value === 'on') {
+      value = true
+    }
+    console.log(value)
+    setLoad(prevLoad => {
+      prevLoad[fieldToUpdate] = value
+      return prevLoad
+    })
+  }
   const saveCarrierToApi = async () => {
     const resp = await axios.put(`api/Loads/${load.id}/${carrier.mCNumber}`)
     if (resp.status === 200) {
@@ -36,6 +49,14 @@ const Load = props => {
         console.log(prevLoad)
         return { ...prevLoad, carrierId: resp.data }
       })
+    }
+  }
+  const sendLoadUpdateToApi = async () => {
+    // console.log('updating', load)
+    const resp = await axios.put(`api/Loads/${load.id}/update`, load)
+    if (resp.status === 200) {
+      setLoad(resp.data)
+      alert('Load has been updated')
     }
   }
   console.log(load)
@@ -58,7 +79,11 @@ const Load = props => {
         ) : (
           <section>
             <h3>Update</h3>
-            <LoadTrackingForm id={load.id} />
+            <LoadTrackingForm
+              load={load}
+              track={trackLoad}
+              save={sendLoadUpdateToApi}
+            />
           </section>
         )}
       </main>
