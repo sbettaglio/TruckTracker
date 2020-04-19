@@ -5,13 +5,12 @@ const UserRegistration = () => {
   const [user, setUser] = useState({})
   const trackInput = e => {
     const fieldToUpdate = e.target.name
-    console.log(fieldToUpdate)
     const value = e.target.value
-    console.log(value)
     setUser(prevUser => {
-      prevUser[fieldToUpdate] = value
-      return prevUser
+      return { ...prevUser, [fieldToUpdate]: value }
     })
+  }
+  const sendUserRegistrationToApi = () => {
     console.log(user)
   }
   return (
@@ -94,7 +93,12 @@ const UserRegistration = () => {
           </Col>
         </Row>
         <Row className="registration-button">
-          <Button className="btn btn-success">Register</Button>
+          <Button
+            className="btn btn-success"
+            onClick={sendUserRegistrationToApi}
+          >
+            Register
+          </Button>
         </Row>
       </Form>
     </>

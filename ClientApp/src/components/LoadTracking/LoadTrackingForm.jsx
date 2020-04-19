@@ -10,33 +10,6 @@ import {
   Button,
 } from 'reactstrap'
 const LoadTrackingForm = ({ load, track, save }) => {
-  // const trackLoad = e => {
-  //   const fieldToUpdate = e.target.name
-  //   console.log(fieldToUpdate)
-  //   let value = e.target.value
-  //   if (value === 'on') {
-  //     value = true
-  //   }
-  //   console.log(value)
-  //   setLoad(prevLoad => {
-  //     prevLoad[fieldToUpdate] = value
-  //     return prevLoad
-  //   })
-  // }
-
-  // const sendLoadUpdateToApi = async () => {
-  //   // console.log('updating', load)
-  //   const resp = await axios.put(`api/Loads/${id}/update`, load)
-  //   if (resp.status === 200) {
-  //     setLoad(resp.data)
-  //     alert('Load has been updated')
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getLoadData()
-  // }, [])
-
   return (
     <>
       <Container>
