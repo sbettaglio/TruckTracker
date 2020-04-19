@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import axios from 'axios'
 
 const UserRegistration = () => {
   const [user, setUser] = useState({})
@@ -10,8 +11,10 @@ const UserRegistration = () => {
       return { ...prevUser, [fieldToUpdate]: value }
     })
   }
-  const sendUserRegistrationToApi = () => {
+  const sendUserRegistrationToApi = async () => {
     console.log(user)
+    const resp = await axios.post('/auth/signup', user)
+    console.log(resp.data)
   }
   return (
     <>
