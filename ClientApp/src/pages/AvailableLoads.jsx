@@ -17,10 +17,10 @@ const Picks = () => {
   return (
     <>
       <CustomNav />
-      <div>
+      <div className="title-div">
         <h1>Available Loads</h1>
       </div>
-      <main className="loads-main">
+      <main>
         {loads.length > 0 ? (
           <Container>
             <LoadTable

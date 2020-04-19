@@ -11,6 +11,7 @@ const LateTrucks = () => {
     console.log(resp.data)
     setLoads(resp.data)
   }
+  console.log(loads.length)
 
   useEffect(() => {
     getLateTrucks()
