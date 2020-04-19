@@ -13,7 +13,7 @@ const UserRegistration = () => {
   }
   const sendUserRegistrationToApi = async () => {
     console.log(user)
-    const resp = await axios.post('/auth/signup', user)
+    const resp = await axios.post('/auth/register', user)
     console.log(resp.data)
   }
   return (

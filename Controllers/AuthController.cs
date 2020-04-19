@@ -7,9 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TruckTracker.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
+  [Route("auth")]
+  [ApiController]
+  public class AuthController : ControllerBase
+  {
+    [HttpPost("register")]
+    public async Task<ActionResult> RegisterUser()
     {
+      return Ok();
     }
+  }
 }
