@@ -12,9 +12,13 @@ const UserRegistration = () => {
     })
   }
   const sendUserRegistrationToApi = async () => {
-    console.log(user)
-    const resp = await axios.post('/auth/register', user)
-    console.log(resp.data)
+    console.log(user.password.length)
+    if (user.password.length < 5) {
+      return alert('Password must be at least five characters.')
+    } else {
+      const resp = await axios.post('/auth/register', user)
+      console.log(resp.data)
+    }
   }
   return (
     <>
