@@ -16,8 +16,17 @@ const UserRegistration = () => {
     if (user.password.length < 5) {
       return alert('Password must be at least five characters.')
     } else {
-      const resp = await axios.post('/auth/register', user)
-      console.log(resp.data)
+      const resp = await axios
+        .post('/auth/register', user)
+        .catch(function(error) {
+          if (error.response) {
+            console.log(error.response.data)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+          }
+          console.log(error.config)
+          alert(error.response.data)
+        })
     }
   }
   return (
