@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TruckTracker.Models;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace TruckTracker
 {
@@ -32,10 +35,22 @@ namespace TruckTracker
         configuration.RootPath = "ClientApp/build";
       });
       services.AddSwaggerGen(c =>
-{
-  c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-});
+      {
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+      });
       services.AddDbContext<DatabaseContext>();
+
+      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+      {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+          ValidateIssuer = false,
+          ValidateAudience = false,
+          ValidateIssuerSigningKey = true,
+
+          IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("SOME REALLY LONG STRING"))
+        };
+      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +81,8 @@ namespace TruckTracker
       });
       app.UseRouting();
 
+      app.UseAuthentication();
+      app.UseAuthorization();
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllerRoute(
