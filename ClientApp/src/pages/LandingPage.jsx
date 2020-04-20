@@ -4,6 +4,7 @@ import axios from 'axios'
 const LandingPage = () => {
   const [emailLogin, setEmailLogin] = useState('')
   const [passwordLogin, setPasswordLogin] = useState('')
+  const [token, setToken] = useState('')
 
   const logUserIntoApi = async () => {
     const resp = await axios.post('auth/login', {
@@ -11,6 +12,16 @@ const LandingPage = () => {
       password: passwordLogin,
     })
     console.log(resp)
+    setToken(resp.data.token)
+  }
+  const getSecretInformation = async () => {
+    console.log(token)
+    const resp = await axios.get('/api/secret', {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    console.log(resp.data)
   }
   return (
     <>
@@ -18,6 +29,7 @@ const LandingPage = () => {
         <div className="title-div">
           <h1>Truck Tracker</h1>
         </div>
+        <Button onClick={getSecretInformation}>Get Secret!</Button>
         <Form>
           <FormGroup>
             <Label for="email">Email</Label>

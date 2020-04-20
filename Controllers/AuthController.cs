@@ -39,7 +39,7 @@ namespace TruckTracker.Controllers
       }),
         Expires = expirationTime,
         SigningCredentials = new SigningCredentials(
-               new SymmetricSecurityKey(Encoding.ASCII.GetBytes("SOME REALLY LONG SECRET STRING")),
+               new SymmetricSecurityKey(Encoding.ASCII.GetBytes("SOME REALLY LONG STRING")),
               SecurityAlgorithms.HmacSha256Signature
           )
       };
