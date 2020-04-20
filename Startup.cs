@@ -48,7 +48,7 @@ namespace TruckTracker
           ValidateAudience = false,
           ValidateIssuerSigningKey = true,
 
-          IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("SOME REALLY LONG STRING"))
+          IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JWT_KEY"]))
         };
       });
     }
