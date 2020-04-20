@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 const UserRegistration = () => {
   const [user, setUser] = useState({})
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   const trackInput = e => {
     const fieldToUpdate = e.target.name
     const value = e.target.value
@@ -23,8 +25,14 @@ const UserRegistration = () => {
             alert(error.response.data)
           }
         })
-      localStorage.setItem('token', resp.data.token)
+      if (resp.status === 200) {
+        localStorage.setItem('token', resp.data.token)
+        setShouldRedirect(true)
+      }
     }
+  }
+  if (shouldRedirect) {
+    return <Redirect to="/userHome" />
   }
   return (
     <>
