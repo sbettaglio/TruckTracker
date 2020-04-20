@@ -24,6 +24,32 @@ namespace TruckTracker.Controllers
     {
       _context = context;
     }
+
+    private object CreateJWT(User user)
+    {
+      var expirationTime = DateTime.UtcNow.AddHours(10);
+
+      var tokenDescriptor = new SecurityTokenDescriptor
+      {
+        Subject = new ClaimsIdentity(new[]
+        {
+            new Claim("id", user.Id.ToString()),
+            new Claim("email", user.Email),
+            new Claim("name", user.FullName)
+      }),
+        Expires = expirationTime,
+        SigningCredentials = new SigningCredentials(
+               new SymmetricSecurityKey(Encoding.ASCII.GetBytes("SOME REALLY LONG SECRET STRING")),
+              SecurityAlgorithms.HmacSha256Signature
+          )
+      };
+      var tokenHandler = new JwtSecurityTokenHandler();
+      var token = tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
+
+
+      return token;
+    }
+
     [HttpPost("register")]
     public async Task<ActionResult> RegisterUser(NewUser newUser)
     {
@@ -87,8 +113,8 @@ namespace TruckTracker.Controllers
 
       if (results == PasswordVerificationResult.Success)
       {
-
-        return Ok();
+        user.HashedPassword = null;
+        return Ok(new { Token = CreateJWT(user), user = user });
       }
       else
       {
