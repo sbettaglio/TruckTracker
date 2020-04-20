@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom'
 import UserHome from './pages/UserHome'
 import Register from './pages/Register'
 import NotFound from './pages/NotFound'
@@ -25,7 +30,17 @@ export default class App extends Component {
         <Switch>
           <Route exact path="/" component={LandingPage}></Route>
           <Route exact path="/register" component={Register}></Route>
-          <Route exact path="/userHome" component={UserHome}></Route>
+          <Route
+            exact
+            path="/userHome"
+            render={() => {
+              if (localStorage.getItem('token')) {
+                return <UserHome />
+              } else {
+                return <Redirect to="/" />
+              }
+            }}
+          ></Route>
           <Route exact path="/picks" component={Picks}></Route>
           <Route exact path="/available" component={AvailableLoads}></Route>
           <Route exact path="/drops" component={Drops}></Route>
