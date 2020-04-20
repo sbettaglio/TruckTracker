@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace TruckTracker.ViewModels
 {
   public class NewUser
@@ -6,6 +8,7 @@ namespace TruckTracker.ViewModels
     public string Username { get; set; }
     public string Company { get; set; }
     public string Position { get; set; }
+    [JsonIgnore]
     public string Password { get; set; }
     public string Email { get; set; }
   }
