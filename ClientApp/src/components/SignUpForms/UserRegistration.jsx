@@ -20,13 +20,10 @@ const UserRegistration = () => {
         .post('/auth/register', user)
         .catch(function(error) {
           if (error.response) {
-            console.log(error.response.data)
-            console.log(error.response.status)
-            console.log(error.response.headers)
+            alert(error.response.data)
           }
-          console.log(error.config)
-          alert(error.response.data)
         })
+      localStorage.setItem('token', resp.data.token)
     }
   }
   return (

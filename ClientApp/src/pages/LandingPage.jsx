@@ -55,10 +55,13 @@ const LandingPage = () => {
             ></Input>
           </FormGroup>
 
-          <Button className="btn btn-primary" onClick={logUserIntoApi}>
+          <Button className="btn btn-success" onClick={logUserIntoApi}>
             Log In
           </Button>
         </Form>
+        <Button className="btn btn-info" href="/register">
+          Register
+        </Button>
       </main>
     </>
   )
