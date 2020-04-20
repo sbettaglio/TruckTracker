@@ -15,6 +15,7 @@ import AvailableLoads from './pages/AvailableLoads'
 import UpdateLoad from './pages/UpdateLoad'
 import SearchPage from './pages/SearchPage'
 import CitySearch from './pages/CitySearch'
+import LandingPage from './pages/LandingPage'
 export default class App extends Component {
   static displayName = App.name
 
@@ -22,9 +23,9 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          {/* <Route exact path="/" component={LandingPage}></Route> */}
+          <Route exact path="/" component={LandingPage}></Route>
           <Route exact path="/register" component={Register}></Route>
-          <Route exact path="/" component={UserHome}></Route>
+          <Route exact path="/userHome" component={UserHome}></Route>
           <Route exact path="/picks" component={Picks}></Route>
           <Route exact path="/available" component={AvailableLoads}></Route>
           <Route exact path="/drops" component={Drops}></Route>

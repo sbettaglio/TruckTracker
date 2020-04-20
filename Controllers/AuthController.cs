@@ -74,5 +74,27 @@ namespace TruckTracker.Controllers
       user.HashedPassword = null;
       return Ok(new { Token = token, user = user });
     }
+
+    [HttpPost("login")]
+    public async Task<ActionResult> Login(UserLogin userLogin)
+    {
+      var user = await _context.Users.FirstOrDefaultAsync(user => user.Email.ToLower() == userLogin.Email.ToLower());
+      if (user == null)
+      {
+        return BadRequest("User does not exist");
+      }
+      var results = new PasswordHasher<User>().VerifyHashedPassword(user, user.HashedPassword, userLogin.Password);
+
+      if (results == PasswordVerificationResult.Success)
+      {
+
+        return Ok();
+      }
+      else
+      {
+        return BadRequest("Incorrect password!");
+      }
+    }
+
   }
 }
