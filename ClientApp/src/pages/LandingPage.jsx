@@ -1,35 +1,31 @@
 import React, { useState } from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 const LandingPage = () => {
   const [emailLogin, setEmailLogin] = useState('')
   const [passwordLogin, setPasswordLogin] = useState('')
-  const [token, setToken] = useState('')
-
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   const logUserIntoApi = async () => {
     const resp = await axios.post('auth/login', {
       email: emailLogin,
       password: passwordLogin,
     })
-    console.log(resp)
-    setToken(resp.data.token)
+    if (resp.status === 200) {
+      localStorage.setItem('token', resp.data.token)
+      setShouldRedirect(true)
+    }
   }
-  const getSecretInformation = async () => {
-    console.log(token)
-    const resp = await axios.get('/api/secret', {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      },
-    })
-    console.log(resp.data)
+  if (shouldRedirect) {
+    return <Redirect to="/userHome" />
   }
+
   return (
     <>
       <main className="login">
         <div className="title-div">
           <h1>Truck Tracker</h1>
         </div>
-        <Button onClick={getSecretInformation}>Get Secret!</Button>
         <Form>
           <FormGroup>
             <Label for="email">Email</Label>
