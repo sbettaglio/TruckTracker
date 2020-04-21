@@ -6,9 +6,7 @@ const HomeCard = ({ text, link }) => {
       <div className="card border-primary bg-secondary mb-3">
         <div className="card-body">
           <h4 className="card-text">
-            <Link to={`/${link}`} href="#" id="TooltipExample">
-              {text}
-            </Link>
+            <Link to={{ pathname: `/${link}` }}>{text}</Link>
           </h4>
         </div>
       </div>

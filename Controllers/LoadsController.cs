@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +13,7 @@ namespace TruckTracker.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
+  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   public class LoadsController : ControllerBase
   {
     private readonly DatabaseContext _context;
@@ -47,16 +50,19 @@ namespace TruckTracker.Controllers
     [HttpPut("{id}/{mCNumber}")]
     public async Task<ActionResult<Load>> AddCarrierToLoad(int id, int mCNumber)
     {
-      // var load = _context.Loads.FirstOrDefault(l => l.Id == id);
+      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
+
       var carrier = _context.Carriers.FirstOrDefault(c => c.MCNumber == mCNumber);
       var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
       loadToUpdate.CarrierId = carrier.Id;
+      loadToUpdate.UserId = userId;
       await _context.SaveChangesAsync();
       return Ok(loadToUpdate.CarrierId);
     }
     [HttpPut("{id}/update")]
     public async Task<ActionResult<Load>> UpdateLoadStatus(int id, Load load)
     {
+      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
       var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
       loadToUpdate.LoadStatus = load.LoadStatus;
       loadToUpdate.PickCheckIn = load.PickCheckIn;
@@ -72,6 +78,8 @@ namespace TruckTracker.Controllers
     [HttpPost]
     public async Task<ActionResult<Load>> PostLoad(Load load)
     {
+      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
+      load.UserId = userId;
       _context.Loads.Add(load);
       await _context.SaveChangesAsync();
 

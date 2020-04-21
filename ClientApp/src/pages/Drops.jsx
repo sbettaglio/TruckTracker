@@ -7,7 +7,11 @@ import CustomNav from '../components/NavMenu/CustomNav'
 const Drops = () => {
   const [loads, setLoads] = useState({})
   const getTodaysDrops = async () => {
-    const resp = await axios.get('api/search/loads/droptoday')
+    const resp = await axios.get('api/search/loads/droptoday', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
     console.log(resp.data)
     setLoads(resp.data)
   }

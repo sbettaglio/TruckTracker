@@ -1,18 +1,14 @@
-using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace TruckTracker.Models
+namespace TruckTracker.ViewModels
 {
-  public class User
+  public class NewUser
   {
-    public int Id { get; set; }
     public string FullName { get; set; }
     public string Username { get; set; }
     public string Company { get; set; }
     public string Position { get; set; }
-    [JsonIgnore]
-    public string HashedPassword { get; set; }
+    public string Password { get; set; }
     public string Email { get; set; }
-    public List<Load> Loads { get; set; } = new List<Load>();
   }
 }

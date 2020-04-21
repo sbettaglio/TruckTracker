@@ -1,18 +1,38 @@
 import React, { useState } from 'react'
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Redirect } from 'react-router-dom'
+import axios from 'axios'
 
 const UserRegistration = () => {
   const [user, setUser] = useState({})
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   const trackInput = e => {
     const fieldToUpdate = e.target.name
-    console.log(fieldToUpdate)
     const value = e.target.value
-    console.log(value)
     setUser(prevUser => {
-      prevUser[fieldToUpdate] = value
-      return prevUser
+      return { ...prevUser, [fieldToUpdate]: value }
     })
-    console.log(user)
+  }
+  const sendUserRegistrationToApi = async () => {
+    console.log(user.password.length)
+    if (user.password.length < 5) {
+      return alert('Password must be at least five characters.')
+    } else {
+      const resp = await axios
+        .post('/auth/register', user)
+        .catch(function(error) {
+          if (error.response) {
+            alert(error.response.data)
+          }
+        })
+      if (resp.status === 200) {
+        localStorage.setItem('token', resp.data.token)
+        setShouldRedirect(true)
+      }
+    }
+  }
+  if (shouldRedirect) {
+    return <Redirect to="/userHome" />
   }
   return (
     <>
@@ -94,7 +114,12 @@ const UserRegistration = () => {
           </Col>
         </Row>
         <Row className="registration-button">
-          <Button className="btn btn-success">Register</Button>
+          <Button
+            className="btn btn-success"
+            onClick={sendUserRegistrationToApi}
+          >
+            Register
+          </Button>
         </Row>
       </Form>
     </>

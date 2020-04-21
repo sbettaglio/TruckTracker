@@ -4,10 +4,15 @@ import axios from 'axios'
 
 import LoadTable from '../components/LoadTable/LoadTable'
 import CustomNav from '../components/NavMenu/CustomNav'
-const Picks = () => {
+const Picks = props => {
+  console.log(props)
   const [loads, setLoads] = useState({})
   const getTodaysPicks = async () => {
-    const resp = await axios.get('api/search/loads/picktoday')
+    const resp = await axios.get('api/search/loads/picktoday', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
     console.log(resp.data)
     setLoads(resp.data)
   }

@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom'
 import UserHome from './pages/UserHome'
 import Register from './pages/Register'
 import NotFound from './pages/NotFound'
@@ -15,6 +20,7 @@ import AvailableLoads from './pages/AvailableLoads'
 import UpdateLoad from './pages/UpdateLoad'
 import SearchPage from './pages/SearchPage'
 import CitySearch from './pages/CitySearch'
+import LandingPage from './pages/LandingPage'
 export default class App extends Component {
   static displayName = App.name
 
@@ -22,31 +28,96 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          {/* <Route exact path="/" component={LandingPage}></Route> */}
+          <Route exact path="/" component={LandingPage}></Route>
           <Route exact path="/register" component={Register}></Route>
-          <Route exact path="/" component={UserHome}></Route>
-          <Route exact path="/picks" component={Picks}></Route>
-          <Route exact path="/available" component={AvailableLoads}></Route>
-          <Route exact path="/drops" component={Drops}></Route>
+          <Route
+            exact
+            path="/userHome"
+            render={() =>
+              localStorage.getItem('token') ? <UserHome /> : <Redirect to="/" />
+            }
+          ></Route>
+          <Route
+            exact
+            path="/picks"
+            render={() =>
+              localStorage.getItem('token') ? <Picks /> : <Redirect to="/" />
+            }
+          ></Route>
+          <Route
+            exact
+            path="/available"
+            render={() =>
+              localStorage.getItem('token') ? (
+                <AvailableLoads />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          ></Route>
+          <Route
+            exact
+            path="/drops"
+            render={() =>
+              localStorage.getItem('token') ? <Drops /> : <Redirect to="/" />
+            }
+          ></Route>
           <Route exact path="/late" component={LateTrucks}></Route>
           <Route
             exact
             path="/carriers/:carrierId"
-            component={CarrierProfiles}
+            render={routeProps =>
+              localStorage.getItem('token') ? (
+                <CarrierProfiles {...routeProps} />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
           ></Route>
-          <Route exact path="/newCarrier" component={NewCarrier}></Route>
-          <Route exact path="/create" component={NewLoad}></Route>
-          <Route exact path="/loadtracker/:loadId" component={Load}></Route>
-          <Route exact path="/search" component={SearchPage}></Route>
+          <Route
+            exact
+            path="/newCarrier"
+            render={() =>
+              localStorage.getItem('token') ? (
+                <NewCarrier />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          ></Route>
+          <Route
+            exact
+            path="/create"
+            render={() =>
+              localStorage.getItem('token') ? <NewLoad /> : <Redirect to="/" />
+            }
+          ></Route>
+          <Route
+            exact
+            path="/loadtracker/:loadId"
+            render={routeProps =>
+              localStorage.getItem('token') ? (
+                <Load {...routeProps} />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          ></Route>
+          <Route
+            exact
+            path="/search"
+            render={() =>
+              localStorage.getItem('token') ? (
+                <SearchPage />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          ></Route>
           <Route
             exact
             path="/search/:searchCity"
             component={CitySearch}
-          ></Route>
-          <Route
-            exact
-            path="/loadtracker/update/:loadId"
-            component={UpdateLoad}
           ></Route>
           <Route path="*" component={NotFound}></Route>
         </Switch>

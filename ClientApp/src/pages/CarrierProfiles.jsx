@@ -8,7 +8,11 @@ const CarrierProfiles = props => {
   const carrierId = props.match.params.carrierId
   const [carrier, setCarrier] = useState([])
   const getCarrierData = async () => {
-    const resp = await axios.get(`api/Carriers/${carrierId}`)
+    const resp = await axios.get(`api/Carriers/${carrierId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
     setCarrier(resp.data)
   }
   useEffect(() => {
