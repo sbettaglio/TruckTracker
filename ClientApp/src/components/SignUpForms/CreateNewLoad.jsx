@@ -38,7 +38,11 @@ const CreateNewLoad = () => {
   }
   const saveLoad = async () => {
     console.log('adding', load)
-    const resp = await axios.post('api/Loads', load)
+    const resp = await axios.post('api/Loads', load, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
     console.log(resp.data)
     if (resp.status === 201) {
       setWasSuccessfullyCreated({

@@ -14,9 +14,9 @@ namespace TruckTracker.Controllers
   [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   public class SecretController : ControllerBase
   {
-    public async Task<ActionResult> UserOnlyEndpoint()
-    {
-      return Ok(new { message = "Members Only Endpoint" });
-    }
+    //   public async Task<ActionResult> UserOnlyEndpoint()
+    //   {
+    //     return Ok( new { message = "Members Only Endpoint" });
+    //   }
   }
 }

@@ -6,11 +6,15 @@ using TruckTracker.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace TruckTracker.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
+  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
   public class SearchController : ControllerBase
   {
 
@@ -49,8 +53,8 @@ namespace TruckTracker.Controllers
     [HttpGet("loads/picktoday")]
     public async Task<ActionResult> GetTodaysPicks()
     {
-
-      var todaysPicks = _context.Loads.Where(l => l.PickApp.Date == DateTime.Now.Date);
+      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
+      var todaysPicks = _context.Loads.Where(l => l.PickApp.Date == DateTime.Now.Date && l.UserId == userId);
       return Ok(await todaysPicks.ToListAsync());
     }
     [HttpGet("loads/droptoday")]

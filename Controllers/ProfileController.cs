@@ -27,7 +27,7 @@ namespace TruckTracker.Controllers
     {
       var userId = int.Parse(User.Claims.FirstOrDefault(claim => claim.Type == "id").Value);
 
-      var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+      var user = await _context.Users.Include(l => l.Loads).FirstOrDefaultAsync(u => u.Id == userId);
 
       return Ok(user);
     }

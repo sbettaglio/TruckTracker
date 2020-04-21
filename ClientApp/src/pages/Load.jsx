@@ -8,15 +8,20 @@ import CustomNav from '../components/NavMenu/CustomNav'
 import LoadInfoDisplay from '../components/LoadTracking/LoadInfoDisplay'
 
 const Load = props => {
-  console.log(props)
-  const loadId = props.match.params.loadId
+  let loadInfo = props.location.state
 
-  const [load, setLoad] = useState({})
+  const [load, setLoad] = useState(loadInfo)
   const [carrier, setCarrier] = useState({})
   const getLoadData = async () => {
-    const resp = await axios.get(`api/Loads/${loadId}`)
+    const resp = await axios.get(`api/Loads/${load.id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+
     setLoad(resp.data)
   }
+
   const trackInput = e => {
     const fieldToUpdate = e.target.name
     const value = e.target.value
@@ -41,7 +46,15 @@ const Load = props => {
     })
   }
   const saveCarrierToApi = async () => {
-    const resp = await axios.put(`api/Loads/${load.id}/${carrier.mCNumber}`)
+    const resp = await axios.put(
+      `api/Loads/${load.id}/${carrier.mCNumber}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }
+    )
     if (resp.status === 200) {
       setLoad(prevLoad => {
         console.log(prevLoad)
@@ -50,14 +63,17 @@ const Load = props => {
     }
   }
   const sendLoadUpdateToApi = async () => {
-    // console.log('updating', load)
-    const resp = await axios.put(`api/Loads/${load.id}/update`, load)
+    console.log('updating', load)
+    const resp = await axios.put(`api/Loads/${load.id}/update`, load, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
     if (resp.status === 200) {
       setLoad(resp.data)
       alert('Load has been updated')
     }
   }
-  console.log(load)
   useEffect(() => {
     getLoadData()
   }, [])

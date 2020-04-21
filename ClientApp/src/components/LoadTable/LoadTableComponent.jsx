@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const LoadTableComponent = ({ loadId, pCity, pApp, dCity, dApp }) => {
+const LoadTableComponent = ({ loadId, pCity, pApp, dCity, dApp, load }) => {
   return (
     <>
       <tr>
         <th scope="row">
-          <Link to={`/loadtracker/${loadId}`}>{loadId}</Link>
+          <Link to={{ pathname: `/loadtracker/${loadId}`, state: load }}>
+            {loadId}
+          </Link>
         </th>
         <td>{pCity}</td>
         <td>{pApp}</td>

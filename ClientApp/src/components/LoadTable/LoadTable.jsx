@@ -28,6 +28,7 @@ const LoadTable = ({ slot1, slot2, slot3, slot4, slot5, results }) => {
                   pApp={result.pickApp}
                   dCity={result.dropCity}
                   dApp={result.dropApp}
+                  load={result}
                 />
               )
             })

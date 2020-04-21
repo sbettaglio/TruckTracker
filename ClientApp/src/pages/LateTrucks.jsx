@@ -7,7 +7,11 @@ import CustomNav from '../components/NavMenu/CustomNav'
 const LateTrucks = () => {
   const [loads, setLoads] = useState({})
   const getLateTrucks = async () => {
-    const resp = await axios.get('api/search/loads/late')
+    const resp = await axios.get('api/search/loads/late', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
     console.log(resp.data)
     setLoads(resp.data)
   }

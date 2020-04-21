@@ -14,6 +14,7 @@ const UserHome = () => {
     })
     setProfile(resp.data)
   }
+  console.log(profile)
   useEffect(() => {
     loadUser()
   }, [])
