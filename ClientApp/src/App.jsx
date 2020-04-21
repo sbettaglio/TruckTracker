@@ -33,36 +33,87 @@ export default class App extends Component {
           <Route
             exact
             path="/userHome"
-            render={() => {
-              if (localStorage.getItem('token')) {
-                return <UserHome />
-              } else {
-                return <Redirect to="/" />
-              }
-            }}
+            render={() =>
+              localStorage.getItem('token') ? <UserHome /> : <Redirect to="/" />
+            }
           ></Route>
-          <Route exact path="/picks" component={Picks}></Route>
-          <Route exact path="/available" component={AvailableLoads}></Route>
-          <Route exact path="/drops" component={Drops}></Route>
+          <Route
+            exact
+            path="/picks"
+            render={() =>
+              localStorage.getItem('token') ? <Picks /> : <Redirect to="/" />
+            }
+          ></Route>
+          <Route
+            exact
+            path="/available"
+            render={() =>
+              localStorage.getItem('token') ? (
+                <AvailableLoads />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          ></Route>
+          <Route
+            exact
+            path="/drops"
+            render={() =>
+              localStorage.getItem('token') ? <Drops /> : <Redirect to="/" />
+            }
+          ></Route>
           <Route exact path="/late" component={LateTrucks}></Route>
           <Route
             exact
             path="/carriers/:carrierId"
-            component={CarrierProfiles}
+            render={() =>
+              localStorage.getItem('token') ? (
+                <CarrierProfiles />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
           ></Route>
-          <Route exact path="/newCarrier" component={NewCarrier}></Route>
-          <Route exact path="/create" component={NewLoad}></Route>
-          <Route exact path="/loadtracker/:loadId" component={Load}></Route>
-          <Route exact path="/search" component={SearchPage}></Route>
+          <Route
+            exact
+            path="/newCarrier"
+            render={() =>
+              localStorage.getItem('token') ? (
+                <NewCarrier />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          ></Route>
+          <Route
+            exact
+            path="/create"
+            render={() =>
+              localStorage.getItem('token') ? <NewLoad /> : <Redirect to="/" />
+            }
+          ></Route>
+          <Route
+            exact
+            path="/loadtracker/:loadId"
+            render={() =>
+              localStorage.getItem('token') ? <Load /> : <Redirect to="/" />
+            }
+          ></Route>
+          <Route
+            exact
+            path="/search"
+            crender={() =>
+              localStorage.getItem('token') ? (
+                <SearchPage />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          ></Route>
           <Route
             exact
             path="/search/:searchCity"
             component={CitySearch}
-          ></Route>
-          <Route
-            exact
-            path="/loadtracker/update/:loadId"
-            component={UpdateLoad}
           ></Route>
           <Route path="*" component={NotFound}></Route>
         </Switch>
