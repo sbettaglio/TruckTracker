@@ -8,7 +8,8 @@ import CustomNav from '../components/NavMenu/CustomNav'
 import LoadInfoDisplay from '../components/LoadTracking/LoadInfoDisplay'
 
 const Load = props => {
-  let loadInfo = props.location.state
+  let loadInfo = props.location.state.load
+  console.log(props)
 
   const [load, setLoad] = useState(loadInfo)
   const [carrier, setCarrier] = useState({})

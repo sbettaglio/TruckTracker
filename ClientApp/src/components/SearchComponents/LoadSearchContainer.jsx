@@ -21,7 +21,11 @@ const LoadSearchContainer = ({
   })
   const searchById = async () => {
     console.log('searching for', searchId)
-    const resp = await axios.get(`api/Loads/${searchId}`)
+    const resp = await axios.get(`api/Loads/${searchId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
     console.log(resp, resp.data)
     if (resp.status === 200) {
       setLoadSearchSuccessful({
@@ -32,7 +36,11 @@ const LoadSearchContainer = ({
   }
   const searchByCity = async () => {
     console.log('searching for', searchCity)
-    const resp = await axios.get(`/api/search/loads?searchCity=${searchCity}`)
+    const resp = await axios.get(`/api/search/loads?searchCity=${searchCity}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
     console.log(resp.data, resp)
     if (resp.status === 200) {
       setCitySearchSuccessful({
@@ -46,6 +54,7 @@ const LoadSearchContainer = ({
       <Redirect
         to={{
           pathname: `/loadtracker/${loadSearchSuccessful.searchResult.id}`,
+          state: { load: citySearchSuccessful.searchResult },
         }}
       />
     )

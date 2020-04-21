@@ -30,9 +30,10 @@ namespace TruckTracker.Controllers
     [HttpGet("loads")]
     public async Task<ActionResult> SearchTrails(string searchCity)
     {
+      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
       var results = _context.Loads.Where(w =>
         w.PickCity.ToLower().Contains(searchCity.ToLower()) ||
-        w.DropCity.ToLower().Contains(searchCity.ToLower())
+        w.DropCity.ToLower().Contains(searchCity.ToLower()) && w.UserId == userId
       );
       return Ok(await (results.ToListAsync()));
     }
@@ -60,22 +61,22 @@ namespace TruckTracker.Controllers
     [HttpGet("loads/droptoday")]
     public async Task<ActionResult> GetTodaysDrops()
     {
-
-      var todaysDrops = _context.Loads.Where(l => l.DropApp.Date == DateTime.Now.Date);
+      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
+      var todaysDrops = _context.Loads.Where(l => l.DropApp.Date == DateTime.Now.Date && l.UserId == userId);
       return Ok(await todaysDrops.ToListAsync());
     }
     [HttpGet("loads/late")]
     public async Task<ActionResult> GetLateTrucks()
     {
-
-      var lateTrucks = _context.Loads.Where(l => l.LoadStatus == "Pick late" || l.LoadStatus == "Rolling Late");
+      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
+      var lateTrucks = _context.Loads.Where(l => l.LoadStatus == "Pick late" || l.LoadStatus == "Rolling Late" && l.UserId == userId);
       return Ok(await lateTrucks.ToListAsync());
     }
     [HttpGet("loads/available")]
     public async Task<ActionResult> GetAvailableLoads()
     {
-
-      var availableLoads = _context.Loads.Where(l => l.CarrierId == null);
+      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
+      var availableLoads = _context.Loads.Where(l => l.CarrierId == null && l.UserId == userId);
       return Ok(await availableLoads.ToListAsync());
     }
 

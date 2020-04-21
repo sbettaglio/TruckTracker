@@ -16,7 +16,11 @@ const CarrierSearchContainer = ({
     searchCarrierInfo: {},
   })
   const getCarrierByMC = async () => {
-    const resp = await axios.get(`api/search/carriers?search=${search}`)
+    const resp = await axios.get(`api/search/carriers?search=${search}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
     console.log(resp.status)
     if (resp.status === 200) {
       setSearchSuccessful({
@@ -29,7 +33,11 @@ const CarrierSearchContainer = ({
   }
   const getCarrierByName = async () => {
     console.log('getting', search)
-    const resp = await axios.get(`api/search/carriers/name?search=${search}`)
+    const resp = await axios.get(`api/search/carriers/name?search=${search}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
     console.log(resp)
     if (resp.status === 200) {
       setSearchSuccessful({
