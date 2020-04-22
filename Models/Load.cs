@@ -10,7 +10,7 @@ namespace TruckTracker.Models
     public DateTime PickApp { get; set; }
     public string DropCity { get; set; }
     public DateTime DropApp { get; set; }
-    public int Distance { get; set; }
+    public string Distance { get; set; }
     public string CurrentLocation { get; set; }
     public string TransitTime { get; set; }
     public int Weight { get; set; }
