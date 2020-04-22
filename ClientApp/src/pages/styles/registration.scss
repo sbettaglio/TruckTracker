@@ -1,10 +1,26 @@
 @import '../../bootstrap-customize.scss';
-
+// body {
+//   background-position: 2rem;
+// }
+.title-div {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem;
+}
 .registration {
   padding: 1rem;
-  height: 65vh;
+  // height: 65vh;
+  margin-top: 0rem;
+
   .form-group {
     margin-bottom: 0rem;
+  }
+  .registration-button {
+    margin: 0.2rem 1rem;
+  }
+}
+@media (min-width: 400px) {
+  .title-div {
+    margin-top: 1rem !important;
   }
 }
 @media (min-width: 768px) {
