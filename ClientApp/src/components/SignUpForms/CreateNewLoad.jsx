@@ -4,7 +4,10 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import CustomNav from '../NavMenu/CustomNav'
 const CreateNewLoad = () => {
-  const [load, setLoad] = useState({})
+  const [load, setLoad] = useState({
+    distance: 0,
+    transitTime: '',
+  })
   const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
     shouldRedirect: false,
     newLoadInformation: {},
@@ -36,8 +39,20 @@ const CreateNewLoad = () => {
       })
     }
   }
+  const getDistance = async () => {
+    console.log(`sending ${load.pickCity} and ${load.dropCity}`)
+    const drive = await axios.get(
+      `https://www.mapquestapi.com/directions/v2/route?key=B4L7zPogojJFdsgmWAELJaS2Wtlehzmx&from=${load.pickCity}&to=${load.dropCity}`
+    )
+    console.log(drive.data.route.distance, drive.data.route.formattedTime)
+    setLoad({
+      distance: drive.data.route.distance,
+      transitTime: drive.data.route.formattedTime,
+    })
+  }
   const saveLoad = async () => {
     console.log('adding', load)
+    getDistance()
     const resp = await axios.post('api/Loads', load, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
