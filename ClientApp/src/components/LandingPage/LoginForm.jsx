@@ -5,8 +5,8 @@ const LoginForm = ({ email, password, login }) => {
   return (
     <>
       <FormGroup>
-        <Label for="email" className="text-success">
-          Email
+        <Label for="email" className="lead">
+          <h5>Email</h5>
         </Label>
         <Input
           type="email"
@@ -19,8 +19,8 @@ const LoginForm = ({ email, password, login }) => {
         ></Input>
       </FormGroup>
       <FormGroup>
-        <Label for="password" className="text-success">
-          Password
+        <Label for="password" className="lead">
+          <h5>Password</h5>
         </Label>
         <Input
           type="password"

@@ -4,7 +4,9 @@ const RegisterRedirect = () => {
   return (
     <>
       <FormGroup>
-        <Label for="register">New User?</Label>
+        <Label for="register" className="lead">
+          <h6>New User?</h6>
+        </Label>
         <Button id="register" className="btn btn-info" href="/register">
           Register
         </Button>

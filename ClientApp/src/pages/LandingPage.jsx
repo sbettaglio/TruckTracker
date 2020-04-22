@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import LoginForm from '../components/LandingPage/LoginForm'
 import RegisterRedirect from '../components/LandingPage/RegisterRedirect'
+import './styles/landing.scss'
 const LandingPage = () => {
   const [emailLogin, setEmailLogin] = useState('')
   const [passwordLogin, setPasswordLogin] = useState('')
