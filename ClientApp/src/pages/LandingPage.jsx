@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import LoginForm from '../components/LandingPage/LoginForm'
+import RegisterRedirect from '../components/LandingPage/RegisterRedirect'
 const LandingPage = () => {
   const [emailLogin, setEmailLogin] = useState('')
   const [passwordLogin, setPasswordLogin] = useState('')
@@ -27,37 +29,13 @@ const LandingPage = () => {
           <h1>Truck Tracker</h1>
         </div>
         <Form>
-          <FormGroup>
-            <Label for="email">Email</Label>
-            <Input
-              type="email"
-              className="form-control"
-              id="email"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
-              name="email"
-              onChange={e => setEmailLogin(e.target.value)}
-            ></Input>
-          </FormGroup>
-          <FormGroup>
-            <Label for="password">Password</Label>
-            <Input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Password"
-              name="password"
-              onChange={e => setPasswordLogin(e.target.value)}
-            ></Input>
-          </FormGroup>
-
-          <Button className="btn btn-success" onClick={logUserIntoApi}>
-            Log In
-          </Button>
+          <RegisterRedirect />
+          <LoginForm
+            email={e => setEmailLogin(e.target.value)}
+            password={e => setPasswordLogin(e.target.value)}
+            login={logUserIntoApi}
+          />
         </Form>
-        <Button className="btn btn-info" href="/register">
-          Register
-        </Button>
       </main>
     </>
   )
