@@ -2,9 +2,10 @@
 // body {
 //   background-position: 2rem;
 // }
-.title-div {
+.title-div-registration {
   margin-top: 0rem !important;
   margin-bottom: 0rem;
+  text-align: center;
 }
 .registration {
   padding: 1rem;
@@ -19,7 +20,7 @@
   }
 }
 @media (min-width: 400px) {
-  .title-div {
+  .title-div-registration {
     margin-top: 1rem !important;
   }
 }
@@ -61,7 +62,7 @@
   }
 }
 @media (min-width: 1200px) {
-  .title-div {
+  .title-div-registration {
     margin-top: 0rem !important;
     margin-bottom: 0 !important;
   }

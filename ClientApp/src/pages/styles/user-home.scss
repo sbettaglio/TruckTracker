@@ -1,8 +1,18 @@
 @import '../../bootstrap-customize.scss';
-
+body {
+  height: 100%;
+  background-repeat: repeat-y;
+}
+.title-div {
+  margin-top: 5rem;
+}
 .container {
   .border-primary {
+    border: hidden;
     box-shadow: 2px 1px #375a7f;
+  }
+  .row {
+    opacity: 0.8;
   }
 }
 .card-text {
@@ -12,7 +22,8 @@
 }
 @media (min-width: 768px) {
   .container {
-    // box-shadow: 1px 1px;
+    background-color: $light;
+    opacity: 0.9;
     .border-primary {
       box-shadow: 3px 2px #375a7f;
     }
@@ -35,14 +46,26 @@
   }
 }
 @media (min-width: 1200px) {
+  .title-div {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
   .container {
     max-width: 90% !important;
+    #search-card {
+      .card {
+        .card-body {
+          padding: 5rem !important;
+        }
+      }
+    }
     .card {
       margin: 1rem;
       .card-body {
-        padding: 6rem;
+        padding: 25%;
         .card-text a {
-          font-size: 2.4rem;
+          font-size: 2rem;
         }
       }
     }
