@@ -15,7 +15,7 @@ body {
   // min-height: 100%;
   background-image: url('./images/nightroad.jpg');
   height: 100vh;
-  background-position: center;
+  background-position: right;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -94,6 +94,9 @@ h4 {
 }
 
 @media (min-width: 768px) {
+  body {
+    background-position: center;
+  }
   .navbar-expand-md .navbar-collapse {
     justify-content: flex-end;
   }
