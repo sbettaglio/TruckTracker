@@ -20,6 +20,7 @@ import AvailableLoads from './pages/AvailableLoads'
 import SearchPage from './pages/SearchPage'
 import CitySearch from './pages/CitySearch'
 import LandingPage from './pages/LandingPage'
+import FormText from './pages/FormText'
 export default class App extends Component {
   static displayName = App.name
 
@@ -28,6 +29,7 @@ export default class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={LandingPage}></Route>
+          <Route exact path="/test" component={FormText}></Route>
           <Route exact path="/register" component={Register}></Route>
           <Route
             exact

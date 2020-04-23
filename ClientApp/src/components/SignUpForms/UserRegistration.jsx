@@ -1,123 +1,153 @@
 import React, { useState } from 'react'
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { useForm } from 'react-hook-form'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 const UserRegistration = () => {
-  const [user, setUser] = useState({})
+  // const [user, setUser] = useState({})
+  const { register, handleSubmit, errors } = useForm()
   const [shouldRedirect, setShouldRedirect] = useState(false)
-  const trackInput = e => {
-    const fieldToUpdate = e.target.name
-    const value = e.target.value
-    setUser(prevUser => {
-      return { ...prevUser, [fieldToUpdate]: value }
-    })
-  }
-  const sendUserRegistrationToApi = async () => {
-    console.log(user.password.length)
-    if (user.password.length < 5) {
-      return alert('Password must be at least five characters.')
-    } else {
-      const resp = await axios
-        .post('/auth/register', user)
-        .catch(function(error) {
-          if (error.response) {
-            alert(error.response.data)
-          }
-        })
+  // const onSubmit = data => {
+  //   console.log(data)
+  // }
+
+  // const trackInput = e => {
+  //   const fieldToUpdate = e.target.name
+  //   const value = e.target.value
+  //   setUser(prevUser => {
+  //     return { ...prevUser, [fieldToUpdate]: value }
+  //   })
+  // }
+  const sendUserRegistrationToApi = async data => {
+    console.log('sending', data)
+    try {
+      const resp = await axios.post('/auth/register', data)
       if (resp.status === 200) {
         localStorage.setItem('token', resp.data.token)
         setShouldRedirect(true)
       }
+    } catch (error) {
+      alert(error.response.data)
     }
   }
+
   if (shouldRedirect) {
     return <Redirect to="/userHome" />
   }
   return (
     <>
-      <Form>
+      <Form onSubmit={handleSubmit(sendUserRegistrationToApi)}>
         <Row>
           <Col sm={1} md={6}>
             <FormGroup>
               <Label for="exampleCompany">Company</Label>
-              <Input
-                type="text"
+              <input
                 name="company"
-                id="exampleCompany"
-                placeholder="Company name goes here"
-                onChange={trackInput}
-              />
+                class="form-control"
+                ref={register({ required: true })}
+              ></input>
+              {errors.company && (
+                <p className="text-danger">
+                  This field is required to register
+                </p>
+              )}
             </FormGroup>
           </Col>
           <Col sm={1} md={6}>
             <FormGroup>
               <Label for="examplePosition">Position</Label>
-              <Input
-                type="text"
+              <input
                 name="position"
-                id="examplePosition"
-                placeholder="Job title"
-                onChange={trackInput}
-              />
+                class="form-control"
+                ref={register({ required: true })}
+              ></input>
+              {errors.position && (
+                <p className="text-danger">
+                  This field is required to register
+                </p>
+              )}
             </FormGroup>
           </Col>
         </Row>
         <Row>
           <Col sm={1} md={6}>
             <FormGroup>
-              <Label for="exampleFullName">Full Name</Label>
-              <Input
-                type="text"
+              <Label>Full Name</Label>
+              <input
                 name="fullName"
-                id="exampleFullName"
-                placeholder="John Doe"
-                onChange={trackInput}
-              />
+                class="form-control"
+                ref={register({ required: true })}
+              ></input>
+              {errors.fullName && (
+                <p className="text-danger">
+                  This field is required to register
+                </p>
+              )}
             </FormGroup>
           </Col>
           <Col sm={1} md={6}>
             <FormGroup>
               <Label for="exampleUserName">Username</Label>
-              <Input
-                type="text"
+              <input
                 name="userName"
-                id="exampleUserName"
-                placeholder="your username goes here"
-                onChange={trackInput}
-              />
+                class="form-control"
+                ref={register({ required: true })}
+              ></input>
+              {errors.userName && (
+                <p className="text-danger">
+                  This field is required to register
+                </p>
+              )}
             </FormGroup>
           </Col>
         </Row>
         <Row>
           <Col sm={1} md={6}>
             <FormGroup>
-              <Label for="exampleEmail">Email</Label>
-              <Input
-                type="email"
+              <Label>Email</Label>
+              <input
                 name="email"
-                id="exampleEmail"
-                onChange={trackInput}
-              />
+                class="form-control"
+                ref={register({
+                  required: true,
+                  pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
+                })}
+              ></input>
+              {errors.email && (
+                <p className="text-danger">
+                  This field is required to register
+                </p>
+              )}
+              {errors.email && errors.email.type == 'pattern' && (
+                <p className="text-danger">Please submit a valid email</p>
+              )}
             </FormGroup>
           </Col>
           <Col sm={1} md={6}>
             <FormGroup>
-              <Label for="examplePassword">Password</Label>
-              <Input
-                type="password"
+              <Label>Password</Label>
+              <input
                 name="password"
-                id="examplePassword"
-                onChange={trackInput}
-              />
+                type="password"
+                class="form-control"
+                ref={register({ required: true, minLength: 7 })}
+              ></input>
+              {errors.password && (
+                <p className="text-danger">
+                  This field is required to register
+                </p>
+              )}
+              {errors.password && errors.password.type === 'minLength' && (
+                <p className="text-danger">
+                  Password must be at least 7 characters
+                </p>
+              )}
             </FormGroup>
           </Col>
         </Row>
         <Row className="registration-button">
-          <Button
-            className="btn btn-success"
-            onClick={sendUserRegistrationToApi}
-          >
+          <Button type="submit" className="btn btn-success">
             Register
           </Button>
         </Row>
