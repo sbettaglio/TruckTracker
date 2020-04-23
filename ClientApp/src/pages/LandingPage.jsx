@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Form } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import LoginForm from '../components/LandingPage/LoginForm'
@@ -10,14 +10,20 @@ const LandingPage = () => {
   const [passwordLogin, setPasswordLogin] = useState('')
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const logUserIntoApi = async () => {
-    const resp = await axios.post('auth/login', {
-      email: emailLogin,
-      password: passwordLogin,
-    })
-    if (resp.status === 200) {
-      localStorage.setItem('token', resp.data.token)
-      setShouldRedirect(true)
-    }
+    const resp = await axios
+      .post('auth/login', {
+        email: emailLogin,
+        password: passwordLogin,
+      })
+      .catch(function(error) {
+        if (error.response) {
+          alert(error.response.data)
+        }
+      })
+      .then(function(resp) {
+        if (resp.status === 200) localStorage.setItem('token', resp.data.token)
+        setShouldRedirect(true)
+      })
   }
   if (shouldRedirect) {
     return <Redirect to="/userHome" />

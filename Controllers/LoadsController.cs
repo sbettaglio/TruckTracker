@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using TruckTracker.Models;
 
 namespace TruckTracker.Controllers
@@ -17,10 +19,11 @@ namespace TruckTracker.Controllers
   public class LoadsController : ControllerBase
   {
     private readonly DatabaseContext _context;
-
-    public LoadsController(DatabaseContext context)
+    readonly private string _MAP_KEY;
+    public LoadsController(DatabaseContext context, IConfiguration config)
     {
       _context = context;
+      _MAP_KEY = config["MAP_KEY"];
     }
 
     // GET: api/Loads
@@ -78,6 +81,8 @@ namespace TruckTracker.Controllers
     [HttpPost]
     public async Task<ActionResult<Load>> PostLoad(Load load)
     {
+      // var client = new HttpClient();
+      // var resp = await client.GetAsync($"https://maps.googleapis.com/maps/api/directions/json?origin={load.PickCity}&destination={load.DropApp}&key=");
       var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
       load.UserId = userId;
       _context.Loads.Add(load);
