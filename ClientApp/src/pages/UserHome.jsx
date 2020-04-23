@@ -21,9 +21,6 @@ const UserHome = () => {
   return (
     <>
       <CustomNav />
-      <div className="title-div">
-        <h1>{profile.fullName}'s Menu</h1>
-      </div>
       <HomeTable />
     </>
   )

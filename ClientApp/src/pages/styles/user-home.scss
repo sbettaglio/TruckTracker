@@ -3,10 +3,10 @@ body {
   height: 100%;
   background-repeat: repeat-y;
 }
-.title-div {
-  margin-top: 5rem;
-}
+
 .container {
+  margin-top: 3.5rem;
+  text-align: center;
   .border-primary {
     border: hidden;
     box-shadow: 2px 1px #375a7f;
@@ -21,53 +21,26 @@ body {
   }
 }
 @media (min-width: 768px) {
-  .container {
+  div.container {
+    margin-top: 7rem;
     background-color: $light;
     opacity: 0.9;
-    .border-primary {
-      box-shadow: 3px 2px #375a7f;
-    }
-    .card-body {
-      padding: 2rem;
-    }
   }
 }
 @media (min-width: 1024px) {
-  .container {
-    .border-primary {
-      box-shadow: 6px 4px #375a7f;
-    }
-    .card-body {
-      padding: 4rem;
-      .card-text a {
-        font-size: 2.4rem;
-      }
-    }
+  div.container {
+    margin-top: 10rem;
   }
 }
 @media (min-width: 1200px) {
-  .title-div {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-  .container {
-    max-width: 90% !important;
+  div.container {
+    margin-top: 10rem;
+
     #search-card {
-      .card {
-        .card-body {
-          padding: 5rem !important;
-        }
-      }
+      padding: 1%;
     }
     .card {
-      margin: 1rem;
-      .card-body {
-        padding: 25%;
-        .card-text a {
-          font-size: 2rem;
-        }
-      }
+      padding: 5%;
     }
   }
 }
