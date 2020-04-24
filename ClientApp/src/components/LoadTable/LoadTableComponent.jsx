@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Moment from 'react-moment'
 const LoadTableComponent = ({ loadId, pCity, pApp, dCity, dApp, load }) => {
   return (
     <>
@@ -10,9 +11,13 @@ const LoadTableComponent = ({ loadId, pCity, pApp, dCity, dApp, load }) => {
           </Link>
         </th>
         <td>{pCity}</td>
-        <td>{pApp}</td>
+        <td>
+          <Moment format="MM-DD-YYYY HH:mm">{pApp}</Moment>
+        </td>
         <td>{dCity}</td>
-        <td>{dApp}</td>
+        <td>
+          <Moment format="MM-DD-YYYY">{dApp}</Moment>
+        </td>
       </tr>
     </>
   )
