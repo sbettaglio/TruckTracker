@@ -3,20 +3,13 @@ import { useForm } from 'react-hook-form'
 import { Form, FormGroup, Label, Input, Button, Row, Col } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import { isDate, now } from 'moment'
+import { now } from 'moment'
 const CreateNewLoad = () => {
-  // const [load, setLoad] = useState({
-  //   distance: 0,
-  //   transitTime: '',
-  // })
   const { register, handleSubmit, errors } = useForm()
   const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
     shouldRedirect: false,
     newLoadInformation: {},
   })
-  // let currentDate = Moment()
-  // console.log(currentDate)
-
   const saveLoad = async data => {
     data.carrierRate = parseInt(data.carrierRate)
     data.customerRate = parseInt(data.customerRate)
