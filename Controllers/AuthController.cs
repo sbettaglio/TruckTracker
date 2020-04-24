@@ -22,10 +22,12 @@ namespace TruckTracker.Controllers
   {
     readonly private DatabaseContext _context;
     readonly private string JWT_KEY;
+
     public AuthController(DatabaseContext context, IConfiguration config)
     {
       JWT_KEY = config["JWT_KEY"];
       _context = context;
+
     }
 
     private object CreateJWT(User user)
@@ -102,7 +104,7 @@ namespace TruckTracker.Controllers
       }
       else
       {
-        return BadRequest("Email or password does not match");
+        return BadRequest("Email or password does not match, please try again.");
       }
     }
 

@@ -20,7 +20,7 @@ const CustomNav = props => {
   return (
     <header className="bg-primary">
       <Navbar color="primary" dark expand="md" fixed="top">
-        <NavbarBrand href="/userHome">Truck Tracker</NavbarBrand>
+        <NavbarBrand href="/userHome">Home</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav navbar>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import {
   Container,
   Col,
@@ -14,38 +15,15 @@ import axios from 'axios'
 import './styles/add-new-carrier.scss'
 import CustomNav from '../components/NavMenu/CustomNav'
 const NewCarrier = () => {
-  const [carrier, setCarrier] = useState({})
+  const { register, handleSubmit, errors } = useForm()
   const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
     shouldRedirect: false,
     newCarrierInformation: {},
   })
-  const trackInput = e => {
-    const fieldToUpdate = e.target.name
-    console.log(fieldToUpdate)
-    const value = e.target.value
-    if (value === 'on') {
-      setCarrier(prevCarrier => {
-        prevCarrier[fieldToUpdate] = true
-        console.log(prevCarrier)
-        return prevCarrier
-      })
-    } else if (fieldToUpdate === 'mCNumber') {
-      setCarrier(prevCarrier => {
-        prevCarrier[fieldToUpdate] = parseInt(value, 10)
-        console.log(value)
-        return prevCarrier
-      })
-    } else {
-      setCarrier(prevCarrier => {
-        prevCarrier[fieldToUpdate] = value
-        console.log(prevCarrier)
-        return prevCarrier
-      })
-    }
-  }
-  const sendCarrierToApi = async () => {
-    console.log('adding', carrier)
-    const resp = await axios.post('api/Carriers', carrier)
+
+  const sendCarrierToApi = async data => {
+    data.mCNumber = parseInt(data.mCNumber)
+    const resp = await axios.post('api/Carriers', data)
     console.log(resp)
     if (resp.status === 201) {
       setWasSuccessfullyCreated({
@@ -58,7 +36,7 @@ const NewCarrier = () => {
     return (
       <Redirect
         to={{
-          pathname: `/carriers${wasSuccessfullyCreated.newCarrierInformation.id}`,
+          pathname: `/carriers/${wasSuccessfullyCreated.newCarrierInformation.id}`,
           state: { carrier: wasSuccessfullyCreated.newCarrierInformation },
         }}
       />
@@ -72,32 +50,40 @@ const NewCarrier = () => {
         </div>
         <main>
           <Container>
-            <Form>
+            <Form onSubmit={handleSubmit(sendCarrierToApi)}>
               <Row>
                 <Col sm={1} md={6}>
                   <FormGroup>
-                    <Label for="carrierName">
-                      Carrier Name{carrier.carrierName}
-                    </Label>
-                    <Input
+                    <Label for="carrierName">Carrier Name</Label>
+                    <input
+                      className="form-control"
                       type="text"
                       name="carrierName"
-                      id="carrierName"
+                      ref={register({ required: true })}
                       placeholder="Carrier name goes here"
-                      onChange={trackInput}
                     />
+                    {errors.carrierName && (
+                      <h6 className="lead">
+                        This field is required to create a load
+                      </h6>
+                    )}
                   </FormGroup>
                 </Col>
                 <Col>
                   <FormGroup>
                     <Label for="exampleMC">MC Number</Label>
-                    <Input
+                    <input
+                      className="form-control"
                       type="number"
                       name="mCNumber"
-                      id="exampleMC"
+                      ref={register({ required: true })}
                       placeholder="123456"
-                      onChange={trackInput}
                     />
+                    {errors.mCNumber && (
+                      <h6 className="lead">
+                        This field is required to create a load
+                      </h6>
+                    )}
                   </FormGroup>
                 </Col>
               </Row>
@@ -105,25 +91,35 @@ const NewCarrier = () => {
                 <Col sm={1} md={6}>
                   <FormGroup>
                     <Label for="examplePrimaryContact">Primary Contact</Label>
-                    <Input
+                    <input
+                      className="form-control"
                       type="text"
                       name="primaryContact"
-                      id="examplePrimaryContact"
+                      ref={register({ required: true })}
                       placeholder="John Doe"
-                      onChange={trackInput}
                     />
+                    {errors.primaryContact && (
+                      <h6 className="lead">
+                        This field is required to create a load
+                      </h6>
+                    )}
                   </FormGroup>
                 </Col>
                 <Col>
                   <FormGroup>
                     <Label for="examplePhone">Phone</Label>
-                    <Input
+                    <input
+                      className="form-control"
                       type="tel"
                       name="phoneNumber"
-                      id="examplePhone"
+                      ref={register({ required: true })}
                       placeholder="555-867-5309"
-                      onChange={trackInput}
                     />
+                    {errors.phoneNumber && (
+                      <h6 className="lead">
+                        This field is required to create a load
+                      </h6>
+                    )}
                   </FormGroup>
                 </Col>
               </Row>
@@ -131,22 +127,29 @@ const NewCarrier = () => {
                 <Col sm={1} md={8}>
                   <FormGroup>
                     <Label for="exampleEmail">Email</Label>
-                    <Input
+                    <input
+                      className="form-control"
                       type="email"
                       name="email"
-                      id="exampleEmail"
-                      onChange={trackInput}
+                      ref={register({
+                        required: true,
+                        pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
+                      })}
                     />
+                    {errors.email && (
+                      <h6 className="lead">
+                        This field is required to create a load
+                      </h6>
+                    )}
                   </FormGroup>
                 </Col>
                 <Col>
                   <FormGroup>
                     <Label for="exampleState">Home State</Label>
-                    <Input
-                      type="select"
+                    <select
+                      className="form-control"
                       name="homeState"
-                      id="exampleState "
-                      onChange={trackInput}
+                      ref={register({ required: true })}
                     >
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
@@ -199,18 +202,26 @@ const NewCarrier = () => {
                       <option value="WV">West Virginia</option>
                       <option value="WI">Wisconsin</option>
                       <option value="WY">Wyoming</option>
-                    </Input>
+                    </select>
+                    {errors.homeState && (
+                      <h6 className="lead">
+                        This field is required to create a load
+                      </h6>
+                    )}
+                    {errors.email && errors.email.type === 'pattern' && (
+                      <h6 className="lead">Please submit a valid email</h6>
+                    )}
                   </FormGroup>
                 </Col>
               </Row>
               <Row>
                 <Col sm={1} md={6}>
                   <FormGroup check>
-                    <Input
+                    <input
+                      className="form-control"
                       type="checkbox"
                       name="validInsurance"
-                      id="exampleInsurance"
-                      onChange={trackInput}
+                      ref={register({ required: true })}
                     />
                     <Label for="exampleInsurance" check>
                       Valid Insurance
@@ -219,7 +230,7 @@ const NewCarrier = () => {
                 </Col>
                 <Col>
                   <FormGroup>
-                    <Button className="btn-success" onClick={sendCarrierToApi}>
+                    <Button type="submit" className="btn-success">
                       Save Carrier
                     </Button>
                   </FormGroup>

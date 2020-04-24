@@ -20,12 +20,6 @@ const AssignCarrierToLoad = ({ track, save }) => {
               <Input type="number" name="mCNumber" onChange={track}></Input>
             </FormGroup>
           </Col>
-          <Col sm={12} lg={8}>
-            <FormGroup>
-              <Label>Contact</Label>
-              <Input type="text" name="contact"></Input>
-            </FormGroup>
-          </Col>
           <Col sm={12} lg={4}>
             <FormGroup className="button-bottom">
               <Button className="btn-success" onClick={save}>

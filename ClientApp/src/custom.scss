@@ -12,173 +12,28 @@ html {
 
 body {
   margin: 0;
-  // min-height: 100%;
+  min-height: 100%;
   background-image: url('./images/nightroad.jpg');
-  height: 100vh;
   background-position: right;
   background-repeat: repeat-y;
   background-size: cover;
 }
 
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-header {
-  padding: 1%;
-  margin: 0;
-  background-color: $secondary;
-}
-
-header ul {
-  display: flex;
-  justify-content: space-around;
-  padding-left: 0;
-  padding-top: 1rem;
-}
-
-header li a {
-  text-decoration: none;
-}
-.title-div {
-  margin-top: 5rem;
-  text-align: center;
-}
-
-.h1 {
-  font-size: 2rem;
-  padding: 1rem;
-  padding-top: 0.8rem;
-}
 h3 {
   text-align: center;
 }
 h2 {
   text-align: center;
 }
-
-.btn-success {
-  margin: 1rem;
-}
-
-.log-out {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-}
-
-h4 {
-  text-align: center;
-}
-
-.loads-main {
-  border-radius: 6px;
-  border: 1px solid $secondary;
-  margin: 2rem 0.5rem 1rem 0.5rem;
-  overflow: hidden;
-  .container {
-    padding: 0;
-    font-size: 0.7rem;
-  }
-}
-@media (min-width: 411px) {
-  .loads-main {
-    .container {
-      font-size: 0.8rem;
-    }
-  }
-}
-
 @media (min-width: 768px) {
-  body {
-    background-position: center;
-  }
-  .navbar-expand-md .navbar-collapse {
-    justify-content: flex-end;
-  }
-  .table-responsive {
-    margin-top: 2rem;
-
-    .user-home {
-      height: 65vh;
-      text-align: center;
-      td {
-        vertical-align: middle;
-        a {
-          font-size: 1.45rem;
-        }
-      }
-    }
-  }
-
-  .table {
-    font-size: 1.6rem;
-    height: 60vh;
-    tbody th {
-      vertical-align: middle;
-    }
-    tbody td {
-      vertical-align: middle;
-    }
-  }
-}
-@media (min-width: 1024px) {
-  .title-div {
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    h1 {
-      font-size: 4rem;
-      padding: 3rem;
-    }
-    h3 {
-      font-size: 2.5rem;
-    }
-  }
-  .table-responsive {
-    margin-top: 3rem;
-
-    .user-home {
-      height: 64vh;
-      text-align: center;
-      td {
-        vertical-align: middle;
-        a {
-          font-size: 2rem;
-        }
-      }
-    }
-  }
-
-  .table {
-    font-size: 2rem;
-  }
   .container {
-    padding: 3rem;
-    margin: 3rem;
-    font-size: 3rem;
+    border: 2px solid $secondary;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem;
+    font-size: 1.45rem;
     .btn-success {
-      font-size: 3rem;
+      font-size: 1.45rem;
     }
-    .col-md-2 {
-      display: flex;
-      justify-content: flex-end;
-    }
-  }
-  .log-out {
-    padding-top: 2.4rem;
-    button {
-      font-size: 2rem;
-      padding: 1rem;
-    }
-  }
-}
-@media (min-width: 1200px) {
-  .loads-main {
-    margin: 2rem 2.5rem 1rem 2.5rem !important;
   }
 }

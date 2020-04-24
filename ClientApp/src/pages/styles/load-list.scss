@@ -1,0 +1,16 @@
+@import '../../bootstrap-customize.scss';
+.title-div {
+  margin-top: 4rem;
+  text-align: center;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  .container {
+    background-color: $light;
+    border-radius: 8px;
+    opacity: 0.85;
+    width: 100%;
+  }
+}

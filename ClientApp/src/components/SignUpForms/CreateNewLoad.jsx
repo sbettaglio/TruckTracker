@@ -1,58 +1,21 @@
 import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { Form, FormGroup, Label, Input, Button, Row, Col } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import CustomNav from '../NavMenu/CustomNav'
+import { now } from 'moment'
 const CreateNewLoad = () => {
-  const [load, setLoad] = useState({
-    distance: 0,
-    transitTime: '',
-  })
+  const { register, handleSubmit, errors } = useForm()
   const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
     shouldRedirect: false,
     newLoadInformation: {},
   })
-  const trackInput = e => {
-    const fieldToUpdate = e.target.name
-    console.log(fieldToUpdate)
-    const value = e.target.value
-    console.log(value)
-    if (fieldToUpdate === 'weight') {
-      setLoad(prevLoad => {
-        prevLoad[fieldToUpdate] = parseInt(value, 10)
-        console.log(value)
-        return prevLoad
-      })
-    } else if (
-      fieldToUpdate === 'customerRate' ||
-      fieldToUpdate === 'carrierRate'
-    ) {
-      setLoad(prevLoad => {
-        prevLoad[fieldToUpdate] = parseFloat(value, 10)
-        console.log(value)
-        return prevLoad
-      })
-    } else {
-      setLoad(prevLoad => {
-        prevLoad[fieldToUpdate] = value
-        return prevLoad
-      })
-    }
-  }
-  // const getDistance = async () => {
-  //   console.log(`sending ${load.pickCity} and ${load.dropCity}`)
-  //   const drive = await axios.get(
-  //     `https://www.mapquestapi.com/directions/v2/route?key=B4L7zPogojJFdsgmWAELJaS2Wtlehzmx&from=${load.pickCity}&to=${load.dropCity}`
-  //   )
-  //   console.log(drive.data.route.distance, drive.data.route.formattedTime)
-  //   setLoad({
-  //     distance: drive.data.route.distance,
-  //     transitTime: drive.data.route.formattedTime,
-  //   })
-  // }
-  const saveLoad = async () => {
-    console.log('adding', load)
-    const resp = await axios.post('api/Loads', load, {
+  const saveLoad = async data => {
+    data.carrierRate = parseInt(data.carrierRate)
+    data.customerRate = parseInt(data.customerRate)
+    data.weight = parseInt(data.customerRate)
+    console.log(data)
+    const resp = await axios.post('api/Loads', data, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -77,97 +40,195 @@ const CreateNewLoad = () => {
   } else {
     return (
       <>
-        <CustomNav />
-        <Form>
+        <Form onSubmit={handleSubmit(saveLoad)}>
           <Row>
-            <Col md={8}>
+            <Col md={7}>
               <FormGroup>
-                <Label>P/U City,State</Label>
-                <Input
+                <Label className="lead">
+                  <h6>P/U City, State</h6>
+                </Label>
+                <input
+                  className="form-control"
                   type="text"
                   name="pickCity"
-                  onChange={trackInput}
-                ></Input>
+                  // onChange={trackInput}
+                  ref={register({ required: true })}
+                ></input>
+                {errors.pickCity && (
+                  <h6 className="lead">
+                    This field is required to create a load
+                  </h6>
+                )}
               </FormGroup>
             </Col>
-            <Col md={4}>
+            <Col md={5}>
               <FormGroup>
-                <Label>P/U Date</Label>
-                <Input
+                <Label className="lead">
+                  <h6>P/U Date</h6>
+                </Label>
+                <input
+                  className="form-control"
                   type="datetime-local"
                   name="pickApp"
-                  onChange={trackInput}
-                ></Input>
+                  // value={isDate(now)}
+                  ref={register({
+                    required: true,
+                    min: Date(now),
+                  })}
+                  // onChange={trackInput}
+                ></input>
+                {errors.pickApp && (
+                  <h6 className="lead">
+                    This field is required to create a load
+                  </h6>
+                )}
+                {errors.pickApp && errors.pickApp.type === 'min' && (
+                  <h6 className="lead">
+                    The DeLorean's flux capacitor is acting up we can only
+                    schedule pickups in the future.
+                  </h6>
+                )}
               </FormGroup>
             </Col>
           </Row>
           <Row>
-            <Col md={8}>
+            <Col md={7}>
               <FormGroup>
-                <Label>D/O City,State</Label>
-                <Input
+                <Label className="lead">
+                  <h6>D/O City, State</h6>
+                </Label>
+                <input
+                  className="form-control"
                   type="text"
                   name="dropCity"
-                  onChange={trackInput}
-                ></Input>
+                  ref={register({ required: true })}
+                  // onChange={trackInput}
+                ></input>
+                {errors.dropCity && (
+                  <h6 className="lead">
+                    This field is required to create a load
+                  </h6>
+                )}
               </FormGroup>
             </Col>
-            <Col md={4}>
+            <Col md={5}>
               <FormGroup>
-                <Label>D/O Date</Label>
-                <Input
+                <Label className="lead">
+                  <h6>D/O Date</h6>
+                </Label>
+                <input
+                  className="form-control"
                   type="datetime-local"
                   name="dropApp"
-                  onChange={trackInput}
-                ></Input>
+                  ref={register({
+                    required: true,
+                    min: Date(now),
+                  })}
+                  // onChange={trackInput}
+                ></input>
+                {errors.dropApp && (
+                  <h6 className="lead">
+                    This field is required to create a load
+                  </h6>
+                )}
+                {errors.dropApp && errors.dropApp.type === 'min' && (
+                  <h6 className="lead">
+                    The DeLorean's flux capacitor is acting up we can only
+                    schedule pickups in the future.
+                  </h6>
+                )}
               </FormGroup>
             </Col>
           </Row>
           <Row>
             <Col>
               <FormGroup>
-                <Label>Weight</Label>
-                <Input
+                <Label className="lead">
+                  <h6>Weight</h6>
+                </Label>
+                <input
+                  className="form-control"
                   type="number"
                   name="weight"
-                  onChange={trackInput}
-                ></Input>
+                  ref={register({
+                    required: true,
+                    valueAsNumber: true,
+                  })}
+                  // onChange={trackInput}
+                ></input>
+                {errors.weight && (
+                  <h6 className="lead">
+                    This field is required to create a load
+                  </h6>
+                )}
               </FormGroup>
             </Col>
             <Col>
               <FormGroup>
-                <Label>Commodity</Label>
-                <Input
+                <Label className="lead">
+                  <h6>Commodity</h6>
+                </Label>
+                <input
+                  className="form-control"
                   type="text"
                   name="commodity"
-                  onChange={trackInput}
-                ></Input>
+                  ref={register({ required: true })}
+                  // onChange={trackInput}
+                ></input>
+                {errors.commodity && (
+                  <h6 className="lead">
+                    This field is required to create a load
+                  </h6>
+                )}
               </FormGroup>
             </Col>
           </Row>
           <Row>
             <Col md={5}>
               <FormGroup>
-                <Label>Customer Rate</Label>
-                <Input
+                <Label className="lead">
+                  <h6>Customer Rate</h6>
+                </Label>
+                <input
+                  className="form-control"
                   type="number"
                   name="customerRate"
-                  onChange={trackInput}
-                ></Input>
+                  ref={register({
+                    required: true,
+                    valueAsNumber: true,
+                  })}
+                  // onChange={trackInput}
+                ></input>
+                {errors.customerRate && (
+                  <h6 className="lead">
+                    This field is required to create a load
+                  </h6>
+                )}
               </FormGroup>
             </Col>
             <Col md={5}>
               <FormGroup>
-                <Label>Carrier Rate</Label>
-                <Input
+                <Label className="lead">
+                  <h6>Carrier Rate</h6>
+                </Label>
+                <input
+                  className="form-control"
                   type="number"
                   name="carrierRate"
-                  onChange={trackInput}
-                ></Input>
+                  ref={register({
+                    required: true,
+                  })}
+                  // onChange={trackInput}
+                ></input>
+                {errors.carrierRate && (
+                  <h6 className="lead">
+                    This field is required to create a load
+                  </h6>
+                )}
               </FormGroup>
             </Col>
             <Col md={2}>
-              <Button className="btn btn-success" onClick={saveLoad}>
+              <Button className="btn btn-success" type="submit">
                 Save
               </Button>
             </Col>

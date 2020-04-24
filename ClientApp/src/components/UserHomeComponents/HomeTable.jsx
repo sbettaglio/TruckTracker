@@ -28,7 +28,7 @@ const HomeTable = () => {
           </Col>
         </Row>
         <Row>
-          <Col sm={1} md={{ size: 6, offset: 3 }} id="search-card">
+          <Col sm={1} md={{ size: 4, offset: 4 }} id="search-card">
             <HomeCard text="Search" link="search" />
           </Col>
         </Row>
