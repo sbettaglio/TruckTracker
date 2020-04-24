@@ -34,23 +34,31 @@ export default class App extends Component {
           <Route
             exact
             path="/userHome"
-            render={() =>
-              localStorage.getItem('token') ? <UserHome /> : <Redirect to="/" />
+            render={routeProps =>
+              localStorage.getItem('token') ? (
+                <UserHome {...routeProps} />
+              ) : (
+                <Redirect to="/" />
+              )
             }
           ></Route>
           <Route
             exact
             path="/picks"
-            render={() =>
-              localStorage.getItem('token') ? <Picks /> : <Redirect to="/" />
+            render={routeProps =>
+              localStorage.getItem('token') ? (
+                <Picks {...routeProps} />
+              ) : (
+                <Redirect to="/" />
+              )
             }
           ></Route>
           <Route
             exact
             path="/available"
-            render={() =>
+            render={routeProps =>
               localStorage.getItem('token') ? (
-                <AvailableLoads />
+                <AvailableLoads {...routeProps} />
               ) : (
                 <Redirect to="/" />
               )
@@ -59,8 +67,12 @@ export default class App extends Component {
           <Route
             exact
             path="/drops"
-            render={() =>
-              localStorage.getItem('token') ? <Drops /> : <Redirect to="/" />
+            render={routeProps =>
+              localStorage.getItem('token') ? (
+                <Drops {...routeProps} />
+              ) : (
+                <Redirect to="/" />
+              )
             }
           ></Route>
           <Route exact path="/late" component={LateTrucks}></Route>
@@ -78,9 +90,9 @@ export default class App extends Component {
           <Route
             exact
             path="/newCarrier"
-            render={() =>
+            render={routeProps =>
               localStorage.getItem('token') ? (
-                <NewCarrier />
+                <NewCarrier {...routeProps} />
               ) : (
                 <Redirect to="/" />
               )
@@ -89,8 +101,12 @@ export default class App extends Component {
           <Route
             exact
             path="/create"
-            render={() =>
-              localStorage.getItem('token') ? <NewLoad /> : <Redirect to="/" />
+            render={routeProps =>
+              localStorage.getItem('token') ? (
+                <NewLoad {...routeProps} />
+              ) : (
+                <Redirect to="/" />
+              )
             }
           ></Route>
           <Route
@@ -107,9 +123,9 @@ export default class App extends Component {
           <Route
             exact
             path="/search"
-            render={() =>
+            render={routeProps =>
               localStorage.getItem('token') ? (
-                <SearchPage />
+                <SearchPage {...routeProps} />
               ) : (
                 <Redirect to="/" />
               )
@@ -118,7 +134,13 @@ export default class App extends Component {
           <Route
             exact
             path="/search/:searchCity"
-            component={CitySearch}
+            render={routeProps =>
+              localStorage.getItem('token') ? (
+                <SearchPage {...routeProps} />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
           ></Route>
           <Route path="*" component={NotFound}></Route>
         </Switch>

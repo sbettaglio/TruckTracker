@@ -9,12 +9,12 @@ import LoadInfoDisplay from '../components/LoadTracking/LoadInfoDisplay'
 
 const Load = props => {
   let loadInfo = props.location.state.load
-  console.log(props)
+  const loadId = props.match.params.loadId
 
-  const [load, setLoad] = useState(loadInfo)
+  const [load, setLoad] = useState({ loadInfo })
   const [carrier, setCarrier] = useState({})
   const getLoadData = async () => {
-    const resp = await axios.get(`api/Loads/${load.id}`, {
+    const resp = await axios.get(`api/Loads/${loadId}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -82,12 +82,12 @@ const Load = props => {
     <>
       <CustomNav />
       <div className="title-div">
-        <h1>Load #{load.id}</h1>
+        <h1>Load #{loadId}</h1>
       </div>
       <main>
         <LoadInfoDisplay load={load} />
 
-        {load.carrierId === null ? (
+        {load.carrierId == null ? (
           <section>
             <h3>Assign Carrier</h3>
             <AssignCarrierToLoad track={trackInput} save={saveCarrierToApi} />

@@ -107,7 +107,7 @@ const UserRegistration = () => {
               {errors.email && (
                 <h6 className="lead">This field is required to register</h6>
               )}
-              {errors.email && errors.email.type == 'pattern' && (
+              {errors.email && errors.email.type === 'pattern' && (
                 <h6 className="lead">Please submit a valid email</h6>
               )}
             </FormGroup>

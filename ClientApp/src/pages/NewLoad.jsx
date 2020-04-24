@@ -8,9 +8,6 @@ const NewLoad = () => {
   return (
     <>
       <CustomNav />
-      <div className="title-div">
-        <h1>Create New Load</h1>
-      </div>
       <Container>
         <CreateNewLoad />
       </Container>
