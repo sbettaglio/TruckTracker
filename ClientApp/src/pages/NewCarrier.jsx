@@ -1,16 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import {
-  Container,
-  Col,
-  Row,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-} from 'reactstrap'
+import { Container, Col, Row, Button, Form, FormGroup, Label } from 'reactstrap'
 import axios from 'axios'
 import './styles/add-new-carrier.scss'
 import CustomNav from '../components/NavMenu/CustomNav'
