@@ -6,6 +6,7 @@ import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
 
 import CustomNav from '../components/NavMenu/CustomNav'
 import LoadInfoDisplay from '../components/LoadTracking/LoadInfoDisplay'
+import './styles/load.scss'
 
 const Load = props => {
   let loadInfo = props.location.state.load
@@ -47,20 +48,25 @@ const Load = props => {
     })
   }
   const saveCarrierToApi = async () => {
-    const resp = await axios.put(
-      `api/Loads/${load.id}/${carrier.mCNumber}`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+    try {
+      const resp = await axios.put(
+        `api/Loads/${load.id}/${carrier.mCNumber}`,
+
+        { load },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        }
+      )
+      if (resp.status === 200) {
+        setLoad(prevLoad => {
+          console.log(prevLoad)
+          return { ...prevLoad, carrierId: resp.data }
+        })
       }
-    )
-    if (resp.status === 200) {
-      setLoad(prevLoad => {
-        console.log(prevLoad)
-        return { ...prevLoad, carrierId: resp.data }
-      })
+    } catch (error) {
+      alert(error.response.data)
     }
   }
   const sendLoadUpdateToApi = async () => {
@@ -84,7 +90,7 @@ const Load = props => {
       <div className="title-div">
         <h1>Load #{loadId}</h1>
       </div>
-      <main>
+      <main className="load-info">
         <LoadInfoDisplay load={load} />
 
         {load.carrierId == null ? (

@@ -54,13 +54,21 @@ namespace TruckTracker.Controllers
     public async Task<ActionResult<Load>> AddCarrierToLoad(int id, int mCNumber)
     {
       var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
+      var carrierInSystem = _context.Carriers.Any(c => c.MCNumber == mCNumber);
+      if (carrierInSystem != true)
+      {
+        return BadRequest("There is no carrier with that MC number in the system");
+      }
+      else
+      {
 
-      var carrier = _context.Carriers.FirstOrDefault(c => c.MCNumber == mCNumber);
-      var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
-      loadToUpdate.CarrierId = carrier.Id;
-      loadToUpdate.UserId = userId;
-      await _context.SaveChangesAsync();
-      return Ok(loadToUpdate.CarrierId);
+
+        var carrier = _context.Carriers.FirstOrDefault(c => c.MCNumber == mCNumber);
+        var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
+        loadToUpdate.CarrierId = carrier.Id;
+        await _context.SaveChangesAsync();
+        return Ok(loadToUpdate.CarrierId);
+      }
     }
     [HttpPut("{id}/update")]
     public async Task<ActionResult<Load>> UpdateLoadStatus(int id, Load load)
