@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { Form, FormGroup, Label, Input, Button, Row, Col } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import CustomNav from '../NavMenu/CustomNav'
+import { isDate, now } from 'moment'
 const CreateNewLoad = () => {
   // const [load, setLoad] = useState({
   //   distance: 0,
@@ -14,6 +14,8 @@ const CreateNewLoad = () => {
     shouldRedirect: false,
     newLoadInformation: {},
   })
+  // let currentDate = Moment()
+  // console.log(currentDate)
 
   const saveLoad = async data => {
     data.carrierRate = parseInt(data.carrierRate)
@@ -47,7 +49,7 @@ const CreateNewLoad = () => {
       <>
         <Form onSubmit={handleSubmit(saveLoad)}>
           <Row>
-            <Col md={8}>
+            <Col md={7}>
               <FormGroup>
                 <Label className="lead">
                   <h6>P/U City, State</h6>
@@ -66,7 +68,7 @@ const CreateNewLoad = () => {
                 )}
               </FormGroup>
             </Col>
-            <Col md={4}>
+            <Col md={5}>
               <FormGroup>
                 <Label className="lead">
                   <h6>P/U Date</h6>
@@ -75,7 +77,11 @@ const CreateNewLoad = () => {
                   className="form-control"
                   type="datetime-local"
                   name="pickApp"
-                  ref={register({ required: true })}
+                  // value={isDate(now)}
+                  ref={register({
+                    required: true,
+                    min: Date(now),
+                  })}
                   // onChange={trackInput}
                 ></input>
                 {errors.pickApp && (
@@ -83,11 +89,17 @@ const CreateNewLoad = () => {
                     This field is required to create a load
                   </h6>
                 )}
+                {errors.pickApp && errors.pickApp.type === 'min' && (
+                  <h6 className="lead">
+                    The DeLorean's flux capacitor is acting up we can only
+                    schedule pickups in the future.
+                  </h6>
+                )}
               </FormGroup>
             </Col>
           </Row>
           <Row>
-            <Col md={8}>
+            <Col md={7}>
               <FormGroup>
                 <Label className="lead">
                   <h6>D/O City, State</h6>
@@ -106,7 +118,7 @@ const CreateNewLoad = () => {
                 )}
               </FormGroup>
             </Col>
-            <Col md={4}>
+            <Col md={5}>
               <FormGroup>
                 <Label className="lead">
                   <h6>D/O Date</h6>
@@ -115,12 +127,21 @@ const CreateNewLoad = () => {
                   className="form-control"
                   type="datetime-local"
                   name="dropApp"
-                  ref={register({ required: true })}
+                  ref={register({
+                    required: true,
+                    min: Date(now),
+                  })}
                   // onChange={trackInput}
                 ></input>
                 {errors.dropApp && (
                   <h6 className="lead">
                     This field is required to create a load
+                  </h6>
+                )}
+                {errors.dropApp && errors.dropApp.type === 'min' && (
+                  <h6 className="lead">
+                    The DeLorean's flux capacitor is acting up we can only
+                    schedule pickups in the future.
                   </h6>
                 )}
               </FormGroup>

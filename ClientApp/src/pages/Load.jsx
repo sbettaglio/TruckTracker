@@ -92,7 +92,6 @@ const Load = props => {
       </div>
       <main className="load-info">
         <LoadInfoDisplay load={load} />
-
         {load.carrierId == null ? (
           <section>
             <h3>Assign Carrier</h3>
