@@ -5,10 +5,15 @@ import axios from 'axios'
 import LoginForm from '../components/LandingPage/LoginForm'
 import RegisterRedirect from '../components/LandingPage/RegisterRedirect'
 import './styles/landing.scss'
+import AlertComponent from '../components/AlertComponent'
 const LandingPage = () => {
   const [emailLogin, setEmailLogin] = useState('')
   const [passwordLogin, setPasswordLogin] = useState('')
   const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [loginError, setLoginError] = useState('')
+  const onDismiss = () => setVisible(false)
+
   const logUserIntoApi = async () => {
     try {
       const resp = await axios.post('auth/login', {
@@ -20,7 +25,8 @@ const LandingPage = () => {
         setShouldRedirect(true)
       }
     } catch (error) {
-      alert(error.response.data)
+      setVisible(true)
+      setLoginError(error.response.data)
     }
   }
   if (shouldRedirect) {
@@ -35,6 +41,16 @@ const LandingPage = () => {
         </div>
         <Form>
           <RegisterRedirect />
+          {visible ? (
+            <AlertComponent
+              msg={loginError}
+              isOpen={visible}
+              toggle={onDismiss}
+              fade={true}
+            />
+          ) : (
+            <></>
+          )}
           <LoginForm
             email={e => setEmailLogin(e.target.value)}
             password={e => setPasswordLogin(e.target.value)}

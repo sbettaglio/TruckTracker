@@ -94,7 +94,7 @@ namespace TruckTracker.Controllers
       var user = await _context.Users.FirstOrDefaultAsync(user => user.Email.ToLower() == userLogin.Email.ToLower());
       if (user == null)
       {
-        return BadRequest("Email or password does not match");
+        return BadRequest("Email or password does not match, please try again");
       }
       var results = new PasswordHasher<User>().VerifyHashedPassword(user, user.HashedPassword, userLogin.Password);
 
