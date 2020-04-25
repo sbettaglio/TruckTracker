@@ -7,7 +7,9 @@ const NewCarrierStateSelect = ({ label, name, message }) => {
   return (
     <>
       {' '}
-      <Label for="exampleState">{label}</Label>
+      <Label for="exampleState">
+        <h5>{label}</h5>
+      </Label>
       <select
         className="form-control"
         name="homeState"

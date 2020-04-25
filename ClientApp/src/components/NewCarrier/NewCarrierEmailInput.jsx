@@ -5,7 +5,9 @@ const NewCarrierEmailInput = ({ label, name, type, placeholder, message }) => {
   const { register, errors } = useFormContext()
   return (
     <>
-      <Label>{label}</Label>
+      <Label>
+        <h5>{label}</h5>
+      </Label>
       <input
         className="form-control"
         type={type}

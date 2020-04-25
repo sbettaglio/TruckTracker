@@ -1,16 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useForm, FormContext } from 'react-hook-form'
-import {
-  Container,
-  Col,
-  Row,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Alert,
-} from 'reactstrap'
+import { Container, Col, Row, Button, Form, FormGroup } from 'reactstrap'
 import axios from 'axios'
 import './styles/add-new-carrier.scss'
 import CustomNav from '../components/NavMenu/CustomNav'
@@ -60,12 +51,15 @@ const NewCarrier = () => {
       <>
         <CustomNav />
         <div className="title-div-new-carrier">
-          <h1>Add New Carrier</h1>
+          <h1>New Carrier</h1>
         </div>
         <main className="main-new-carrier">
-          <Container>
+          <Container className="new-carrier-container">
             <FormContext {...methods}>
-              <Form onSubmit={methods.handleSubmit(sendCarrierToApi)}>
+              <Form
+                onSubmit={methods.handleSubmit(sendCarrierToApi)}
+                className="new-carrier-form"
+              >
                 <Row>
                   <Col sm={1} md={6}>
                     <FormGroup>
@@ -124,7 +118,7 @@ const NewCarrier = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={1} md={8}>
+                  <Col sm={1} md={7}>
                     <FormGroup>
                       <NewCarrierEmailInput
                         label="Email"
@@ -149,7 +143,7 @@ const NewCarrier = () => {
                   <Col sm={1} md={6}>
                     <FormGroup check>
                       <NewCarrierInput
-                        label="ValidInsurance"
+                        label="Valid Insurance"
                         name="validInsurance"
                         type="checkbox"
                         message="This field is required to add a carrier"
@@ -157,7 +151,7 @@ const NewCarrier = () => {
                     </FormGroup>
                   </Col>
                   <Col>
-                    <FormGroup>
+                    <FormGroup className="submit-carrier">
                       <Button type="submit" className="btn-success">
                         Save Carrier
                       </Button>
