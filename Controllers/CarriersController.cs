@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TruckTracker.Models;
@@ -9,6 +11,7 @@ namespace TruckTracker.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
+  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   public class CarriersController : ControllerBase
   {
     private readonly DatabaseContext _context;
@@ -77,6 +80,11 @@ namespace TruckTracker.Controllers
     [HttpPost]
     public async Task<ActionResult<Carrier>> PostCarrier(Carrier carrier)
     {
+      var carrierInSystem = _context.Carriers.Any(c => c.MCNumber == carrier.MCNumber);
+      if (carrierInSystem == true)
+      {
+        return BadRequest("This MC Number is already registered, please try again.");
+      }
       _context.Carriers.Add(carrier);
       await _context.SaveChangesAsync();
 

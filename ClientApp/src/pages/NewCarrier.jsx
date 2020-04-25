@@ -1,26 +1,46 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { Container, Col, Row, Button, Form, FormGroup, Label } from 'reactstrap'
+import {
+  Container,
+  Col,
+  Row,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Alert,
+} from 'reactstrap'
 import axios from 'axios'
 import './styles/add-new-carrier.scss'
 import CustomNav from '../components/NavMenu/CustomNav'
+import AlertComponent from '../components/AlertComponent'
 const NewCarrier = () => {
   const { register, handleSubmit, errors } = useForm()
   const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
     shouldRedirect: false,
     newCarrierInformation: {},
   })
+  const [visible, setVisible] = useState(false)
+
+  const onDismiss = () => setVisible(false)
 
   const sendCarrierToApi = async data => {
     data.mCNumber = parseInt(data.mCNumber)
-    const resp = await axios.post('api/Carriers', data)
-    console.log(resp)
-    if (resp.status === 201) {
-      setWasSuccessfullyCreated({
-        shouldRedirect: true,
-        newCarrierInformation: resp.data,
+    try {
+      const resp = await axios.post('api/Carriers', data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       })
+      if (resp.status === 201) {
+        setWasSuccessfullyCreated({
+          shouldRedirect: true,
+          newCarrierInformation: resp.data,
+        })
+      }
+    } catch (error) {
+      setVisible(true)
     }
   }
   if (wasSuccessfullyCreated.shouldRedirect) {
@@ -61,21 +81,38 @@ const NewCarrier = () => {
                   </FormGroup>
                 </Col>
                 <Col>
-                  <FormGroup>
-                    <Label for="exampleMC">MC Number</Label>
-                    <input
-                      className="form-control"
-                      type="number"
-                      name="mCNumber"
-                      ref={register({ required: true })}
-                      placeholder="123456"
+                  {visible ? (
+                    <AlertComponent
+                      isOpen={visible}
+                      toggle={onDismiss}
+                      fade={true}
+                      msg="hat MC number is already in the system. Please try again"
                     />
-                    {errors.mCNumber && (
-                      <h6 className="lead">
-                        This field is required to create a load
-                      </h6>
-                    )}
-                  </FormGroup>
+                  ) : (
+                    // <Alert
+                    //   color="danger"
+                    //   isOpen={visible}
+                    //   toggle={onDismiss}
+                    //   fade={true}
+                    // >
+                    //   That MC number is already in the system. Please try again
+                    // </Alert>
+                    <FormGroup>
+                      <Label for="exampleMC">MC Number</Label>
+                      <input
+                        className="form-control"
+                        type="number"
+                        name="mCNumber"
+                        ref={register({ required: true })}
+                        placeholder="123456"
+                      />
+                      {errors.mCNumber && (
+                        <h6 className="lead">
+                          This field is required to create a load
+                        </h6>
+                      )}
+                    </FormGroup>
+                  )}
                 </Col>
               </Row>
               <Row>
