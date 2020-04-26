@@ -20,29 +20,30 @@ body {
 }
 @media (min-width: 400px) {
   .title-div-registration {
-    margin-top: 1rem !important;
+    margin-top: 1rem;
   }
 }
 @media (min-width: 768px) {
+  .title-div-registration {
+    margin-top: 2rem;
+  }
   .registration {
-    form {
+    .registration-form {
       border: 2px solid $secondary;
       background-color: $light;
       opacity: 0.8;
       border-radius: 10px;
       padding: 2rem;
-      font-size: 1.45rem;
-      .form-group- {
-        label {
-          width: 35%;
+      .row {
+        div.form-group- {
+          .registration-label {
+            width: 40%;
+          }
         }
       }
       .registration-button {
         display: flex;
         justify-content: center;
-        .btn-success {
-          font-size: 1.45rem;
-        }
       }
     }
   }
@@ -50,20 +51,16 @@ body {
 @media (min-width: 1024px) {
   .registration {
     form {
-      font-size: 3rem;
       .registration-button {
         padding-top: 1rem;
-        .btn-success {
-          font-size: 3rem;
-        }
       }
     }
   }
 }
 @media (min-width: 1200px) {
   .title-div-registration {
-    margin-top: 0rem !important;
-    margin-bottom: 0 !important;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
   }
   .registration {
     width: 80%;

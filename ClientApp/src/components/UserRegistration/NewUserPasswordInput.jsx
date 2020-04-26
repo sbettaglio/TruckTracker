@@ -1,11 +1,11 @@
 import React from 'react'
 import { useFormContext, ErrorMessage } from 'react-hook-form'
 import { Label } from 'reactstrap'
-const NewUserInput = ({ label, name, type, placeholder, message }) => {
+const NewUserPasswordInput = ({ label, name, type, placeholder, message }) => {
   const { register, errors } = useFormContext()
   return (
     <>
-      <Label className="registration-label">
+      <Label>
         <h5>{label}</h5>
       </Label>
       <input
@@ -13,11 +13,11 @@ const NewUserInput = ({ label, name, type, placeholder, message }) => {
         class="form-control"
         type={type}
         placeholder={placeholder}
-        ref={register({ required: true })}
+        ref={register({ required: true, minLength: 7 })}
       ></input>
       <ErrorMessage errors={errors} name={name} message={message} />
     </>
   )
 }
 
-export default NewUserInput
+export default NewUserPasswordInput

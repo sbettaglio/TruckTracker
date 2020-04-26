@@ -4,7 +4,7 @@ import { Label } from 'reactstrap'
 const NewUserEmailInput = ({ label, name, type, placeholder, message }) => {
   return (
     <>
-      <Label>
+      <Label className="registration-label">
         <h5>{label}</h5>
       </Label>
       <input

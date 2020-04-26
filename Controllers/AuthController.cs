@@ -58,9 +58,9 @@ namespace TruckTracker.Controllers
     [HttpPost("register")]
     public async Task<ActionResult> RegisterUser(NewUser newUser)
     {
-      if (newUser.Password.Length < 5)
+      if (newUser.Password.Length < 7)
       {
-        return BadRequest("Password must be at least five characters.");
+        return BadRequest("Password must be at least seven characters.");
       }
       var userEmailInSystem = await _context.Users.AnyAsync(user => user.Email.ToLower() == newUser.Email.ToLower());
       if (userEmailInSystem)
