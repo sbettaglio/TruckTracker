@@ -85,6 +85,14 @@ namespace TruckTracker.Controllers
       await _context.SaveChangesAsync();
       return Ok(loadToUpdate);
     }
+    // [HttpPut("{id/remove")]
+    // public async Task<ActionResult<Load>> RemoveCarrierFromLoad(int id, Load load)
+    // {
+    //   var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
+    //   loadToUpdate.CarrierId = null;
+    //   await _context.SaveChangesAsync();
+    //   return Ok(loadToUpdate);
+    // }
     // POST: api/Loads
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
     // more details see https://aka.ms/RazorPagesCRUD.

@@ -63,6 +63,19 @@ const Load = props => {
       setVisible(true)
     }
   }
+  const removeCarrierFromLoad = async () => {
+    console.log('removing', load.id)
+    const resp = await axios.put(
+      `api/Loads/${load.id}/remove`,
+      { load },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }
+    )
+    console.log(resp)
+  }
   useEffect(() => {
     getLoadData()
   }, [])
@@ -74,7 +87,7 @@ const Load = props => {
       </div>
       <main className="load-info">
         <Row>
-          <Col>
+          <Col sm={12}>
             <LoadInfoDisplay load={load} />
           </Col>
           <Col>
@@ -104,23 +117,20 @@ const Load = props => {
               <Container>
                 <FormContext {...methods}>
                   <Form onSubmit={methods.handleSubmit(sendLoadUpdateToApi)}>
-                    <section>
-                      <LoadTrackingForm
-                        load={load}
-                        // track={trackLoad}
-                        // save={sendLoadUpdateToApi}
+                    <LoadTrackingForm
+                      load={load}
+                      remove={removeCarrierFromLoad}
+                    />
+                    {visible ? (
+                      <AlertComponent
+                        isOpen={visible}
+                        toggle={onDismiss}
+                        fade={true}
+                        msg="Load has been updated."
                       />
-                      {visible ? (
-                        <AlertComponent
-                          isOpen={visible}
-                          toggle={onDismiss}
-                          fade={true}
-                          msg="Load has been updated."
-                        />
-                      ) : (
-                        <></>
-                      )}
-                    </section>
+                    ) : (
+                      <></>
+                    )}
                   </Form>
                 </FormContext>
               </Container>

@@ -11,3 +11,21 @@
     margin-bottom: 1rem;
   }
 }
+@media (min-width: 768px) {
+  .load-info {
+    text-align: left;
+    .row {
+      .col {
+        .container {
+          text-align: left;
+          .form-group {
+            width: 100%;
+            label {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

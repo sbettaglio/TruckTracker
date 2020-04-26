@@ -1,16 +1,15 @@
 import React from 'react'
-import { Row, Col, FormGroup, Label, Button } from 'reactstrap'
+import { Col, FormGroup, Label, Button, Row } from 'reactstrap'
 import { useFormContext, ErrorMessage } from 'react-hook-form'
-const LoadTrackingForm = ({ load, save }) => {
+const LoadTrackingForm = ({ load, remove }) => {
   const { register, errors } = useFormContext()
 
   return (
     <>
-      {/* <Row> */}
-      <Col>
+      <Row>
         <FormGroup>
           <Label for="loadStatus">
-            <h6>Load Status</h6>
+            <h4>Load Status</h4>
           </Label>
           <select
             className="form-control"
@@ -38,13 +37,9 @@ const LoadTrackingForm = ({ load, save }) => {
             message="Please update load status"
           />
         </FormGroup>
-      </Col>
-      {/* </Row> */}
-      {/* <Row> */}
-      <Col>
         <FormGroup>
           <Label for="exampleDateTime">
-            <h6>ETA to Pick</h6>
+            <h4>ETA to Pick</h4>
           </Label>
           <input
             className="form-control"
@@ -55,11 +50,9 @@ const LoadTrackingForm = ({ load, save }) => {
             defaultValue={load.pickEta}
           ></input>
         </FormGroup>
-      </Col>
-      <Col>
         <FormGroup>
           <Label>
-            <h6>Checked-in</h6>
+            <h4>Checked-in</h4>
           </Label>
           <input
             className="form-control"
@@ -70,11 +63,9 @@ const LoadTrackingForm = ({ load, save }) => {
             defaultValue={load.pickCheckIn}
           ></input>
         </FormGroup>
-      </Col>
-      <Col>
         <FormGroup>
           <Label>
-            <h6>Checked-out</h6>
+            <h4>Checked-out</h4>
           </Label>
           <input
             className="form-control"
@@ -85,14 +76,9 @@ const LoadTrackingForm = ({ load, save }) => {
             ref={register}
           ></input>
         </FormGroup>
-      </Col>
-      {/* </Row> */}
-
-      {/* <Row> */}
-      <Col>
         <FormGroup>
           <Label>
-            <h6>ETA to Drop</h6>
+            <h4>ETA to Drop</h4>
           </Label>
           <input
             className="form-control"
@@ -103,12 +89,9 @@ const LoadTrackingForm = ({ load, save }) => {
             ref={register}
           ></input>
         </FormGroup>
-      </Col>
-
-      <Col>
         <FormGroup>
           <Label>
-            <h6>Checked-in</h6>
+            <h4>Checked-in</h4>
           </Label>
           <input
             className="form-control"
@@ -119,11 +102,9 @@ const LoadTrackingForm = ({ load, save }) => {
             ref={register}
           ></input>
         </FormGroup>
-      </Col>
-      <Col>
         <FormGroup>
           <Label>
-            <h6>Checked-out</h6>
+            <h4>Checked-out</h4>
           </Label>
           <input
             className="form-control"
@@ -134,17 +115,22 @@ const LoadTrackingForm = ({ load, save }) => {
             ref={register}
           ></input>
         </FormGroup>
-      </Col>
-      {/* // </Row> */}
-      {/* <Row> */}
-      <Col>
-        <FormGroup className="registration-button">
-          <Button className="btn-success" type="submit" onSubmit={save}>
-            Save
-          </Button>
-        </FormGroup>
-      </Col>
-      {/* </Row> */}
+
+        <Col md={4}>
+          <FormGroup className="registration-button">
+            <Button className="btn-success" type="submit">
+              Save
+            </Button>
+          </FormGroup>
+        </Col>
+        <Col md={{ size: 6, offset: 2 }}>
+          <FormGroup>
+            <Button className="btn-danger" onClick={remove}>
+              Remove
+            </Button>
+          </FormGroup>
+        </Col>
+      </Row>
     </>
   )
 }
