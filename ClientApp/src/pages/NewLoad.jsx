@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from 'reactstrap'
-import CreateNewLoad from '../components/SignUpForms/CreateNewLoad'
+import CreateNewLoad from '../components/NewLoad/CreateNewLoad'
 import CustomNav from '../components/NavMenu/CustomNav'
 import './styles/new-load.scss'
 
