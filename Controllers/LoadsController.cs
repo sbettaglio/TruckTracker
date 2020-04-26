@@ -77,12 +77,13 @@ namespace TruckTracker.Controllers
       var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
       var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
       loadToUpdate.LoadStatus = load.LoadStatus;
+      loadToUpdate.PickEta = load.PickEta;
       loadToUpdate.PickCheckIn = load.PickCheckIn;
       loadToUpdate.PickCheckOut = load.PickCheckOut;
       loadToUpdate.DropCheckIn = load.DropCheckIn;
       loadToUpdate.DropCheckOut = load.DropCheckOut;
       await _context.SaveChangesAsync();
-      return Ok(load);
+      return Ok(loadToUpdate);
     }
     // POST: api/Loads
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for

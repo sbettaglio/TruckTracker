@@ -3,7 +3,7 @@ import axios from 'axios'
 import './styles/load.scss'
 import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'
 import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
-import { Container, Form } from 'reactstrap'
+import { Container, Form, Row, Col } from 'reactstrap'
 import AlertComponent from '../components/AlertComponent'
 import { useForm, FormContext } from 'react-hook-form'
 import CustomNav from '../components/NavMenu/CustomNav'
@@ -26,18 +26,6 @@ const Load = props => {
     })
 
     setLoad(resp.data)
-  }
-  const trackLoad = e => {
-    const fieldToUpdate = e.target.name
-    console.log(fieldToUpdate)
-    let value = e.target.value
-    if (value === 'on') {
-      value = true
-    }
-    console.log(value)
-    setLoad(prevLoad => {
-      return { ...prevLoad, [fieldToUpdate]: value }
-    })
   }
   const saveCarrierToApi = async data => {
     try {
@@ -63,16 +51,16 @@ const Load = props => {
       setVisible(true)
     }
   }
-  const sendLoadUpdateToApi = async () => {
-    console.log('updating', load)
-    const resp = await axios.put(`api/Loads/${load.id}/update`, load, {
+  const sendLoadUpdateToApi = async data => {
+    console.log('updating', data)
+    const resp = await axios.put(`api/Loads/${load.id}/update`, data, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
     if (resp.status === 200) {
       setLoad(resp.data)
-      alert('Load has been updated')
+      setVisible(true)
     }
   }
   useEffect(() => {
@@ -85,41 +73,60 @@ const Load = props => {
         <h1>Load #{loadId}</h1>
       </div>
       <main className="load-info">
-        <LoadInfoDisplay load={load} />
-        {load.carrierId == null ? (
-          <section>
-            {visible ? (
-              <div>
-                <AlertComponent
-                  isOpen={visible}
-                  toggle={onDismiss}
-                  fade={true}
-                  msg={badRequest}
-                />
-              </div>
+        <Row>
+          <Col>
+            <LoadInfoDisplay load={load} />
+          </Col>
+          <Col>
+            {load.carrierId == null ? (
+              <section>
+                {visible ? (
+                  <div>
+                    <AlertComponent
+                      isOpen={visible}
+                      toggle={onDismiss}
+                      fade={true}
+                      msg={badRequest}
+                    />
+                  </div>
+                ) : (
+                  <h3>Assign Carrier</h3>
+                )}
+                <Container>
+                  <FormContext {...methods}>
+                    <Form onSubmit={methods.handleSubmit(saveCarrierToApi)}>
+                      <AssignCarrierToLoad />
+                    </Form>
+                  </FormContext>
+                </Container>
+              </section>
             ) : (
-              <h3>Assign Carrier</h3>
+              <Container>
+                <FormContext {...methods}>
+                  <Form onSubmit={methods.handleSubmit(sendLoadUpdateToApi)}>
+                    <section>
+                      <LoadTrackingForm
+                        load={load}
+                        // track={trackLoad}
+                        // save={sendLoadUpdateToApi}
+                      />
+                      {visible ? (
+                        <AlertComponent
+                          isOpen={visible}
+                          toggle={onDismiss}
+                          fade={true}
+                          msg="Load has been updated."
+                        />
+                      ) : (
+                        <></>
+                      )}
+                    </section>
+                  </Form>
+                </FormContext>
+              </Container>
             )}
-            <Container>
-              <FormContext {...methods}>
-                <Form onSubmit={methods.handleSubmit(saveCarrierToApi)}>
-                  <AssignCarrierToLoad
-
-                  // save={saveCarrierToApi}
-                  />
-                </Form>
-              </FormContext>
-            </Container>
-          </section>
-        ) : (
-          <section>
-            <LoadTrackingForm
-              load={load}
-              track={trackLoad}
-              save={sendLoadUpdateToApi}
-            />
-          </section>
-        )}
+          </Col>
+        </Row>
       </main>
     </>
   )

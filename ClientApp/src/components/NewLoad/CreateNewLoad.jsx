@@ -51,7 +51,6 @@ const CreateNewLoad = () => {
                   className="form-control"
                   type="text"
                   name="pickCity"
-                  // onChange={trackInput}
                   ref={register({ required: true })}
                 ></input>
                 {errors.pickCity && (
@@ -70,7 +69,6 @@ const CreateNewLoad = () => {
                   className="form-control"
                   type="datetime-local"
                   name="pickApp"
-                  // value={isDate(now)}
                   ref={register({
                     required: true,
                     min: Date(now),
@@ -102,7 +100,6 @@ const CreateNewLoad = () => {
                   type="text"
                   name="dropCity"
                   ref={register({ required: true })}
-                  // onChange={trackInput}
                 ></input>
                 {errors.dropCity && (
                   <h6 className="lead">
@@ -124,7 +121,6 @@ const CreateNewLoad = () => {
                     required: true,
                     min: Date(now),
                   })}
-                  // onChange={trackInput}
                 ></input>
                 {errors.dropApp && (
                   <h6 className="lead">
@@ -154,7 +150,6 @@ const CreateNewLoad = () => {
                     required: true,
                     valueAsNumber: true,
                   })}
-                  // onChange={trackInput}
                 ></input>
                 {errors.weight && (
                   <h6 className="lead">
@@ -173,7 +168,6 @@ const CreateNewLoad = () => {
                   type="text"
                   name="commodity"
                   ref={register({ required: true })}
-                  // onChange={trackInput}
                 ></input>
                 {errors.commodity && (
                   <h6 className="lead">
@@ -197,7 +191,6 @@ const CreateNewLoad = () => {
                     required: true,
                     valueAsNumber: true,
                   })}
-                  // onChange={trackInput}
                 ></input>
                 {errors.customerRate && (
                   <h6 className="lead">
@@ -218,7 +211,6 @@ const CreateNewLoad = () => {
                   ref={register({
                     required: true,
                   })}
-                  // onChange={trackInput}
                 ></input>
                 {errors.carrierRate && (
                   <h6 className="lead">

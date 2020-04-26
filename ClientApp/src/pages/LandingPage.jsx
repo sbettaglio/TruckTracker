@@ -47,6 +47,7 @@ const LandingPage = () => {
               isOpen={visible}
               toggle={onDismiss}
               fade={true}
+              color="danger"
             />
           ) : (
             <></>

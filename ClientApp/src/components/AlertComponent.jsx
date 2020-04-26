@@ -1,9 +1,9 @@
 import React from 'react'
 import { Alert } from 'reactstrap'
-const AlertComponent = ({ isOpen, toggle, fade, msg }) => {
+const AlertComponent = ({ isOpen, toggle, fade, msg, color }) => {
   return (
     <>
-      <Alert color="danger" isOpen={isOpen} toggle={toggle} fade={fade}>
+      <Alert color={color} isOpen={isOpen} toggle={toggle} fade={fade}>
         {msg}
       </Alert>
     </>

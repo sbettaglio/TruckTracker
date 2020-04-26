@@ -104,6 +104,7 @@ const UserRegistration = () => {
                     toggle={onDismiss}
                     fade={true}
                     msg={loginError}
+                    color="danger"
                   />
                 ) : (
                   <NewUserInput
@@ -126,6 +127,7 @@ const UserRegistration = () => {
                     toggle={onDismiss}
                     fade={true}
                     msg={loginError}
+                    color="danger"
                   />
                 ) : (
                   <NewCarrierEmailInput
@@ -146,6 +148,7 @@ const UserRegistration = () => {
                     toggle={onDismiss}
                     fade={true}
                     msg={loginError}
+                    color="danger"
                   />
                 ) : (
                   <NewUserPasswordInput
