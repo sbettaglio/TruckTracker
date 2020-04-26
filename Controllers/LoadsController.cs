@@ -57,7 +57,7 @@ namespace TruckTracker.Controllers
       var carrierInSystem = _context.Carriers.Any(c => c.MCNumber == mCNumber);
       if (carrierInSystem != true)
       {
-        return BadRequest("There is no carrier with that MC number in the system");
+        return BadRequest("There is no carrier with that MC number in the system, please try again");
       }
       else
       {
@@ -66,6 +66,7 @@ namespace TruckTracker.Controllers
         var carrier = _context.Carriers.FirstOrDefault(c => c.MCNumber == mCNumber);
         var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
         loadToUpdate.CarrierId = carrier.Id;
+        loadToUpdate.LoadStatus = "Covered";
         await _context.SaveChangesAsync();
         return Ok(loadToUpdate.CarrierId);
       }

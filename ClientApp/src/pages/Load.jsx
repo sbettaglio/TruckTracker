@@ -3,7 +3,9 @@ import axios from 'axios'
 import './styles/load.scss'
 import AssignCarrierToLoad from '../components/LoadTracking/AssignCarrierToLoad'
 import LoadTrackingForm from '../components/LoadTracking/LoadTrackingForm'
-
+import { Container, Form } from 'reactstrap'
+import AlertComponent from '../components/AlertComponent'
+import { useForm, FormContext } from 'react-hook-form'
 import CustomNav from '../components/NavMenu/CustomNav'
 import LoadInfoDisplay from '../components/LoadTracking/LoadInfoDisplay'
 import './styles/load.scss'
@@ -11,9 +13,11 @@ import './styles/load.scss'
 const Load = props => {
   let loadInfo = props.location.state.load
   const loadId = props.match.params.loadId
-
   const [load, setLoad] = useState({ loadInfo })
-  const [carrier, setCarrier] = useState({})
+  const [visible, setVisible] = useState(false)
+  const [badRequest, setBadRequest] = useState('')
+  const methods = useForm()
+  const onDismiss = () => setVisible(false)
   const getLoadData = async () => {
     const resp = await axios.get(`api/Loads/${loadId}`, {
       headers: {
@@ -22,18 +26,6 @@ const Load = props => {
     })
 
     setLoad(resp.data)
-  }
-
-  const trackInput = e => {
-    const fieldToUpdate = e.target.name
-    const value = e.target.value
-    if (fieldToUpdate === 'mCNumber') {
-      setCarrier(prevCarrier => {
-        prevCarrier[fieldToUpdate] = parseInt(value, 10)
-
-        return prevCarrier
-      })
-    }
   }
   const trackLoad = e => {
     const fieldToUpdate = e.target.name
@@ -47,10 +39,11 @@ const Load = props => {
       return { ...prevLoad, [fieldToUpdate]: value }
     })
   }
-  const saveCarrierToApi = async () => {
+  const saveCarrierToApi = async data => {
     try {
+      data.mCNumber = parseInt(data.mCNumber)
       const resp = await axios.put(
-        `api/Loads/${load.id}/${carrier.mCNumber}`,
+        `api/Loads/${load.id}/${data.mCNumber}`,
 
         { load },
         {
@@ -66,7 +59,8 @@ const Load = props => {
         })
       }
     } catch (error) {
-      alert(error.response.data)
+      setBadRequest(error.response.data)
+      setVisible(true)
     }
   }
   const sendLoadUpdateToApi = async () => {
@@ -94,8 +88,28 @@ const Load = props => {
         <LoadInfoDisplay load={load} />
         {load.carrierId == null ? (
           <section>
-            <h3>Assign Carrier</h3>
-            <AssignCarrierToLoad track={trackInput} save={saveCarrierToApi} />
+            {visible ? (
+              <div>
+                <AlertComponent
+                  isOpen={visible}
+                  toggle={onDismiss}
+                  fade={true}
+                  msg={badRequest}
+                />
+              </div>
+            ) : (
+              <h3>Assign Carrier</h3>
+            )}
+            <Container>
+              <FormContext {...methods}>
+                <Form onSubmit={methods.handleSubmit(saveCarrierToApi)}>
+                  <AssignCarrierToLoad
+
+                  // save={saveCarrierToApi}
+                  />
+                </Form>
+              </FormContext>
+            </Container>
           </section>
         ) : (
           <section>
