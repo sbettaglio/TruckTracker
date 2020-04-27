@@ -16,7 +16,7 @@ namespace TruckTracker.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   public class LoadsController : ControllerBase
   {
     private readonly DatabaseContext _context;
@@ -112,6 +112,8 @@ namespace TruckTracker.Controllers
       var distance = legs.GetProperty("distance").EnumerateObject();
       var text = distance.First().Value;
       load.Distance = text.ToString();
+      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
+      load.UserId = userId;
       _context.Loads.Add(load);
       await _context.SaveChangesAsync();
 
