@@ -108,8 +108,8 @@ const NewCarrier = () => {
                   <Col>
                     <FormGroup>
                       <NewCarrierInput
-                        label="Phone"
-                        name="phone"
+                        label="Phone Number"
+                        name="phoneNumber"
                         type="number"
                         placeholder="Input Phone Number"
                         message="This field is required to add a carrier"
