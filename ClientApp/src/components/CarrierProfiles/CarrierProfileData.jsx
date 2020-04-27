@@ -11,7 +11,7 @@ const CarrierProfileData = ({ label, data }) => {
           </p>
         </section>
       ) : (
-        <section className="mc-number">
+        <section>
           <h4>{label}</h4>
           <p>{data}</p>
         </section>

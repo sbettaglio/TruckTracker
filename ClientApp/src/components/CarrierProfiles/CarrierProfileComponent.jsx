@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col, Button } from 'reactstrap'
 
 import CarrierProfileData from './CarrierProfileData.jsx'
-const CarrierProfileComponent = ({ carrier }) => {
+const CarrierProfileComponent = ({ carrier, button }) => {
   return (
     <>
       <Row>
@@ -33,7 +33,9 @@ const CarrierProfileComponent = ({ carrier }) => {
         </Col>
         <Col md={4} lg={12}>
           <section className="bottom-button">
-            <Button className="btn-success">Update</Button>
+            <Button className="btn-success" onClick={button}>
+              Update
+            </Button>
           </section>
         </Col>
       </Row>

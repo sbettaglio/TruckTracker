@@ -46,32 +46,27 @@ namespace TruckTracker.Controllers
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
     // more details see https://aka.ms/RazorPagesCRUD.
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutCarrier(int id, Carrier carrier)
+    public async Task<ActionResult<Carrier>> PutCarrier(int id, Carrier carrier)
     {
       if (id != carrier.Id)
       {
         return BadRequest();
       }
-
-      _context.Entry(carrier).State = EntityState.Modified;
-
-      try
+      var carrierToUpdate = _context.Carriers.FirstOrDefault(c => c.Id == id);
+      if (carrier.PrimaryContact != "")
       {
-        await _context.SaveChangesAsync();
+        carrierToUpdate.PrimaryContact = carrier.PrimaryContact;
       }
-      catch (DbUpdateConcurrencyException)
+      else if (carrier.PhoneNumber != "")
       {
-        if (!CarrierExists(id))
-        {
-          return NotFound();
-        }
-        else
-        {
-          throw;
-        }
+        carrierToUpdate.PhoneNumber = carrier.PhoneNumber;
       }
-
-      return NoContent();
+      else if (carrier.Email != "")
+      {
+        carrierToUpdate.Email = carrier.Email;
+      }
+      await _context.SaveChangesAsync();
+      return Ok(carrierToUpdate);
     }
 
     // POST: api/Carriers
