@@ -61,7 +61,7 @@ const UserRegistration = () => {
           className="registration-form"
         >
           <Row>
-            <Col sm={1} md={6}>
+            <Col sm={12} md={6}>
               <FormGroup>
                 <NewUserInput
                   label="Company"
@@ -72,7 +72,7 @@ const UserRegistration = () => {
                 />
               </FormGroup>
             </Col>
-            <Col sm={1} md={6}>
+            <Col sm={12} md={6}>
               <FormGroup>
                 <NewUserInput
                   label="Position"
@@ -85,7 +85,7 @@ const UserRegistration = () => {
             </Col>
           </Row>
           <Row>
-            <Col sm={1} md={6}>
+            <Col sm={12} md={6}>
               <FormGroup>
                 <NewUserInput
                   label="Full Name"
@@ -96,7 +96,7 @@ const UserRegistration = () => {
                 />
               </FormGroup>
             </Col>
-            <Col sm={1} md={6}>
+            <Col sm={12} md={6}>
               <FormGroup>
                 {visible.usernameAlert ? (
                   <AlertComponent
@@ -119,7 +119,7 @@ const UserRegistration = () => {
             </Col>
           </Row>
           <Row>
-            <Col sm={1} md={6}>
+            <Col sm={12} md={6}>
               <FormGroup>
                 {visible.emailAlert ? (
                   <AlertComponent
@@ -140,7 +140,7 @@ const UserRegistration = () => {
                 )}
               </FormGroup>
             </Col>
-            <Col sm={1} md={6}>
+            <Col sm={12} md={6}>
               <FormGroup>
                 {visible.passwordAlert ? (
                   <AlertComponent

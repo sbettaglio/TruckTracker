@@ -11,7 +11,7 @@ const LoadInfoDisplay = ({ load }) => {
           <Col xl={6}>
             <LoadInfoDataComponent text="Status" data={load.loadStatus} />
           </Col>
-          <Col sm={1} md={12} xl={6}>
+          <Col sm={12} md={12} xl={6}>
             <LoadInfoDataComponent text="Distance" data={load.distance} />
           </Col>
           <Col xl={6}>

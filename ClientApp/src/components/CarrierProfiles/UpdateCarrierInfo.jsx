@@ -36,7 +36,7 @@ const UpdateCarrierInfo = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={12} sm={8}>
           <FormGroup>
             <Label>
               <h5>Email</h5>
@@ -58,7 +58,7 @@ const UpdateCarrierInfo = () => {
           </FormGroup>
         </Col>
         <Col>
-          <FormGroup>
+          <FormGroup className="save-update">
             <Button type="submit" className="btn-success">
               Save Update
             </Button>

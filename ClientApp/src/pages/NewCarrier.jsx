@@ -61,7 +61,7 @@ const NewCarrier = () => {
                 className="new-carrier-form"
               >
                 <Row>
-                  <Col sm={1} md={6}>
+                  <Col sm={12} md={6}>
                     <FormGroup>
                       <NewCarrierInput
                         label="Carrier Name"
@@ -94,7 +94,7 @@ const NewCarrier = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={1} md={6}>
+                  <Col sm={12} md={6}>
                     <FormGroup>
                       <NewCarrierInput
                         label="Primary Contact"
@@ -118,7 +118,7 @@ const NewCarrier = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={1} md={7}>
+                  <Col sm={12} md={7}>
                     <FormGroup>
                       <NewCarrierEmailInput
                         label="Email"
@@ -140,7 +140,7 @@ const NewCarrier = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={1} md={6}>
+                  <Col sm={12} md={6}>
                     <FormGroup check>
                       <NewCarrierInput
                         label="Valid Insurance"

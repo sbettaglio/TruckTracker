@@ -70,7 +70,7 @@ const LoadSearchContainer = ({
   } else {
     return (
       <>
-        <Col sm={1} md={12}>
+        <Col sm={12} md={12}>
           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
             <Label>{labelTop}</Label>
             <Input
@@ -85,7 +85,7 @@ const LoadSearchContainer = ({
             </Button>
           </FormGroup>
         </Col>
-        <Col sm={1} md={12}>
+        <Col sm={12} md={12}>
           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
             <Label>{labelBottom}</Label>
             <Input

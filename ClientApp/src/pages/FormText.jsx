@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Button, Form, FormGroup, Label } from 'reactstrap'
 
 import { useForm } from 'react-hook-form'
-import { now } from 'moment'
 
 const FormText = () => {
-  const { register, handleSubmit, errors } = useForm()
-  const { date, setDate } = useState(new Date())
+  const { register, handleSubmit } = useForm()
+
   const onSubmit = data => {
     console.log(data)
   }
