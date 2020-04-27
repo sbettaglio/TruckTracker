@@ -22,11 +22,11 @@ const CarrierProfiles = props => {
   return (
     <>
       <CustomNav />
-      <div className="title-div">
+      <div className="carrier-profile-title-div">
         <h1>{carrier.carrierName}</h1>
       </div>
       <main className="carrier-profile">
-        <Container>
+        <Container className="carrier-profile-container">
           <Row>
             <Col sm={1} md={12} lg={12}>
               <section className="mc-number">

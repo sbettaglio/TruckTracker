@@ -1,5 +1,12 @@
 @import '../../bootstrap-customize.scss';
+.carrier-profile-title-div {
+  text-align: center;
+  margin-top: 3.6rem;
+}
 .carrier-profile {
+  .carrier-profile-container {
+    margin-top: 0;
+  }
   .container {
     width: 90%;
     border: 2px solid $secondary;
@@ -19,11 +26,11 @@
     padding-top: 2rem;
   }
   .carrier-profile {
-    padding-top: 2rem;
+    // padding-top: 2rem;
     .container {
       width: 100%;
       padding: 2rem;
-      margin: 2rem;
+      // margin: 2rem;
       font-size: 1.7rem;
       .row {
         padding: 1rem;
@@ -79,6 +86,4 @@
       }
     }
   }
-}
-@media (min-width: 1200px) {
 }
