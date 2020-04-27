@@ -65,16 +65,15 @@ const Load = props => {
   }
   const removeCarrierFromLoad = async () => {
     console.log('removing', load.id)
-    const resp = await axios.put(
-      `api/Loads/${load.id}/remove`,
-      { load },
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      }
-    )
-    console.log(resp)
+    // const resp = await axios.put(
+    //   `api/Loads/${load.id}/remove`,
+    //   { load },
+    //   {
+    //     headers: {
+    //       Authorization: `Bearer ${localStorage.getItem('token')}`,
+    //     },
+    //   }
+    // )
   }
   useEffect(() => {
     getLoadData()
@@ -82,12 +81,12 @@ const Load = props => {
   return (
     <>
       <CustomNav />
-      <div className="title-div">
+      <div className="load-title-div">
         <h1>Load #{loadId}</h1>
       </div>
       <main className="load-info">
         <Row>
-          <Col sm={12}>
+          <Col sm={12} md={6} xl={6}>
             <LoadInfoDisplay load={load} />
           </Col>
           <Col>
