@@ -65,15 +65,16 @@ const Load = props => {
   }
   const removeCarrierFromLoad = async () => {
     console.log('removing', load.id)
-    // const resp = await axios.put(
-    //   `api/Loads/${load.id}/remove`,
-    //   { load },
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${localStorage.getItem('token')}`,
-    //     },
-    //   }
-    // )
+    const resp = await axios.patch(
+      `api/Loads/${load.id}/remove`,
+      { load },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }
+    )
+    setLoad(resp.data)
   }
   useEffect(() => {
     getLoadData()

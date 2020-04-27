@@ -85,6 +85,16 @@ namespace TruckTracker.Controllers
       await _context.SaveChangesAsync();
       return Ok(loadToUpdate);
     }
+    [HttpPatch("{id}/remove")]
+    public async Task<ActionResult> RemoveCarrierFromLoad(int id)
+    {
+      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
+      var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
+      loadToUpdate.CarrierId = null;
+      loadToUpdate.LoadStatus = "available";
+      await _context.SaveChangesAsync();
+      return Ok("Carrier removed from the load.");
+    }
 
     // POST: api/Loads
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
