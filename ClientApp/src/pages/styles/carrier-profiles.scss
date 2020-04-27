@@ -28,6 +28,14 @@
   .carrier-profile {
     // padding-top: 2rem;
     .container {
+      .form-group {
+        label {
+          width: 100%;
+        }
+        .btn {
+          margin-top: 10%;
+        }
+      }
       width: 100%;
       padding: 2rem;
       // margin: 2rem;

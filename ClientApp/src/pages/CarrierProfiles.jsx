@@ -51,7 +51,7 @@ const CarrierProfiles = props => {
           {visible ? (
             <FormContext {...methods}>
               <Form onSubmit={methods.handleSubmit(sendCarrierUpdateToApi)}>
-                <UpdateCarrierInfo />
+                <UpdateCarrierInfo className="carrier-update-profile" />
               </Form>
             </FormContext>
           ) : (

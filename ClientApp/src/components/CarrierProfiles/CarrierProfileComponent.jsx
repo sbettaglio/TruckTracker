@@ -6,8 +6,14 @@ const CarrierProfileComponent = ({ carrier, button }) => {
   return (
     <>
       <Row>
-        <Col sm={1} md={12} lg={12}>
+        <Col sm={1} md={4} lg={12}>
           <CarrierProfileData label="MC Number" data={carrier.mcNumber} />
+        </Col>
+        <Col sm={2} md={6} lg={12}>
+          <CarrierProfileData
+            label="Loads Assigned"
+            data={carrier.loads === undefined ? 0 : carrier.loads.length}
+          />
         </Col>
       </Row>
       <Row>
