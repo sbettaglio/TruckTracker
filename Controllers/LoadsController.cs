@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -15,7 +16,7 @@ namespace TruckTracker.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+  // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   public class LoadsController : ControllerBase
   {
     private readonly DatabaseContext _context;
@@ -102,10 +103,15 @@ namespace TruckTracker.Controllers
     [HttpPost]
     public async Task<ActionResult<Load>> PostLoad(Load load)
     {
-      // var client = new HttpClient();
-      // var resp = await client.GetAsync($"https://maps.googleapis.com/maps/api/directions/json?origin={load.PickCity}&destination={load.DropApp}&key=");
-      var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
-      load.UserId = userId;
+      var client = new HttpClient();
+      var resp = await client.GetAsync($"https://maps.googleapis.com/maps/api/directions/json?origin={load.PickCity}&destination={load.DropCity}&key={_MAP_KEY}");
+      var json = await JsonDocument.ParseAsync(await resp.Content.ReadAsStreamAsync());
+      var root = json.RootElement;
+      var route = root.GetProperty("routes").EnumerateArray().First();
+      var legs = route.GetProperty("legs").EnumerateArray().First();
+      var distance = legs.GetProperty("distance").EnumerateObject();
+      var text = distance.First().Value;
+      load.Distance = text.ToString();
       _context.Loads.Add(load);
       await _context.SaveChangesAsync();
 
