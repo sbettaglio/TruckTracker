@@ -69,6 +69,7 @@ const CreateNewLoad = () => {
                   className="form-control"
                   type="datetime-local"
                   name="pickApp"
+                  step="900"
                   ref={register({
                     required: true,
                     min: Date(now),
@@ -117,6 +118,7 @@ const CreateNewLoad = () => {
                   className="form-control"
                   type="datetime-local"
                   name="dropApp"
+                  step="900"
                   ref={register({
                     required: true,
                     min: Date(now),

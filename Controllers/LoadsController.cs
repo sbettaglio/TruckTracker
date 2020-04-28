@@ -103,15 +103,7 @@ namespace TruckTracker.Controllers
     [HttpPost]
     public async Task<ActionResult<Load>> PostLoad(Load load)
     {
-      // var client = new HttpClient();
-      // var resp = await client.GetAsync($"https://maps.googleapis.com/maps/api/directions/json?origin={load.PickCity}&destination={load.DropCity}&key={_MAP_KEY}");
-      // var json = await JsonDocument.ParseAsync(await resp.Content.ReadAsStreamAsync());
-      // var root = json.RootElement;
-      // var route = root.GetProperty("routes").EnumerateArray().First();
-      // var legs = route.GetProperty("legs").EnumerateArray().First();
-      // var distance = legs.GetProperty("distance").EnumerateObject();
-      // var text = distance.First().Value;
-      // load.Distance = text.ToString();
+
       var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
       load.UserId = userId;
       _context.Loads.Add(load);
