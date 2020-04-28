@@ -19,8 +19,8 @@ const Load = props => {
   const [badRequest, setBadRequest] = useState('')
   const methods = useForm()
 
-  const [distance, setDistance] = useState('')
-  const API_KEY = `${process.env.REACT_APP_MAP_KEY}`
+  // const [distance, setDistance] = useState('')
+  // const API_KEY = `${process.env.REACT_APP_MAP_KEY}`
 
   const onDismiss = () => setVisible(false)
   const getLoadData = async () => {
@@ -30,10 +30,10 @@ const Load = props => {
       },
     })
     setLoad(resp.data)
-    const dist = await axios.get(
-      `https://www.mapquestapi.com/directions/v2/route?key=${API_KEY}&from=${resp.data.pickCity}&to=${resp.data.dropCity}`
-    )
-    setDistance(`${Math.ceil(dist.data.route.distance)} miles`)
+    // const dist = await axios.get(
+    //   `https://www.mapquestapi.com/directions/v2/route?key=${API_KEY}&from=${resp.data.pickCity}&to=${resp.data.dropCity}`
+    // )
+    // setDistance(`${Math.ceil(dist.data.route.distance)} miles`)
   }
 
   const saveCarrierToApi = async data => {
@@ -91,7 +91,7 @@ const Load = props => {
       <main className="load-info">
         <Row>
           <Col sm={12} md={6} xl={6}>
-            <LoadInfoDisplay load={load} distance={distance} />
+            <LoadInfoDisplay load={load} />
           </Col>
           <Col>
             {load.carrierId == null ? (

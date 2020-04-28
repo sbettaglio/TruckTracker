@@ -44,6 +44,15 @@ namespace TruckTracker.Controllers
       {
         return NotFound();
       }
+      var client = new HttpClient();
+      var resp = await client.GetAsync($"https://maps.googleapis.com/maps/api/directions/json?origin={load.PickCity}&destination={load.DropCity}&key={_MAP_KEY}");
+      var json = await JsonDocument.ParseAsync(await resp.Content.ReadAsStreamAsync());
+      var root = json.RootElement;
+      var route = root.GetProperty("routes").EnumerateArray().First();
+      var legs = route.GetProperty("legs").EnumerateArray().First();
+      var distance = legs.GetProperty("distance").EnumerateObject();
+      var text = distance.First().Value;
+      load.Distance = text.ToString();
 
       return load;
     }
@@ -69,6 +78,15 @@ namespace TruckTracker.Controllers
         loadToUpdate.CarrierId = carrier.Id;
         loadToUpdate.LoadStatus = "Covered";
         await _context.SaveChangesAsync();
+        var client = new HttpClient();
+        var resp = await client.GetAsync($"https://maps.googleapis.com/maps/api/directions/json?origin={loadToUpdate.PickCity}&destination={loadToUpdate.DropCity}&key={_MAP_KEY}");
+        var json = await JsonDocument.ParseAsync(await resp.Content.ReadAsStreamAsync());
+        var root = json.RootElement;
+        var route = root.GetProperty("routes").EnumerateArray().First();
+        var legs = route.GetProperty("legs").EnumerateArray().First();
+        var distance = legs.GetProperty("distance").EnumerateObject();
+        var text = distance.First().Value;
+        loadToUpdate.Distance = text.ToString();
         return Ok(loadToUpdate);
       }
     }
@@ -84,6 +102,15 @@ namespace TruckTracker.Controllers
       loadToUpdate.DropCheckIn = load.DropCheckIn;
       loadToUpdate.DropCheckOut = load.DropCheckOut;
       await _context.SaveChangesAsync();
+      var client = new HttpClient();
+      var resp = await client.GetAsync($"https://maps.googleapis.com/maps/api/directions/json?origin={loadToUpdate.PickCity}&destination={loadToUpdate.DropCity}&key={_MAP_KEY}");
+      var json = await JsonDocument.ParseAsync(await resp.Content.ReadAsStreamAsync());
+      var root = json.RootElement;
+      var route = root.GetProperty("routes").EnumerateArray().First();
+      var legs = route.GetProperty("legs").EnumerateArray().First();
+      var distance = legs.GetProperty("distance").EnumerateObject();
+      var text = distance.First().Value;
+      loadToUpdate.Distance = text.ToString();
       return Ok(loadToUpdate);
     }
     [HttpPatch("{id}/remove")]
