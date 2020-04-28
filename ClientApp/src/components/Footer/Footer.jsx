@@ -9,14 +9,14 @@ const Footer = () => {
         <ul>
           <li className="navbar-brand">Created by Stefan Bettaglio</li>
           <li className="navbar-brand">
-            <Link href="https://github.com/sbettaglio">
+            <a href="https://github.com/sbettaglio">
               <img src={GitHubLogo} heigh="25px" />
-            </Link>
+            </a>
           </li>
           <li className="navbar-brand">
-            <Link href="https://github.com/sbettaglio">
+            <a href="https://www.linkedin.com/in/stefanbettaglio/">
               <img src={LinkedIn} height="30px" />
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>
