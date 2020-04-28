@@ -69,7 +69,7 @@ namespace TruckTracker.Controllers
         loadToUpdate.CarrierId = carrier.Id;
         loadToUpdate.LoadStatus = "Covered";
         await _context.SaveChangesAsync();
-        return Ok(loadToUpdate.CarrierId);
+        return Ok(loadToUpdate);
       }
     }
     [HttpPut("{id}/update")]

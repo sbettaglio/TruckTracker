@@ -41,10 +41,7 @@ const Load = props => {
         }
       )
       if (resp.status === 200) {
-        setLoad(prevLoad => {
-          console.log(prevLoad)
-          return { ...prevLoad, carrierId: resp.data }
-        })
+        setLoad(resp.data)
       }
     } catch (error) {
       setBadRequest(error.response.data)

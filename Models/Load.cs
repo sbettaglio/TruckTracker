@@ -28,6 +28,7 @@ namespace TruckTracker.Models
     [JsonIgnore]
     public User User { get; set; }
     public int? CarrierId { get; set; }
+    [JsonIgnore]
     public Carrier Carrier { get; set; }
   }
 }
