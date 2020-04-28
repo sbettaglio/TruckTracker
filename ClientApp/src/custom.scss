@@ -20,10 +20,17 @@ body {
   background-repeat: repeat-y;
   background-size: cover;
 }
-footer {
+.all-around-footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  .all-around-nav {
+    ul {
+      margin-bottom: 0;
+    }
+  }
 }
 
 h3 {
@@ -48,4 +55,6 @@ h2 {
   }
 }
 @media (min-width: 12000px) {
+  footer {
+  }
 }

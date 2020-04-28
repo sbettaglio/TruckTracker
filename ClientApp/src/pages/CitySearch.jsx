@@ -2,6 +2,7 @@ import React from 'react'
 import { Container } from 'reactstrap'
 import LoadTable from '../components/LoadTable/LoadTable'
 import CustomNav from '../components/NavMenu/CustomNav'
+import Footer from '../components/Footer/Footer'
 
 const Drops = props => {
   console.log(props)
@@ -40,6 +41,7 @@ const Drops = props => {
           </>
         )}
       </main>
+      <Footer />
     </>
   )
 }

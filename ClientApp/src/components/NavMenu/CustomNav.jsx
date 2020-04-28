@@ -15,6 +15,9 @@ import {
 
 const CustomNav = props => {
   const [isOpen, setIsOpen] = useState(false)
+  const clearToken = () => {
+    localStorage.removeItem('token')
+  }
 
   const toggle = () => setIsOpen(!isOpen)
   return (
@@ -75,7 +78,9 @@ const CustomNav = props => {
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
-                    <NavLink to="/">Log Out</NavLink>
+                    <NavLink href="/" onClick={clearToken}>
+                      Log Out
+                    </NavLink>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem divider />

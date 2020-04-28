@@ -3,6 +3,7 @@ import { Container } from 'reactstrap'
 import axios from 'axios'
 import LoadTable from '../components/LoadTable/LoadTable'
 import CustomNav from '../components/NavMenu/CustomNav'
+import Footer from '../components/Footer/Footer'
 
 const LateTrucks = () => {
   const [loads, setLoads] = useState({})
@@ -44,6 +45,7 @@ const LateTrucks = () => {
           </>
         )}
       </main>
+      <Footer />
     </>
   )
 }

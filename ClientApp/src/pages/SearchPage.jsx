@@ -5,6 +5,7 @@ import CarrierSearchContainer from '../components/SearchComponents/CarrierSearch
 import LoadSearchContainer from '../components/SearchComponents/LoadSearchContainer'
 
 import CustomNav from '../components/NavMenu/CustomNav'
+import Footer from '../components/Footer/Footer'
 const SearchPage = () => {
   return (
     <>
@@ -35,6 +36,7 @@ const SearchPage = () => {
           </Form>
         </Container>
       </main>
+      <Footer />
     </>
   )
 }

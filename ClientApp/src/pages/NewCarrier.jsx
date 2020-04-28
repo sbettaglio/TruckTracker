@@ -9,6 +9,7 @@ import AlertComponent from '../components/AlertComponent'
 import NewCarrierInput from '../components/NewCarrier/NewCarrierInput'
 import NewCarrierEmailInput from '../components/NewCarrier/NewCarrierEmailInput.jsx'
 import NewCarrierStateSelect from '../components/NewCarrier/NewCarrierStateSelect'
+import Footer from '../components/Footer/Footer'
 const NewCarrier = () => {
   const methods = useForm()
   const [wasSuccessfullyCreated, setWasSuccessfullyCreated] = useState({
@@ -140,7 +141,7 @@ const NewCarrier = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={12} md={6}>
+                  <Col sm={12} md={7}>
                     <FormGroup check>
                       <NewCarrierInput
                         label="Valid Insurance"
@@ -162,6 +163,7 @@ const NewCarrier = () => {
             </FormContext>
           </Container>
         </main>
+        <Footer />
       </>
     )
   }

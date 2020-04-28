@@ -4,8 +4,8 @@ import GitHubLogo from './GitHubLogo.png'
 import LinkedIn from './LinkedIn.png'
 const Footer = () => {
   return (
-    <footer className="bg-primary" fixed="bottom">
-      <nav className="navbar navbar-dark bg-primary">
+    <footer className="bg-primary all-around-footer" fixed="bottom">
+      <nav className="navbar navbar-dark bg-primary all-around-nav">
         <ul>
           <li className="navbar-brand">Created by Stefan Bettaglio</li>
           <li className="navbar-brand">

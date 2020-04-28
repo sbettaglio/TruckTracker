@@ -37,8 +37,34 @@
         label {
           width: 70%;
         }
+        .form-check {
+          display: flex;
+          margin-top: 6%;
+          label {
+            width: 90%;
+          }
+        }
         .btn {
           margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 992px) {
+  .main-new-carrier {
+    .new-carrier-container {
+      .new-carrier-form {
+        .form-check {
+          margin-top: 3%;
+          label {
+            width: 70%;
+            margin-right: 0%;
+          }
+          input {
+            margin-right: 10%;
+            margin-left: 0%;
+          }
         }
       }
     }

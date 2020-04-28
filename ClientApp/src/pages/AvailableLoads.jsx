@@ -3,6 +3,7 @@ import { Container } from 'reactstrap'
 import axios from 'axios'
 import LoadTable from '../components/LoadTable/LoadTable'
 import CustomNav from '../components/NavMenu/CustomNav'
+import Footer from '../components/Footer/Footer'
 const Picks = () => {
   const [loads, setLoads] = useState({})
   const getAvailableLoads = async () => {
@@ -42,6 +43,7 @@ const Picks = () => {
           </>
         )}
       </main>
+      <Footer />
     </>
   )
 }

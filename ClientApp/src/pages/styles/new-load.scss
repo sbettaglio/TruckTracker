@@ -2,3 +2,30 @@
 .new-load {
   margin-top: 3rem;
 }
+@media (min-width: 768px) {
+  .new-load {
+    .new-load-container {
+      .btn-success {
+        margin-top: 36%;
+      }
+    }
+  }
+}
+@media (min-width: 992px) {
+  .new-load {
+    .new-load-container {
+      .btn-success {
+        margin-top: 24%;
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .new-load {
+    .new-load-container {
+      .btn-success {
+        margin-top: 20%;
+      }
+    }
+  }
+}

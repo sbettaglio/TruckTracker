@@ -4,6 +4,7 @@ import axios from 'axios'
 import LoadTable from '../components/LoadTable/LoadTable'
 import CustomNav from '../components/NavMenu/CustomNav'
 import './styles/load-list.scss'
+import Footer from '../components/Footer/Footer'
 const Picks = props => {
   const [loads, setLoads] = useState({})
   const getTodaysPicks = async () => {
@@ -43,6 +44,7 @@ const Picks = props => {
           </Container>
         )}
       </main>
+      <Footer />
     </>
   )
 }

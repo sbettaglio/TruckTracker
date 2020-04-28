@@ -7,6 +7,7 @@ import './styles/carrier-profiles.scss'
 import CustomNav from '../components/NavMenu/CustomNav'
 import CarrierProfileComponent from '../components/CarrierProfiles/CarrierProfileComponent'
 import UpdateCarrierInfo from '../components/CarrierProfiles/UpdateCarrierInfo'
+import Footer from '../components/Footer/Footer'
 const CarrierProfiles = props => {
   const carrierId = props.match.params.carrierId
   const methods = useForm()
@@ -62,6 +63,7 @@ const CarrierProfiles = props => {
           )}
         </Container>
       </main>
+      <Footer />
     </>
   )
 }

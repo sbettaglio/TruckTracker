@@ -3,6 +3,7 @@ import axios from 'axios'
 import CustomNav from '../components/NavMenu/CustomNav'
 import './styles/user-home.scss'
 import HomeTable from '../components/UserHomeComponents/HomeTable'
+import Footer from '../components/Footer/Footer'
 
 const UserHome = () => {
   const [profile, setProfile] = useState({})
@@ -22,6 +23,7 @@ const UserHome = () => {
     <>
       <CustomNav />
       <HomeTable />
+      <Footer />
     </>
   )
 }

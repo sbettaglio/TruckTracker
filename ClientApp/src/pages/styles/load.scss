@@ -5,6 +5,7 @@
   margin-bottom: 0rem;
 }
 .load-info {
+  margin-bottom: 6rem;
   .container {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -85,9 +86,25 @@
     }
   }
 }
+@media (min-width: 992px) {
+  .load-info {
+    section {
+      .button-bottom {
+        margin-top: 18%;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
 @media (min-width: 1200px) {
   .load-info {
     margin-top: 1rem;
+    section {
+      .button-bottom {
+        margin-top: 8%;
+        margin-bottom: 0;
+      }
+    }
   }
   .load-update-buttons {
     padding-top: 5%;
