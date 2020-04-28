@@ -92,7 +92,7 @@ namespace TruckTracker.Controllers
       var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
       var loadToUpdate = _context.Loads.FirstOrDefault(l => l.Id == id);
       loadToUpdate.CarrierId = null;
-      loadToUpdate.LoadStatus = "available";
+      loadToUpdate.LoadStatus = "Available";
       await _context.SaveChangesAsync();
       return Ok(loadToUpdate);
     }
