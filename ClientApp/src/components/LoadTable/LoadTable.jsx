@@ -4,7 +4,6 @@ import LoadTableComponent from './LoadTableComponent'
 import LoadTableHeader from './LoadTableHeader'
 import EmptyTable from './EmptyTable'
 const LoadTable = ({ slot1, slot2, slot3, slot4, slot5, results }) => {
-  console.log(results)
   return (
     <>
       <Table responsive>

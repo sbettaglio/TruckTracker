@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Form, FormGroup, Label, Input, Button, Row, Col } from 'reactstrap'
+import { Form, FormGroup, Label, Button, Row, Col } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import { now } from 'moment'

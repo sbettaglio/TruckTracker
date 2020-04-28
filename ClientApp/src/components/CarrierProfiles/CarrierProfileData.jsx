@@ -3,7 +3,7 @@ import Moment from 'react-moment'
 const CarrierProfileData = ({ label, data }) => {
   return (
     <>
-      {label == 'Setup Date' ? (
+      {label === 'Setup Date' ? (
         <section>
           <h4>{label}</h4>
           <p>

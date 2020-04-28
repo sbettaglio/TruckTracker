@@ -22,13 +22,13 @@ const LoadTrackingForm = ({ load, remove }) => {
               <option value="" disabled selected>
                 Update Status
               </option>
-              <option value="Pick on way">Pick on way</option>
-              <option value="Pick late">Pick late</option>
-              <option value="At shipper">At shipper</option>
+              <option value="Pick On Way">Pick On Way</option>
+              <option value="Pick Late">Pick Late</option>
+              <option value="At Shipper">At Shipper</option>
               <option value="Loading">Loading</option>
-              <option value="On route">On Route</option>
+              <option value="On Route">On Route</option>
               <option value="Rolling Late">Rolling Late</option>
-              <option value="At Drop">At drop</option>
+              <option value="At Drop">At Drop</option>
               <option value="Unloading">Unloading</option>
               <option value="Empty">Empty</option>
             </select>
@@ -42,7 +42,7 @@ const LoadTrackingForm = ({ load, remove }) => {
         <Col md={12} xl={6}>
           <FormGroup>
             <Label for="exampleDateTime">
-              <h4>ETA to Pick</h4>
+              <h4>Pick ETA</h4>
             </Label>
             <input
               className="form-control"
@@ -57,7 +57,7 @@ const LoadTrackingForm = ({ load, remove }) => {
         <Col md={12} xl={6}>
           <FormGroup>
             <Label>
-              <h4>Checked-in</h4>
+              <h4>Pick Check-In</h4>
             </Label>
             <input
               className="form-control"
@@ -72,7 +72,7 @@ const LoadTrackingForm = ({ load, remove }) => {
         <Col md={12} xl={6}>
           <FormGroup>
             <Label>
-              <h4>Checked-out</h4>
+              <h4>Pick Check-Out</h4>
             </Label>
             <input
               className="form-control"
@@ -87,7 +87,7 @@ const LoadTrackingForm = ({ load, remove }) => {
         <Col md={12} xl={6}>
           <FormGroup>
             <Label>
-              <h4>ETA to Drop</h4>
+              <h4>Drop ETA</h4>
             </Label>
             <input
               className="form-control"
@@ -102,7 +102,7 @@ const LoadTrackingForm = ({ load, remove }) => {
         <Col md={12} xl={6}>
           <FormGroup>
             <Label>
-              <h4>Checked-in</h4>
+              <h4>Drop Check-In</h4>
             </Label>
             <input
               className="form-control"
@@ -117,7 +117,7 @@ const LoadTrackingForm = ({ load, remove }) => {
         <Col md={12} xl={6}>
           <FormGroup>
             <Label>
-              <h4>Checked-out</h4>
+              <h4>Drop Check-Out</h4>
             </Label>
             <input
               className="form-control"

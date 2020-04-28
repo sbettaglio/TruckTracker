@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import GitHubLogo from './GitHubLogo.png'
 import LinkedIn from './LinkedIn.png'
 const Footer = () => {
@@ -10,12 +9,12 @@ const Footer = () => {
           <li className="navbar-brand">Created by Stefan Bettaglio</li>
           <li className="navbar-brand">
             <a href="https://github.com/sbettaglio">
-              <img src={GitHubLogo} heigh="25px" />
+              <img alt="GitHub logo" src={GitHubLogo} />
             </a>
           </li>
           <li className="navbar-brand">
             <a href="https://www.linkedin.com/in/stefanbettaglio/">
-              <img src={LinkedIn} height="30px" />
+              <img alt="LinkedIn logo" src={LinkedIn} height="30px" />
             </a>
           </li>
         </ul>

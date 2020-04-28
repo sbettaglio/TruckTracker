@@ -16,7 +16,7 @@ namespace TruckTracker.Models
     public int Weight { get; set; }
     public string Commodity { get; set; }
     public double CustomerRate { get; set; }
-    public string LoadStatus { get; set; } = "available";
+    public string LoadStatus { get; set; } = "Available";
     public double CarrierRate { get; set; }
     public DateTime PickEta { get; set; }
     public DateTime PickCheckIn { get; set; }

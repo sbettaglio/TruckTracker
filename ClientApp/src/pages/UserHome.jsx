@@ -15,14 +15,13 @@ const UserHome = () => {
     })
     setProfile(resp.data)
   }
-  console.log(profile)
   useEffect(() => {
     loadUser()
   }, [])
   return (
     <>
       <CustomNav />
-      <HomeTable />
+      <HomeTable user={profile} />
       <Footer />
     </>
   )

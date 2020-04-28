@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import axios from 'axios'
 import LoadInfoDataComponent from './LoadInfoDataComponent'
 import LoadInfoTimeComponent from './LoadInfoTimeComponent'
 const LoadInfoDisplay = ({ load, distance }) => {
@@ -17,16 +16,16 @@ const LoadInfoDisplay = ({ load, distance }) => {
             <LoadInfoDataComponent text="Distance" data={distance} />
           </Col>
           <Col xl={6}>
-            <LoadInfoDataComponent text="P/U City" data={load.pickCity} />
+            <LoadInfoDataComponent text="Pick City" data={load.pickCity} />
           </Col>
           <Col lg={12} xl={6}>
-            <LoadInfoTimeComponent text="P/U Date" date={load.pickApp} />
+            <LoadInfoTimeComponent text="Pick Date" date={load.pickApp} />
           </Col>
           <Col xl={6}>
-            <LoadInfoDataComponent text="D/O City" data={load.dropCity} />
+            <LoadInfoDataComponent text="Drop City" data={load.dropCity} />
           </Col>
           <Col lg={12} xl={6}>
-            <LoadInfoTimeComponent text="D/O Date" date={load.dropApp} />
+            <LoadInfoTimeComponent text="Drop Date" date={load.dropApp} />
           </Col>
           <Col xl={6}>
             <LoadInfoDataComponent text="Commodity" data={load.commodity} />

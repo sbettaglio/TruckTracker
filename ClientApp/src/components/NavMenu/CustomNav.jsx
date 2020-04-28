@@ -31,7 +31,7 @@ const CustomNav = props => {
               <DropdownToggle nav caret>
                 Menu
               </DropdownToggle>
-              <DropdownMenu left>
+              <DropdownMenu>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
                     Loads

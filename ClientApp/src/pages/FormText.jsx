@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button } from 'reactstrap'
 import axios from 'axios'
 
@@ -13,9 +13,6 @@ const FormText = () => {
     setAttribution(resp.data.info.copyright.text)
     setDistance(resp.data.route.distance)
   }
-  useEffect(() => {
-    getDistance()
-  }, [])
 
   return (
     <>

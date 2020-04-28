@@ -13,7 +13,6 @@ const Drops = () => {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
-    console.log(resp.data)
     setLoads(resp.data)
   }
 

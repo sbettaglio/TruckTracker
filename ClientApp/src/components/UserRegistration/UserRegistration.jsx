@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { Col, Row, Button, Form, FormGroup, Label } from 'reactstrap'
+import { Col, Row, Button, Form, FormGroup } from 'reactstrap'
 import { useForm, FormContext } from 'react-hook-form'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import NewCarrierStateSelect from '../NewCarrier/NewCarrierStateSelect'
 import NewUserInput from './NewUserInput'
 import NewCarrierEmailInput from '../NewCarrier/NewCarrierEmailInput'
 import AlertComponent from '../AlertComponent'
@@ -46,6 +45,8 @@ const UserRegistration = () => {
           })
           setLoginError(error.response.data)
           break
+        default:
+          setLoginError('Something when wrong, please try again')
       }
     }
   }

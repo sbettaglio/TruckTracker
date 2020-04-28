@@ -8,9 +8,7 @@ import AlertComponent from '../components/AlertComponent'
 import { useForm, FormContext } from 'react-hook-form'
 import CustomNav from '../components/NavMenu/CustomNav'
 import LoadInfoDisplay from '../components/LoadTracking/LoadInfoDisplay'
-import { Link } from 'react-router-dom'
 import './styles/load.scss'
-import Footer from '../components/Footer/Footer'
 import LoadFooter from '../components/Footer/LoadFooter'
 
 const Load = props => {
@@ -32,7 +30,6 @@ const Load = props => {
       },
     })
     setLoad(resp.data)
-    console.log(resp.data)
     const dist = await axios.get(
       `https://www.mapquestapi.com/directions/v2/route?key=${API_KEY}&from=${resp.data.pickCity}&to=${resp.data.dropCity}`
     )
@@ -60,7 +57,6 @@ const Load = props => {
     }
   }
   const sendLoadUpdateToApi = async data => {
-    console.log('updating', data)
     const resp = await axios.put(`api/Loads/${load.id}/update`, data, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -72,7 +68,6 @@ const Load = props => {
     }
   }
   const removeCarrierFromLoad = async () => {
-    console.log('removing', load.id)
     const resp = await axios.patch(
       `api/Loads/${load.id}/remove`,
       { load },
@@ -86,7 +81,6 @@ const Load = props => {
   }
   useEffect(() => {
     getLoadData()
-    // getDistance()
   }, [])
   return (
     <>
