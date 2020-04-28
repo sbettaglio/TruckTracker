@@ -75,7 +75,9 @@ const CustomNav = props => {
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
-                    <NavLink href="/">Log Out</NavLink>
+                    <NavLink href="/" onClick={localStorage.clear('token')}>
+                      Log Out
+                    </NavLink>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem divider />
