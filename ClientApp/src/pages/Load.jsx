@@ -8,7 +8,10 @@ import AlertComponent from '../components/AlertComponent'
 import { useForm, FormContext } from 'react-hook-form'
 import CustomNav from '../components/NavMenu/CustomNav'
 import LoadInfoDisplay from '../components/LoadTracking/LoadInfoDisplay'
+import { Link } from 'react-router-dom'
 import './styles/load.scss'
+import Footer from '../components/Footer/Footer'
+import LoadFooter from '../components/Footer/LoadFooter'
 
 const Load = props => {
   let loadInfo = props.location.state.load
@@ -17,6 +20,10 @@ const Load = props => {
   const [visible, setVisible] = useState(false)
   const [badRequest, setBadRequest] = useState('')
   const methods = useForm()
+
+  const [distance, setDistance] = useState('')
+  const API_KEY = `${process.env.REACT_APP_MAP_KEY}`
+
   const onDismiss = () => setVisible(false)
   const getLoadData = async () => {
     const resp = await axios.get(`api/Loads/${loadId}`, {
@@ -24,9 +31,14 @@ const Load = props => {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
-
     setLoad(resp.data)
+    console.log(resp.data)
+    const dist = await axios.get(
+      `https://www.mapquestapi.com/directions/v2/route?key=${API_KEY}&from=${resp.data.pickCity}&to=${resp.data.dropCity}`
+    )
+    setDistance(`${Math.ceil(dist.data.route.distance)} miles`)
   }
+
   const saveCarrierToApi = async data => {
     try {
       data.mCNumber = parseInt(data.mCNumber)
@@ -74,6 +86,7 @@ const Load = props => {
   }
   useEffect(() => {
     getLoadData()
+    // getDistance()
   }, [])
   return (
     <>
@@ -84,7 +97,7 @@ const Load = props => {
       <main className="load-info">
         <Row>
           <Col sm={12} md={6} xl={6}>
-            <LoadInfoDisplay load={load} />
+            <LoadInfoDisplay load={load} distance={distance} />
           </Col>
           <Col>
             {load.carrierId == null ? (
@@ -134,6 +147,7 @@ const Load = props => {
           </Col>
         </Row>
       </main>
+      <LoadFooter />
     </>
   )
 }

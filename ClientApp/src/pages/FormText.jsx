@@ -1,35 +1,33 @@
-import React, { useState } from 'react'
-import { Button, Form, FormGroup, Label } from 'reactstrap'
-
-import { useForm } from 'react-hook-form'
+import React, { useState, useEffect } from 'react'
+import { Button } from 'reactstrap'
+import axios from 'axios'
 
 const FormText = () => {
-  const { register, handleSubmit } = useForm()
-
-  const onSubmit = data => {
-    console.log(data)
+  const [distance, setDistance] = useState(0)
+  const [attribution, setAttribution] = useState('')
+  const getDistance = async () => {
+    console.log('getting distance', distance)
+    const resp = await axios.get(
+      `https://www.mapquestapi.com/directions/v2/route?key=B4L7zPogojJFdsgmWAELJaS2Wtlehzmx&from=Miami FL&to=tampa`
+    )
+    setAttribution(resp.data.info.copyright.text)
+    setDistance(resp.data.route.distance)
   }
+  useEffect(() => {
+    getDistance()
+  }, [])
+
   return (
     <>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <FormGroup>
-          <Label>Company</Label>
-          <input name="company" ref={register}></input>
-        </FormGroup>
-        <FormGroup>
-          <Label>Appointment</Label>
-        </FormGroup>
-        <FormGroup>
-          <Label>Full Name</Label>
-        </FormGroup>
-        <FormGroup>
-          <Label>Email</Label>
-        </FormGroup>
-        <FormGroup>
-          <Label>password</Label>
-        </FormGroup>
-        <Button type="submit">submit</Button>
-      </Form>
+      <div>
+        <form>
+          <label>{distance}</label>
+          <Button className="btn-danger" onClick={getDistance}>
+            get distance
+          </Button>
+          <label>{attribution}</label>
+        </form>
+      </div>
     </>
   )
 }

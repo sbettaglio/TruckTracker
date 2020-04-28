@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'reactstrap'
+import axios from 'axios'
 import LoadInfoDataComponent from './LoadInfoDataComponent'
 import LoadInfoTimeComponent from './LoadInfoTimeComponent'
-const LoadInfoDisplay = ({ load }) => {
+const LoadInfoDisplay = ({ load, distance }) => {
   let netProfit = load.customerRate - load.carrierRate
+
   return (
     <>
       <Container>
@@ -12,7 +14,7 @@ const LoadInfoDisplay = ({ load }) => {
             <LoadInfoDataComponent text="Status" data={load.loadStatus} />
           </Col>
           <Col sm={12} md={12} xl={6}>
-            <LoadInfoDataComponent text="Distance" data={load.distance} />
+            <LoadInfoDataComponent text="Distance" data={distance} />
           </Col>
           <Col xl={6}>
             <LoadInfoDataComponent text="P/U City" data={load.pickCity} />
