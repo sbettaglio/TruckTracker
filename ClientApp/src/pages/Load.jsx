@@ -32,8 +32,7 @@ const Load = props => {
       data.mCNumber = parseInt(data.mCNumber)
       const resp = await axios.put(
         `api/Loads/${load.id}/${data.mCNumber}`,
-
-        { load },
+        { data },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,

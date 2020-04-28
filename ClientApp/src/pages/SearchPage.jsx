@@ -9,12 +9,12 @@ const SearchPage = () => {
   return (
     <>
       <CustomNav />
-      <div className="title-div">
+      <div className="search-title-div">
         <h1>Search</h1>
       </div>
-      <main>
-        <Container>
-          <Form inline>
+      <main className="search-main">
+        <Container className="search-container">
+          <Form>
             <Row>
               <CarrierSearchContainer
                 labelTop="MC Number"

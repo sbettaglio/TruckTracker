@@ -70,9 +70,11 @@ const LoadSearchContainer = ({
   } else {
     return (
       <>
-        <Col sm={12} md={12}>
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-            <Label>{labelTop}</Label>
+        <Col xs={12}>
+          <FormGroup className="search-group">
+            <Label>
+              <h5>{labelTop}</h5>
+            </Label>
             <Input
               type="search"
               placeholder="123456"
@@ -85,9 +87,11 @@ const LoadSearchContainer = ({
             </Button>
           </FormGroup>
         </Col>
-        <Col sm={12} md={12}>
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-            <Label>{labelBottom}</Label>
+        <Col>
+          <FormGroup className="search-group">
+            <Label>
+              <h5>{labelBottom}</h5>
+            </Label>
             <Input
               type="search"
               name={nameBottom}

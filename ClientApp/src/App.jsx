@@ -136,7 +136,7 @@ export default class App extends Component {
             path="/search/:searchCity"
             render={routeProps =>
               localStorage.getItem('token') ? (
-                <SearchPage {...routeProps} />
+                <CitySearch {...routeProps} />
               ) : (
                 <Redirect to="/" />
               )
