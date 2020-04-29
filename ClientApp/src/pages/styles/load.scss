@@ -5,7 +5,7 @@
   margin-bottom: 0rem;
 }
 .load-info {
-  margin-bottom: 8rem;
+  margin-bottom: 5rem;
   .container {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -21,7 +21,7 @@
   }
 }
 .load-footer {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
   margin-bottom: 0;
@@ -111,5 +111,8 @@
   }
   .load-update-buttons {
     padding-top: 5%;
+  }
+  .load-footer {
+    position: sticky;
   }
 }

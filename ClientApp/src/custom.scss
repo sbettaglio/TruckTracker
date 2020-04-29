@@ -21,7 +21,7 @@ body {
   background-size: cover;
 }
 .all-around-footer {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
   padding-bottom: 0;
@@ -55,6 +55,7 @@ h2 {
   }
 }
 @media (min-width: 12000px) {
-  footer {
+  .load-footer {
+    position: fixed;
   }
 }
