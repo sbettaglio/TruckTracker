@@ -1,6 +1,10 @@
 @import '../../bootstrap-customize.scss';
 .new-load {
-  margin-top: 3rem;
+  margin-top: 5rem;
+  margin-bottom: 7rem;
+  .new-load-container {
+    width: 95%;
+  }
 }
 @media (min-width: 768px) {
   .new-load {

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import GitHubLogo from './GitHubLogo.png'
 import LinkedIn from './LinkedIn.png'
+import Google from './google_logo.png'
 const LoadFooter = () => {
   return (
     <footer className="bg-primary load-footer" fixed="bottom">
@@ -21,13 +22,8 @@ const LoadFooter = () => {
             </li>
           </section>
           <li className="navbar-brand">
-            Powered by{' '}
-            <Link
-              className="navbar-brand"
-              href="http://hello.mapquest.com/terms-of-use/"
-            >
-              © MapQuest.
-            </Link>
+            {' '}
+            <img alt="Google logo" src={Google} height="20px" />
           </li>
         </ul>
       </nav>
