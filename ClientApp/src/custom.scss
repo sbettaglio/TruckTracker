@@ -39,6 +39,11 @@ h3 {
 h2 {
   text-align: center;
 }
+@media (min-width: 576px) {
+  .all-around-footer {
+    position: fixed;
+  }
+}
 @media (min-width: 768px) {
   .container {
     border: 2px solid $secondary;
@@ -55,7 +60,4 @@ h2 {
   }
 }
 @media (min-width: 12000px) {
-  .load-footer {
-    position: fixed;
-  }
 }
