@@ -3,6 +3,7 @@ import { Row, Col, Button } from 'reactstrap'
 
 import CarrierProfileData from './CarrierProfileData.jsx'
 const CarrierProfileComponent = ({ carrier, button }) => {
+  console.log(carrier)
   return (
     <>
       <Row>

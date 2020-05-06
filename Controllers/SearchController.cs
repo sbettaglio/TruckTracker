@@ -39,10 +39,18 @@ namespace TruckTracker.Controllers
     }
 
     [HttpGet("carriers")]
-    public async Task<ActionResult> GetCarrierByMc(int search)
+    public async Task<ActionResult<Carrier>> GetCarrierByMc(int search)
     {
-      var carrierInSystem = await _context.Carriers.FirstOrDefaultAsync(c => c.MCNumber == search);
-      return Ok(carrierInSystem);
+      if (search <= 999999)
+      {
+
+        var carrierInSystem = await _context.Carriers.FirstOrDefaultAsync(c => c.MCNumber == search);
+        return Ok(carrierInSystem);
+      }
+      else
+      {
+        return BadRequest("MC number cannot be greater than 6 digits");
+      }
 
     }
     [HttpGet("carriers/name")]
@@ -69,7 +77,7 @@ namespace TruckTracker.Controllers
     public async Task<ActionResult> GetLateTrucks()
     {
       var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
-      var lateTrucks = _context.Loads.Where(l => l.LoadStatus == "Pick late" || l.LoadStatus == "Rolling Late" && l.UserId == userId);
+      var lateTrucks = _context.Loads.Where(l => l.LoadStatus == "Pick Late" || l.LoadStatus == "Rolling Late" && l.UserId == userId);
       return Ok(await lateTrucks.ToListAsync());
     }
     [HttpGet("loads/available")]

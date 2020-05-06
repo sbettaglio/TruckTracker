@@ -20,18 +20,20 @@ const LoadSearchContainer = ({
     searchResult: [{}],
   })
   const searchById = async () => {
-    console.log('searching for', searchId)
-    const resp = await axios.get(`api/Loads/${searchId}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    })
-    console.log(resp, resp.data)
-    if (resp.status === 200) {
-      setLoadSearchSuccessful({
-        shouldRedirect: true,
-        searchResult: resp.data,
+    try {
+      const resp = await axios.get(`api/Loads/${searchId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       })
+      if (resp.status === 200) {
+        setLoadSearchSuccessful({
+          shouldRedirect: true,
+          searchResult: resp.data,
+        })
+      }
+    } catch (error) {
+      console.log(error.response.data)
     }
   }
   const searchByCity = async () => {

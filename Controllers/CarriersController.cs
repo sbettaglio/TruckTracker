@@ -59,7 +59,7 @@ namespace TruckTracker.Controllers
       }
       else if (carrier.PhoneNumber != "")
       {
-        carrierToUpdate.PhoneNumber = carrier.PhoneNumber;
+        carrierToUpdate.PhoneNumber = (carrier.PhoneNumber);
       }
       else if (carrier.Email != "")
       {

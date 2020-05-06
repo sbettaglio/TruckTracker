@@ -63,6 +63,10 @@ namespace TruckTracker.Controllers
     [HttpPut("{id}/{mCNumber}")]
     public async Task<ActionResult<Load>> AddCarrierToLoad(int id, int mCNumber)
     {
+      if (mCNumber > 999999)
+      {
+        return BadRequest($"That's too many digits for an MC Number, please try again");
+      }
       var userId = int.Parse(User.Claims.FirstOrDefault(u => u.Type == "id").Value);
       var carrierInSystem = _context.Carriers.Any(c => c.MCNumber == mCNumber);
       if (carrierInSystem != true)
