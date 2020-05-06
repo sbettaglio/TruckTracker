@@ -16,7 +16,7 @@ const AssignCarrierToLoad = ({ save }) => {
               className="form-control"
               name="mCNumber"
               ref={register({
-                required: 'This is required',
+                required: 'MC number is required to add a carrier to a load',
                 max: {
                   value: 999999,
                   message: 'MC number must be less than 6 digits',

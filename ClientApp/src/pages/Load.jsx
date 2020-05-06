@@ -92,7 +92,7 @@ const Load = props => {
             {load.carrierId == null ? (
               <section>
                 {visible ? (
-                  <div>
+                  <div className="load-alert">
                     <AlertComponent
                       isOpen={visible}
                       toggle={onDismiss}
