@@ -17,7 +17,9 @@ const Load = props => {
   const [load, setLoad] = useState({ loadInfo })
   const [visible, setVisible] = useState(false)
   const [badRequest, setBadRequest] = useState('')
-  const methods = useForm()
+  const methods = useForm({
+    validateCriteriaMode: 'all',
+  })
 
   const onDismiss = () => setVisible(false)
   const getLoadData = async () => {

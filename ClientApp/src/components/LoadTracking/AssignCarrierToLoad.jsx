@@ -2,7 +2,9 @@ import React from 'react'
 import { FormGroup, Label, Button, Row, Col } from 'reactstrap'
 import { useFormContext, ErrorMessage } from 'react-hook-form'
 const AssignCarrierToLoad = ({ save }) => {
-  const { register, errors } = useFormContext()
+  const { register, errors } = useFormContext({
+    validateCriteriaMode: 'all',
+  })
   return (
     <>
       <Row>
@@ -13,14 +15,22 @@ const AssignCarrierToLoad = ({ save }) => {
               type="number"
               className="form-control"
               name="mCNumber"
-              ref={register({ required: true })}
-              // onChange={track}
+              ref={register({
+                required: 'This is required',
+                max: {
+                  value: 999999,
+                  message: 'MC number must be less than 6 digits',
+                },
+              })}
             ></input>
-            <ErrorMessage
-              errors={errors}
-              name="mCNumber"
-              message="MC number is required to assign a carrier"
-            />
+            <ErrorMessage errors={errors} name="mCNumber">
+              {({ messages }) =>
+                messages &&
+                Object.entries(messages).map(([type, message]) => (
+                  <p key={type}>{message}</p>
+                ))
+              }
+            </ErrorMessage>
           </FormGroup>
         </Col>
         <Col sm={12} lg={4}>
